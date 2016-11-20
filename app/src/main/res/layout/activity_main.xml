@@ -15,7 +15,6 @@
 
 
     <ToggleButton
-        android:text="Reveal Cards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -24,6 +23,7 @@
         android:layout_centerHorizontal="true"
         android:textOn="Hide Cards"
         android:textOff="Reveal Cards"
+        android:onClick="revealHideCards"
 
         tools:background="@android:drawable/button_onoff_indicator_on"
         android:isScrollContainer="false"
@@ -38,26 +38,30 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/baron"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp"
-        android:id="@+id/imageButton"
-        android:layout_above="@+id/toggleButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="124dp"
-        android:cropToPadding="true" />
+        app:srcCompat="@drawable/prince"
+        android:id="@+id/card2"
+        android:scaleType="fitXY"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="48dp"
+        android:onClick="choiceCard2"/>
 
     <ImageButton
+        app:srcCompat="@drawable/baron"
+        android:id="@+id/card1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/price"
-        android:id="@+id/imageButton2"
-        android:layout_alignTop="@+id/imageButton"
-        android:layout_toRightOf="@+id/imageButton"
-        android:layout_toEndOf="@+id/imageButton"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp" />
+        android:scaleType="fitXY"
+        android:maxHeight="50dp"
+        android:maxWidth="50dp"
+        android:layout_alignTop="@+id/card2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="choiceCard1"/>
+    />
 
 
 </RelativeLayout>
