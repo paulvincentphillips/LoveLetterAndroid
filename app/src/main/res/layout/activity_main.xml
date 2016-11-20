@@ -38,7 +38,6 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/prince"
         android:id="@+id/card2"
         android:scaleType="fitXY"
         android:maxHeight="100dp"
@@ -47,10 +46,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="48dp"
-        android:onClick="choiceCard2"/>
+        android:onClick="choiceCard2"
+        android:src="@drawable/cardback" />
 
     <ImageButton
-        app:srcCompat="@drawable/baron"
         android:id="@+id/card1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +59,8 @@
         android:layout_alignTop="@+id/card2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="choiceCard1"/>
+        android:onClick="choiceCard1"
+        android:src="@drawable/cardback" />
     />
 
 
