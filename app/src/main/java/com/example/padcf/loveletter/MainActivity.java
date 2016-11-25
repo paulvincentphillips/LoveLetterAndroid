@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        
+
         //instantiate your image buttons here for use
         final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
         final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "You pressed button ONE", Toast.LENGTH_SHORT).show();
+
             }
         }
         );
@@ -90,4 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
 }
