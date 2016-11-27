@@ -5,14 +5,32 @@ package com.example.padcf.loveletter;
  * Created by padcf & paulvincentphillips on 01/11/16.
  */
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+
 import java.util.Scanner;
+
+
 
 public class Prince implements Card{
     private int cardValue = 5;
     private String cardName = "prince";
     private String cardAbility = "Choose any player (including yourself) to discard his or her hand and draw a new card.";
+    private int imageId = R.drawable.prince;
+
+
+    //Jack
+    public int getImageId() {
+        return imageId;
+    }
+
+
 
     Scanner sc = new Scanner(System.in);
+
+    //Scanner sc = new Scanner(System.in);
 
     @Override
     public int getCardValue() {

@@ -11,6 +11,12 @@ public class Priest implements Card {
     private int cardValue = 2;
     private String cardName = "priest";
     private String cardAbility = "Look at another player's hand.";
+    private int imageId = R.drawable.priest;
+
+    @Override
+    public int getImageId() {
+        return imageId;
+    }
 
 
     @Override

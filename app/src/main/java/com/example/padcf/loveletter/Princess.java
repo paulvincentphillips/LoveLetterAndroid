@@ -9,7 +9,12 @@ public class Princess implements Card {
     private int cardValue = 8;
     private String cardName = "princess";
     private String cardAbility = "If you discard this card, you are out of the round";
+    private int imageId = R.drawable.princess;
 
+    @Override
+    public int getImageId() {
+        return imageId;
+    }
 
     @Override
     public int getCardValue() {

@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     //CLASS VARIABLES AND OBJECTS INSTANTIATED HERE
 
-    //turn order variables. Side not here: there is a way we can use modulo to deal with this. Something to consider when all is finished etc
+    //turn order variables. Side note here: there is a way we can use modulo to deal with this. Something to consider when all is finished etc
     int turnOrder = 0;
     int turnOrder2 = 1;
     int turnOrder3 = 2;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     //instantiate the playerOrder array
     Player[] playerOrder = new Player[4];
 
-    //deck setup
+    //deck variables setup
     Deck mainDeck = new Deck(); //instantiate the deck of cards
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
     int deckLength = deck1.length - 1;
@@ -161,8 +161,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set up player order
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
 
+        //send the program off to beginRound
         beginRound();
     }
 
