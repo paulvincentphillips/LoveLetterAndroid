@@ -9,6 +9,7 @@ public class Handmaid implements Card{
     private int cardValue = 4;
     private String cardName = "handmaid";
     private String cardAbility = "Until your next turn, ignore all effects from other players' cards.";
+    private int imageID = R.drawable.handmaid;
 
 
     @Override
@@ -24,6 +25,11 @@ public class Handmaid implements Card{
     @Override
     public String getCardName() {
         return this.cardName;
+    }
+
+    @Override
+    public int getImageID() {
+        return this.imageID;
     }
 
     @Override

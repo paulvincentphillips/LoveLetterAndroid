@@ -6,6 +6,7 @@ public class Baron implements Card {
     private int cardValue = 3;
     private String cardName = "baron";
     private String cardAbility = "You and another player secretly compare hands. \nThe player with the lower value is out of the round.";
+    private int imageID = R.drawable.baron;
 
 
     @Override
@@ -21,6 +22,11 @@ public class Baron implements Card {
     @Override
     public String getCardName() {
         return this.cardName;
+    }
+
+    @Override
+    public int getImageID() {
+        return this.imageID;
     }
 
     @Override

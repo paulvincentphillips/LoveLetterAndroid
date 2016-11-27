@@ -23,7 +23,6 @@
         android:layout_centerHorizontal="true"
         android:textOn="Hide Cards"
         android:textOff="Reveal Cards"
-        android:onClick="revealHideCards"
 
         tools:background="@android:drawable/button_onoff_indicator_on"
         android:isScrollContainer="false"

@@ -11,6 +11,7 @@ public class King implements Card {
     private int cardValue = 6;
     private String cardName = "king";
     private String cardAbility = "Trade hands with another player of your choice.";
+    private int imageID = R.drawable.king;
     Scanner sc = new Scanner(System.in);
 
 
@@ -27,6 +28,11 @@ public class King implements Card {
     @Override
     public String getCardName() {
         return this.cardName;
+    }
+
+    @Override
+    public int getImageID() {
+        return this.imageID;
     }
 
     @Override

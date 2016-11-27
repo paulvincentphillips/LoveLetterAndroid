@@ -11,6 +11,7 @@ public class Prince implements Card{
     private int cardValue = 5;
     private String cardName = "prince";
     private String cardAbility = "Choose any player (including yourself) to discard his or her hand and draw a new card.";
+    private int imageID = R.drawable.prince;
 
     Scanner sc = new Scanner(System.in);
 
@@ -27,6 +28,11 @@ public class Prince implements Card{
     @Override
     public String getCardName() {
         return this.cardName;
+    }
+
+    @Override
+    public int getImageID() {
+        return this.imageID;
     }
 
     @Override

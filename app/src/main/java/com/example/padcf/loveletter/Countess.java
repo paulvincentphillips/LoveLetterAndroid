@@ -9,6 +9,7 @@ public class Countess implements Card {
     private int cardValue = 7;
     private String cardName = "countess";
     private String cardAbility = "If you have this card and the King or Prince in your hand, \nyou must discard this card";
+    private int imageID = R.drawable.countess;
 
 
     @Override
@@ -24,6 +25,11 @@ public class Countess implements Card {
     @Override
     public String getCardName() {
         return this.cardName;
+    }
+
+    @Override
+    public int getImageID() {
+        return this.imageID;
     }
 
     @Override
