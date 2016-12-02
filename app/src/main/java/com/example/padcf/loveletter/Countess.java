@@ -11,6 +11,13 @@ public class Countess implements Card {
     private String cardAbility = "If you have this card and the King or Prince in your hand, \nyou must discard this card";
 
 
+    private int imageId = R.drawable.countess;
+
+    @Override
+    public int getImageId() {
+        return imageId;
+    }
+
     @Override
     public int getCardValue() {
         return this.cardValue;

@@ -12,8 +12,14 @@ public class Guard implements Card {
     private int cardValue = 1;
     private String cardName = "guard";
     private String cardAbility = "Name a non-Guard card and choose another player. \nIf that player has that card, he or she is out of the round.";
+    private int imageId = R.drawable.guard;
 
     Scanner sc = new Scanner(System.in);
+
+    @Override
+    public int getImageId() {
+        return imageId;
+    }
 
     @Override
     public int getCardValue() {
