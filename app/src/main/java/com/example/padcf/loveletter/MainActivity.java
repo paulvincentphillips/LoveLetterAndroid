@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -96,21 +97,59 @@ public class MainActivity extends AppCompatActivity {
         //deal 2nd card to current player
         deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
 
-        //ib.setImageResource(player1.getCard2().getImageId());
+        //set up button objects to use here
+        Button button1 = (Button)findViewById(R.id.button);
+        Button button2 = (Button)findViewById(R.id.button2);
+        Button button3 = (Button)findViewById(R.id.button3);
 
+
+        //ib.setImageResource(player1.getCard2().getImageId());
         final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
         final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
         final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
         //set the images to be invisible on start
-        ib.setVisibility(View.INVISIBLE);
-        ib2.setVisibility(View.INVISIBLE);
+        //ib.setVisibility(View.INVISIBLE);
+        //ib2.setVisibility(View.INVISIBLE);
 
-        ib.setImageResource(playerOrder[0].getCard1().getImageId());
-        ib2.setImageResource(playerOrder[0].getCard2().getImageId());
+        //settting default image to carBack
+        ib.setImageResource(R.drawable.cardback);
+        ib.setTag(R.drawable.cardback);
+        ib2.setImageResource(R.drawable.cardback);
+        ib2.setTag(1);
+
+        Integer cardBackTag = (Integer) ib.getTag();
 
         //call the onListner method to do stuff when you click on an image button, pass in the two images
+        //**FIX THIS**
+        //if(cardBackTag != R.drawable.cardback)
+        //{
         addListnerOnButton(ib, ib2);
+        //}
+
+        //set up on click for button1
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               int temp = playerOrder[0].getCard1().specialFunction(playerOrder[0], playerOrder[1],playerOrder[2],playerOrder[3], deckLength, deck1);
+                boolean isPlaying = playerOrder[0].getIsPlaying();
+                String isPlayingString;
+
+                if(isPlaying)
+                {
+                    isPlayingString = "TRUE";
+                }
+                else
+                {
+                    isPlayingString = "FALSE";
+                }
+                Toast.makeText(getApplicationContext(), isPlayingString, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
 
         //this method sets the images visible or invisible when clicked...this is the toggle button
         mainButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -118,14 +157,18 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
-                    ib.setVisibility(View.VISIBLE);
-                    ib2.setVisibility(View.VISIBLE);
+                    ib.setImageResource(playerOrder[0].getCard1().getImageId());
+                    ib2.setImageResource(playerOrder[0].getCard2().getImageId());
                     Toast.makeText(getApplicationContext(),"Choose a card", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    ib.setVisibility(View.INVISIBLE);
-                    ib2.setVisibility(View.INVISIBLE);
+                    ib.setImageResource(R.drawable.cardback);
+                    ib2.setImageResource(R.drawable.cardback);
+
+                    RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                    relLayout.setVisibility(View.INVISIBLE);
+
                 }
             }
         });
@@ -144,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
         //method to deal out the cards and also hold the new value of deckLength returned from method in deckLength variable
         //this method will only work for starting hands as method stores cards in Card1 slot only
         deckLength = dealCards(player1, player2, player3, player4, deckLength, deck1);
+
 
         //once finished here, move the program on to beginTurn
         beginTurn();
@@ -231,7 +275,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             Toast.makeText(getApplicationContext(), "You pressed button ONE", Toast.LENGTH_SHORT).show();
-
+            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+            relLayout.setVisibility(View.VISIBLE);
             }
         }
         );
@@ -240,6 +285,8 @@ public class MainActivity extends AppCompatActivity {
               @Override
               public void onClick(View v) {
               Toast.makeText(getApplicationContext(), "You pressed button TWO", Toast.LENGTH_SHORT).show();
+              RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+              relLayout.setVisibility(View.VISIBLE);
               }
         }
         );
