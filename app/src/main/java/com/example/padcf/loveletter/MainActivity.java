@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     //so i had to create some new methods - beginRound, beginTurn.
     //in beginRound we do stuff that is only required at the beginning of the round. We start beginRound by calling is from onCreate
     //Once everything is finished in beginRound we call beginTurn which then does all the things we need to be doing for each player turn.
-    // becuase there are many methods woring here, I needed to increase the scope of quite a few variables/objects, so they are now at the very top of the
+    // becuase there are many methods working here, I needed to increase the scope of quite a few variables/objects, so they are now at the very top of the
     //class as you can see.
 
     //CLASS VARIABLES AND OBJECTS INSTANTIATED HERE
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         //ib.setVisibility(View.INVISIBLE);
         //ib2.setVisibility(View.INVISIBLE);
 
-        //settting default image to carBack
+        //setting default image to carBack
         ib.setImageResource(R.drawable.cardback);
         ib.setTag(R.drawable.cardback);
         ib2.setImageResource(R.drawable.cardback);
