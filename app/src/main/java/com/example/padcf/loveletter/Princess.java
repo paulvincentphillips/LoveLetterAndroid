@@ -32,9 +32,9 @@ public class Princess implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
-        //System.out.println("You have discarded a Princess \nYou are out of the round!");
+        System.out.println("You have discarded a Princess \nYou are out of the round!");
         currentPlayer.setPlaying(false);
         return length;
     }

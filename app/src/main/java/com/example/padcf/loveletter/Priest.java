@@ -5,7 +5,6 @@ package com.example.padcf.loveletter;
  * Created by padcf & paulvincentphillips on 01/11/16.
  */
 
-import java.util.Scanner;
 
 public class Priest implements Card {
     private int cardValue = 2;
@@ -35,10 +34,20 @@ public class Priest implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
+        //java rewrite follows
 
+        if(tag == 1){
+            System.out.println(targetPlayer1.getPlayerName() + " has a " + targetPlayer1.getCard1().getCardName());
+        }
+        else if(tag ==2){
+            System.out.println(targetPlayer2.getPlayerName() + " has a " + targetPlayer2.getCard1().getCardName());
+        }else{
+            System.out.println(targetPlayer3.getPlayerName() + " has a " + targetPlayer3.getCard1().getCardName());
+        }
 
+        /*
         //the current player gets to view the card of the target player
         Scanner sc = new Scanner(System.in);
         while(true)
@@ -148,7 +157,7 @@ public class Priest implements Card {
             }
 
 
-        }
+        }*/
 
         return length;
     }

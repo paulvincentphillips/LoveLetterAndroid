@@ -1,6 +1,5 @@
 package com.example.padcf.loveletter;
 
-import java.util.Scanner;
 
 public class Baron implements Card {
     private int cardValue = 3;
@@ -30,14 +29,79 @@ public class Baron implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
+        //android implementation/ rewrite follows:
 
+        if(cardChoice == 1) {
+            if (tag == 1) {
+                if (currentPlayer.getCard2().getCardValue() > targetPlayer1.getCard1().getCardValue()) {
+                    targetPlayer1.setPlaying(false);
+                    System.out.println(targetPlayer1.getPlayerName() + " is out of the round");
+                } else if (currentPlayer.getCard2().getCardValue() < targetPlayer1.getCard1().getCardValue()) {
+                    currentPlayer.setPlaying(false);
+                    System.out.println("You are out of the round");
+                } else {
+                    System.out.println("Draw");
+                }
+            } else if (tag == 2) {
+                if (currentPlayer.getCard2().getCardValue() > targetPlayer2.getCard1().getCardValue()) {
+                    targetPlayer2.setPlaying(false);
+                    System.out.println(targetPlayer2.getPlayerName() + " is out of the round");
+                } else if (currentPlayer.getCard2().getCardValue() < targetPlayer2.getCard1().getCardValue()) {
+                    currentPlayer.setPlaying(false);
+                    System.out.println("You are out of the round");
+                } else {
+                    System.out.println("Draw");
+                }
+            } else {
+                if (currentPlayer.getCard2().getCardValue() > targetPlayer3.getCard1().getCardValue()) {
+                    targetPlayer3.setPlaying(false);
+                    System.out.println(targetPlayer3.getPlayerName() + " is out of the round");
+                } else if (currentPlayer.getCard2().getCardValue() < targetPlayer3.getCard1().getCardValue()) {
+                    currentPlayer.setPlaying(false);
+                    System.out.println("You are out of the round");
+                } else {
+                    System.out.println("Draw");
+                }
+            }
+        }
+        else if(cardChoice == 2){
+            if (currentPlayer.getCard1().getCardValue() > targetPlayer1.getCard1().getCardValue()) {
+                targetPlayer1.setPlaying(false);
+                System.out.println(targetPlayer1.getPlayerName() + " is out of the round");
+            } else if (currentPlayer.getCard1().getCardValue() < targetPlayer1.getCard1().getCardValue()) {
+                currentPlayer.setPlaying(false);
+                System.out.println("You are out of the round");
+            } else {
+                System.out.println("Draw");
+            }
+        } else if (tag == 2) {
+            if (currentPlayer.getCard1().getCardValue() > targetPlayer2.getCard1().getCardValue()) {
+                targetPlayer2.setPlaying(false);
+                System.out.println(targetPlayer2.getPlayerName() + " is out of the round");
+            } else if (currentPlayer.getCard1().getCardValue() < targetPlayer2.getCard1().getCardValue()) {
+                currentPlayer.setPlaying(false);
+                System.out.println("You are out of the round");
+            } else {
+                System.out.println("Draw");
+            }
+        } else {
+            if (currentPlayer.getCard1().getCardValue() > targetPlayer3.getCard1().getCardValue()) {
+                targetPlayer3.setPlaying(false);
+                System.out.println(targetPlayer3.getPlayerName() + " is out of the round");
+            } else if (currentPlayer.getCard1().getCardValue() < targetPlayer3.getCard1().getCardValue()) {
+                currentPlayer.setPlaying(false);
+                System.out.println("You are out of the round");
+            } else {
+                System.out.println("Draw");
+            }
+        }
 
         //having chosen guard card, we now want to choose a player to apply that card on.
         //loop around until a player has been chosen. Then do what needs to be done.
 
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
 
 
         while(true)
@@ -279,7 +343,7 @@ public class Baron implements Card {
             }
 
 
-        }
+        }*/
 
 
 

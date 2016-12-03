@@ -113,12 +113,12 @@ public class Main {
                     }*/
 
                     // if player doesn't have a countess with either a king or prince also in hand execute player choice
-                    if (choice == 1) {
+                    /*if (choice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder], playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength, deck1);
                         playerOrder[turnOrder].setCard1(playerOrder[turnOrder].getCard2());
                     } else {
                         deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder], playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength, deck1);
-                    }
+                    }*/
 
                     //check to see if 3 players are knocked out
                     int isOutCount = 0;

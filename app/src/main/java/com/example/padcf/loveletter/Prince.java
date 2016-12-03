@@ -48,13 +48,40 @@ public class Prince implements Card{
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
 
+        if(tag == 1){
+            if(targetPlayer1.getCard1().getCardValue() == 8){
+                targetPlayer1.setPlaying(false);
+            }else {
+                targetPlayer1.setCard1(deck[length]);
+                length--;
+                System.out.println(targetPlayer1.getPlayerName() + " has discarded their hand and drawn a new one from the deck");
+            }
+        }
+        else if(tag == 2){
+            if(targetPlayer2.getCard1().getCardValue() == 8){
+                targetPlayer2.setPlaying(false);
+            }else {
+                targetPlayer2.setCard1(deck[length]);
+                length--;
+                System.out.println(targetPlayer2.getPlayerName() + " has discarded their hand and drawn a new one from the deck");
+            }
+        }
+        else if(tag == 3){
+            if(targetPlayer3.getCard1().getCardValue() == 8){
+                targetPlayer3.setPlaying(false);
+            }else {
+                targetPlayer3.setCard1(deck[length]);
+                length--;
+                System.out.println(targetPlayer3.getPlayerName() + " has discarded their hand and drawn a new one from the deck");
+            }
+        }
 
         //having chosen prince card, we now want to choose a player to apply that card on.
         //loop around until a player has been chosen. Then do what needs to be done.
-
+        /*
         while(true) {
             System.out.println("Current player: " + currentPlayer.getPlayerName());
             System.out.println("You can target:");
@@ -187,7 +214,7 @@ public class Prince implements Card{
                     }
                 }
             }
-        }
+        }*/
         return length;
     }
 }
