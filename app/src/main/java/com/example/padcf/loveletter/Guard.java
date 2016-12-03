@@ -5,7 +5,6 @@ package com.example.padcf.loveletter;
  * Created by padcf & paulvincentphillips on 01/11/16.
  */
 
-import java.util.Scanner;
 
 public class Guard implements Card {
 
@@ -14,7 +13,6 @@ public class Guard implements Card {
     private String cardAbility = "Name a non-Guard card and choose another player. \nIf that player has that card, he or she is out of the round.";
     private int imageId = R.drawable.guard;
 
-    Scanner sc = new Scanner(System.in);
 
     @Override
     public int getImageId() {
@@ -37,14 +35,14 @@ public class Guard implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
-
+        System.out.println("You've played a guard");
 
         //having chosen guard card, we now want to choose a player to apply that card on.
         //loop around until a player has been chosen. Then do what needs to be done.
 
-        while(true)
+        /*while(true)
         {
             System.out.println("Current player: " + currentPlayer.getPlayerName());
             System.out.println("You can target:");
@@ -253,7 +251,7 @@ public class Guard implements Card {
             }
 
 
-        }
+        }*/
 
 
 

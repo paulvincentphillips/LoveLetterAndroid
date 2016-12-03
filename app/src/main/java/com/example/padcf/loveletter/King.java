@@ -36,15 +36,46 @@ public class King implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
-
+        if(tag == 1){
+            if(cardChoice == 1){
+                Card temp = targetPlayer1.getCard1();
+                targetPlayer1.setCard1(currentPlayer.getCard2());
+                currentPlayer.setCard1(temp);
+            }else{
+                Card temp = targetPlayer1.getCard1();
+                targetPlayer1.setCard1(currentPlayer.getCard1());
+                currentPlayer.setCard1(temp);
+            }
+        }
+        else if(tag == 2){
+            if(cardChoice == 1){
+                Card temp = targetPlayer2.getCard1();
+                targetPlayer2.setCard1(currentPlayer.getCard2());
+                currentPlayer.setCard1(temp);
+            }else{
+                Card temp = targetPlayer2.getCard1();
+                targetPlayer2.setCard1(currentPlayer.getCard1());
+                currentPlayer.setCard1(temp);
+            }
+        }else{
+            if(cardChoice == 1){
+                Card temp = targetPlayer3.getCard1();
+                targetPlayer3.setCard1(currentPlayer.getCard2());
+                currentPlayer.setCard1(temp);
+            }else{
+                Card temp = targetPlayer3.getCard1();
+                targetPlayer3.setCard1(currentPlayer.getCard1());
+                currentPlayer.setCard1(temp);
+            }
+        }
         //test
         //System.out.println(currentPlayer.getCard1().getCardName() + " " + currentPlayer.getCard2().getCardName() + " " + targetPlayer2.getCard1().getCardName());
 
         //having chosen king card, we now want to choose a player to apply that card on.
         //loop around until a player has been chosen. Then do what needs to be done.
-
+        /*
         while (true) {
             System.out.println("Current player: " + currentPlayer.getPlayerName());
             System.out.println("You can target:");
@@ -157,7 +188,7 @@ public class King implements Card {
             //test
             //System.out.println(currentPlayer.getCard1().getCardName() + " " + targetPlayer2.getCard1().getCardName());
             break;
-        }
+        }*/
         return length;
     }
 }

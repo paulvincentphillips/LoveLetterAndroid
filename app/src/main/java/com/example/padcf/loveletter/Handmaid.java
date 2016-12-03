@@ -33,7 +33,7 @@ public class Handmaid implements Card{
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
         currentPlayer.setPlayedHandmaid(true);
         System.out.println("You are immune this until your next turn");
         //System.out.println(currentPlayer.isPlayedHandmaid());

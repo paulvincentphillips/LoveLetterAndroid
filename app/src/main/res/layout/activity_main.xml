@@ -24,7 +24,6 @@
         android:layout_centerHorizontal="true"
         android:textOn="Hide Cards"
         android:textOff="Reveal Cards"
-
         tools:background="@android:drawable/button_onoff_indicator_on"
         android:isScrollContainer="false"
         android:textColorLink="@android:color/holo_red_light"
@@ -70,15 +69,13 @@
         android:layout_marginTop="18dp">
 
         <Button
-            android:onClick="button1"
             android:text="Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/imageButton"
-            android:layout_alignStart="@+id/imageButton"
             android:layout_marginTop="40dp"
-            android:id="@+id/button" />
+            android:id="@+id/button1"
+            android:tag="1"/>
 
         <Button
             android:text="Button"
@@ -87,17 +84,19 @@
             android:layout_alignBottom="@+id/button2"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/button3" />
+            android:id="@+id/button3"
+            android:tag="3"/>
 
         <Button
             android:text="Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
-            android:layout_alignBaseline="@+id/button"
-            android:layout_alignBottom="@+id/button"
+            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignBottom="@+id/button1"
             android:layout_toLeftOf="@+id/button3"
-            android:layout_toStartOf="@+id/button3" />
+            android:layout_toStartOf="@+id/button3"
+            android:tag="2"/>
     </RelativeLayout>
 
 
