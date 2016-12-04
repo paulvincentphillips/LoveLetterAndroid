@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     int turnOrder3 = 2;
     int turnOrder4 = 3;
 
+    //stores which card the user has pressed
     int cardChoice = 0;
 
     //set up the four player objects
@@ -100,11 +104,16 @@ public class MainActivity extends AppCompatActivity {
 
         cardChoice = 0;
 
+        //change the currentPlayerTextView to show thecurrent player every turn
+        final TextView currentPlayer = (TextView)findViewById(R.id.currentPlayer);
+        currentPlayer.setText("Current player: " + playerOrder[turnOrder].getPlayerName());
+
         //set up button objects to use here
         final Button button1 = (Button)findViewById(R.id.button1);
         final Button button2 = (Button)findViewById(R.id.button2);
         final Button button3 = (Button)findViewById(R.id.button3);
 
+        //Display each players name on the button
         button1.setText(playerOrder[turnOrder2].getPlayerName());
         button2.setText(playerOrder[turnOrder3].getPlayerName());
         button3.setText(playerOrder[turnOrder4].getPlayerName());
@@ -115,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
 
         final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
+
 
         //set the images to be invisible on start
         //ib.setVisibility(View.INVISIBLE);
@@ -145,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
                                 deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
                     }
-                    endRound();
+                    mainButton.setChecked(false); //set toggle buttton back when a player has made their choice
+                    endTurn();
                 }
             });
 
@@ -161,7 +172,8 @@ public class MainActivity extends AppCompatActivity {
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
                                 deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
                     }
-                    endRound();
+                    mainButton.setChecked(false); //set toggle buttton back when a player has made their choice
+                    endTurn();
                 }
             });
 
@@ -177,7 +189,8 @@ public class MainActivity extends AppCompatActivity {
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
                                 deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
                     }
-                    endRound();
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
                 }
             });
 
@@ -227,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //we will need an end round function to check and update stuff at the end of every round
-    private void endRound()
+    private void endTurn()
     {
         RelativeLayout relLayout = (RelativeLayout)findViewById(R.id.threeButtonLayout);
         relLayout.setVisibility(View.INVISIBLE);
@@ -255,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
                 if (player1.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             } else if (player2.getIsPlaying()) {
                 player2.setScore(player2.getPlayerScore() + 1);
@@ -263,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                 if (player2.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             } else if (player3.getIsPlaying()) {
                 player3.setScore(player3.getPlayerScore() + 1);
@@ -271,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 if (player3.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             } else {
                 player4.setScore(player4.getPlayerScore() + 1);
@@ -279,9 +292,11 @@ public class MainActivity extends AppCompatActivity {
                 if (player4.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             }
+
+
         }
 
         //check if deck is empty -- then compare isPlaying players' cards for highest value -- award point if highest value -- no point if draw -- reveal burned card
@@ -310,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
                 if (player1.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             } else if (cardVal2 > cardVal1 && cardVal2 > cardVal3 && cardVal2 > cardVal4) {
                 player2.setScore(player2.getPlayerScore() + 1);
@@ -318,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
                 if (player2.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             } else if (cardVal3 > cardVal1 && cardVal3 > cardVal2 && cardVal3 > cardVal4) {
                 player3.setScore(player3.getPlayerScore() + 1);
@@ -326,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
                 if (player3.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             } else if (cardVal4 > cardVal1 && cardVal4 > cardVal2 && cardVal4 > cardVal3) {
                 player4.setScore(player4.getPlayerScore() + 1);
@@ -334,11 +349,11 @@ public class MainActivity extends AppCompatActivity {
                 if (player4.getPlayerScore() == 4) {
                     endGame();
                 } else {
-                    beginRound();
+                    beginTurn();
                 }
             } else {
                 System.out.println("No one has the highest value card\nThis round is a draw!");
-                beginRound();
+                beginTurn();
             }
         }
 
