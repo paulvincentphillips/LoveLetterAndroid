@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
         cardChoice = 0;
 
+        //debugging show currentPlayer
         //change the currentPlayerTextView to show thecurrent player every turn
         final TextView currentPlayer = (TextView)findViewById(R.id.currentPlayer);
         currentPlayer.setText("Current player: " + playerOrder[turnOrder].getPlayerName());
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
         //setting default image to carBack
         ib.setImageResource(R.drawable.cardback);
-        //ib.setTag(R.drawable.cardback);
+        //ib.setTag(R.drawable.cardBack);
         ib2.setImageResource(R.drawable.cardback);
         //ib2.setTag(1);
 
@@ -140,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
         //call the onListner method to do stuff when you click on an image button, pass in the two images
         //**FIX THIS**
-        addListnerOnButton(ib, ib2);
+
         //set up on click for button1
 
             button1.setOnClickListener(new View.OnClickListener() {
@@ -204,12 +205,17 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
+                    //call the addButtonListen here, when toggle is switched to reveal cards
+                    addListnerOnButton(ib,ib2);
                     ib.setImageResource(playerOrder[turnOrder].getCard1().getImageId());
                     ib2.setImageResource(playerOrder[turnOrder].getCard2().getImageId());
                     Toast.makeText(getApplicationContext(),"Choose a card", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
+                    //set the buttons to be unClickable when they are toggled to cardBack
+                    ib.setClickable(false);
+                    ib2.setClickable(false);
                     ib.setImageResource(R.drawable.cardback);
                     ib2.setImageResource(R.drawable.cardback);
 

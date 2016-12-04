@@ -98,5 +98,15 @@
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
+    <TextView
+        android:text="CurrentPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/threeButtonLayout"
+        android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_marginBottom="23dp"
+        android:id="@+id/currentPlayer" />
+
 
 </RelativeLayout>
