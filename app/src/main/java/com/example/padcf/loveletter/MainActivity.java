@@ -2,6 +2,7 @@ package com.example.padcf.loveletter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -104,10 +105,15 @@ public class MainActivity extends AppCompatActivity {
         final Button button2 = (Button)findViewById(R.id.button2);
         final Button button3 = (Button)findViewById(R.id.button3);
 
+        button1.setText(playerOrder[turnOrder2].getPlayerName());
+        button2.setText(playerOrder[turnOrder3].getPlayerName());
+        button3.setText(playerOrder[turnOrder4].getPlayerName());
+
 
         //ib.setImageResource(player1.getCard2().getImageId());
         final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
         final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
+
         final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
         //set the images to be invisible on start
@@ -124,47 +130,56 @@ public class MainActivity extends AppCompatActivity {
 
         //call the onListner method to do stuff when you click on an image button, pass in the two images
         //**FIX THIS**
-        //if(cardBackTag != R.drawable.cardback)
-        //{
-            addListnerOnButton(ib, ib2);
-        //}
-
+        addListnerOnButton(ib, ib2);
         //set up on click for button1
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                        playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                        deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
-                endRound();
-            }
-        });
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    }else{
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    }
+                    endRound();
+                }
+            });
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                        playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                        deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
-                RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                relLayout.setVisibility(View.INVISIBLE);
-                endRound();
-            }
-        });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    }else{
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    }
+                    endRound();
+                }
+            });
 
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                        playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                        deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
-                RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                relLayout.setVisibility(View.INVISIBLE);
-                endRound();
-            }
-        });
-
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    }else{
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    }
+                    endRound();
+                }
+            });
 
 
 
@@ -437,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     cardChoice = 1;
-                    Toast.makeText(getApplicationContext(), "You pressed button ONE", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard1().getCardName(), Toast.LENGTH_SHORT).show();
                     RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
                     relLayout.setVisibility(View.VISIBLE);
                 }
@@ -447,11 +462,11 @@ public class MainActivity extends AppCompatActivity {
         ib2.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                    cardChoice = 2;
-                    Toast.makeText(getApplicationContext(), "You pressed button TWO", Toast.LENGTH_SHORT).show();
-                    RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                    relLayout.setVisibility(View.VISIBLE);
-                }
+                  cardChoice = 2;
+                  Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard2().getCardName(), Toast.LENGTH_SHORT).show();
+                  RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                  relLayout.setVisibility(View.VISIBLE);
+              }
             }
         );
 
