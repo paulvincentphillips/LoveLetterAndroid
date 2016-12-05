@@ -102,13 +102,14 @@ public class MainActivity extends AppCompatActivity {
         if(!playerOrder[turnOrder].getIsPlaying()){
             endTurn();
         }else {
+            playerOrder[turnOrder].setPlayedHandmaid(false);
             //deal 2nd card to current player
             deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
 
             cardChoice = 0;
 
             //debugging show currentPlayer
-            //change the currentPlayerTextView to show thecurrent player every turn
+            //change the currentPlayerTextView to show the current player every turn
             final TextView currentPlayer = (TextView) findViewById(R.id.currentPlayer);
             currentPlayer.setText("Current player: " + playerOrder[turnOrder].getPlayerName());
 
@@ -121,6 +122,20 @@ public class MainActivity extends AppCompatActivity {
             button1.setText(playerOrder[turnOrder2].getPlayerName());
             button2.setText(playerOrder[turnOrder3].getPlayerName());
             button3.setText(playerOrder[turnOrder4].getPlayerName());
+
+            button1.setEnabled(true);
+            button2.setEnabled(true);
+            button3.setEnabled(true);
+
+            if(playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()){
+                button1.setEnabled(false);
+            }
+            if(playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()){
+                button2.setEnabled(false);
+            }
+            if(playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()){
+                button3.setEnabled(false);
+            }
 
 
             //ib.setImageResource(player1.getCard2().getImageId());
@@ -159,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
                                 deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
                     }
-                    mainButton.setChecked(false); //set toggle buttton back when a player has made their choice
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
                     endTurn();
                 }
             });
@@ -228,6 +243,16 @@ public class MainActivity extends AppCompatActivity {
     //beginRound method that does the things required for each round
     private void beginRound()
     {
+        player1.setPlaying(true);
+        player2.setPlaying(true);
+        player3.setPlaying(true);
+        player4.setPlaying(true);
+
+        player1.setPlayedHandmaid(false);
+        player2.setPlayedHandmaid(false);
+        player3.setPlayedHandmaid(false);
+        player4.setPlayedHandmaid(false);
+
         //CARD SETUP
         mainDeck.shuffleDeck(); //shuffle the deck
 
@@ -271,6 +296,8 @@ public class MainActivity extends AppCompatActivity {
             if (player1.getIsPlaying()) {
                 player1.setScore(player1.getPlayerScore() + 1);
                 System.out.println(player1.getPlayerName() + " is the last player standing and has won the round!");
+                toastWinner(player1);
+                winnerTurn(player1, playerOrder);
                 if (player1.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -279,6 +306,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (player2.getIsPlaying()) {
                 player2.setScore(player2.getPlayerScore() + 1);
                 System.out.println(player2.getPlayerName() + " is the last player standing and has won the round!");
+                toastWinner(player2);
+                winnerTurn(player2, playerOrder);
                 if (player2.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -287,6 +316,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (player3.getIsPlaying()) {
                 player3.setScore(player3.getPlayerScore() + 1);
                 System.out.println(player3.getPlayerName() + " is the last player standing and has won the round!");
+                toastWinner(player3);
+                winnerTurn(player3, playerOrder);
                 if (player3.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -295,6 +326,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 player4.setScore(player4.getPlayerScore() + 1);
                 System.out.println(player4.getPlayerName() + " is the last player standing and has won the round!");
+                toastWinner(player4);
+                winnerTurn(player4, playerOrder);
                 if (player4.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -326,6 +359,8 @@ public class MainActivity extends AppCompatActivity {
             if (cardVal1 > cardVal2 && cardVal1 > cardVal3 && cardVal1 > cardVal4) {
                 player1.setScore(player1.getPlayerScore() + 1);
                 System.out.println(player1.getPlayerName() + " has the highest value card and has won the round!");
+                toastWinner(player1);
+                winnerTurn(player1, playerOrder);
                 if (player1.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -334,6 +369,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (cardVal2 > cardVal1 && cardVal2 > cardVal3 && cardVal2 > cardVal4) {
                 player2.setScore(player2.getPlayerScore() + 1);
                 System.out.println(player2.getPlayerName() + " has the highest value card and has won the round!");
+                toastWinner(player2);
+                winnerTurn(player2, playerOrder);
                 if (player2.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -342,6 +379,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (cardVal3 > cardVal1 && cardVal3 > cardVal2 && cardVal3 > cardVal4) {
                 player3.setScore(player3.getPlayerScore() + 1);
                 System.out.println(player3.getPlayerName() + " has the highest value card and has won the round!");
+                toastWinner(player3);
+                winnerTurn(player3, playerOrder);
                 if (player3.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -350,6 +389,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (cardVal4 > cardVal1 && cardVal4 > cardVal2 && cardVal4 > cardVal3) {
                 player4.setScore(player4.getPlayerScore() + 1);
                 System.out.println(player4.getPlayerName() + " has the highest value card and has won the round!");
+                toastWinner(player4);
+                winnerTurn(player4, playerOrder);
                 if (player4.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -357,35 +398,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else {
                 System.out.println("No one has the highest value card\nThis round is a draw!");
+                Toast.makeText(this, "Draw", Toast.LENGTH_SHORT).show();
                 beginRound();
             }
         }
 
-        //next player
-        if (turnOrder == 3) {
-            turnOrder = 0;
-        } else {
-            turnOrder++;
-        }
-
-        //shift every other player up a number
-        if (turnOrder2 == 3) {
-            turnOrder2 = 0;
-        } else {
-            turnOrder2++;
-        }
-
-        if (turnOrder3 == 3) {
-            turnOrder3 = 0;
-        } else {
-            turnOrder3++;
-        }
-
-        if (turnOrder4 == 3) {
-            turnOrder4 = 0;
-        } else {
-            turnOrder4++;
-        }
+        nextTurn();
 
         beginTurn();
     }
@@ -462,6 +480,65 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return array;
+    }
+
+    public void toastWinner(Player winner){
+        Toast.makeText(this, winner.getPlayerName() + " has won the round!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void nextTurn(){
+        //next player
+        if (turnOrder == 3) {
+            turnOrder = 0;
+        } else {
+            turnOrder++;
+        }
+
+        //shift every other player up a number
+        if (turnOrder2 == 3) {
+            turnOrder2 = 0;
+        } else {
+            turnOrder2++;
+        }
+
+        if (turnOrder3 == 3) {
+            turnOrder3 = 0;
+        } else {
+            turnOrder3++;
+        }
+
+        if (turnOrder4 == 3) {
+            turnOrder4 = 0;
+        } else {
+            turnOrder4++;
+        }
+    }
+
+    public void winnerTurn(Player winner, Player [] playerArray){
+        for(int x = 0; x < playerArray.length; x++) {
+            if(winner.getPlayerName().equals(playerArray[x])){
+                turnOrder = x;
+                if(turnOrder == 0){
+                    turnOrder2 = 1;
+                    turnOrder3 = 2;
+                    turnOrder4 = 3;
+                }
+                else if(turnOrder==1){
+                    turnOrder2 = 2;
+                    turnOrder3 = 3;
+                    turnOrder4 = 0;
+                }
+                else if(turnOrder==2){
+                    turnOrder2 = 3;
+                    turnOrder3 = 0;
+                    turnOrder4 = 1;
+                }else{
+                    turnOrder2 = 0;
+                    turnOrder3 = 1;
+                    turnOrder4 = 2;
+                }
+            }
+        }
     }
 
     //this method let's you do stuff when you click on a button
