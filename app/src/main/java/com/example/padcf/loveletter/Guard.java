@@ -37,6 +37,8 @@ public class Guard implements Card {
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
+
+
         System.out.println("You've played a guard");
 
         //having chosen guard card, we now want to choose a player to apply that card on.

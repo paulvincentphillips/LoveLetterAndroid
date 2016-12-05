@@ -114,18 +114,13 @@ public class MainActivity extends AppCompatActivity {
         //ib.setVisibility(View.INVISIBLE);
         //ib2.setVisibility(View.INVISIBLE);
 
-
         //setting default image to carBack
-
-
-        //setting default image to cardBack
-
         ib.setImageResource(R.drawable.cardback);
-        //ib.setTag(R.drawable.cardBack);
+        //ib.setTag(R.drawable.cardback);
         ib2.setImageResource(R.drawable.cardback);
         //ib2.setTag(1);
 
-        Integer cardBackTag = (Integer) ib.getTag();
+        //Integer cardBackTag = (Integer) ib.getTag();
 
         //call the onListner method to do stuff when you click on an image button, pass in the two images
         //**FIX THIS**
@@ -146,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() { 
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
