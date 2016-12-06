@@ -2,17 +2,13 @@ package com.example.padcf.loveletter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     int turnOrder3 = 2;
     int turnOrder4 = 3;
 
-    //stores which card the user has pressed
     int cardChoice = 0;
 
     //set up the four player objects
@@ -94,169 +89,116 @@ public class MainActivity extends AppCompatActivity {
     //deck variables setup
     Deck mainDeck = new Deck(); //instantiate the deck of cards
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
-    int deckLength;
+    int deckLength = deck1.length - 1;
 
     //this is the beginTurn method which does stuff for each playerTurn
     private void beginTurn()
     {
-        if(!playerOrder[turnOrder].getIsPlaying()){
-            endTurn();
-        }else {
-            playerOrder[turnOrder].setPlayedHandmaid(false);
-            //deal 2nd card to current player
-            deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
+        //deal 2nd card to current player
+        deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
 
-            cardChoice = 0;
+        cardChoice = 0;
 
-            //debugging show currentPlayer
-            //change the currentPlayerTextView to show the current player every turn
-            final TextView currentPlayer = (TextView) findViewById(R.id.currentPlayer);
-            currentPlayer.setText("Current player: " + playerOrder[turnOrder].getPlayerName());
+        //set up button objects to use here
+        final Button button1 = (Button)findViewById(R.id.button1);
+        final Button button2 = (Button)findViewById(R.id.button2);
+        final Button button3 = (Button)findViewById(R.id.button3);
 
-            //set up button objects to use here
-            final Button button1 = (Button) findViewById(R.id.button1);
-            final Button button2 = (Button) findViewById(R.id.button2);
-            final Button button3 = (Button) findViewById(R.id.button3);
 
-            //Display each players name on the button
-            button1.setText(playerOrder[turnOrder2].getPlayerName());
-            button2.setText(playerOrder[turnOrder3].getPlayerName());
-            button3.setText(playerOrder[turnOrder4].getPlayerName());
+        //ib.setImageResource(player1.getCard2().getImageId());
+        final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
+        final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
+        final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
-            button1.setEnabled(true);
-            button2.setEnabled(true);
-            button3.setEnabled(true);
+        //set the images to be invisible on start
+        //ib.setVisibility(View.INVISIBLE);
+        //ib2.setVisibility(View.INVISIBLE);
 
-            if(playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()){
-                button1.setEnabled(false);
+        //setting default image to carBack
+        ib.setImageResource(R.drawable.cardback);
+        //ib.setTag(R.drawable.cardback);
+        ib2.setImageResource(R.drawable.cardback);
+        //ib2.setTag(1);
+
+        //Integer cardBackTag = (Integer) ib.getTag();
+
+        //call the onListner method to do stuff when you click on an image button, pass in the two images
+        //**FIX THIS**
+        //if(cardBackTag != R.drawable.cardback)
+        //{
+            addListnerOnButton(ib, ib2);
+        //}
+
+        //set up on click for button1
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                        playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                        deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                endRound();
             }
-            if(playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()){
-                button2.setEnabled(false);
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                        playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                        deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                relLayout.setVisibility(View.INVISIBLE);
+                endRound();
             }
-            if(playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()){
-                button3.setEnabled(false);
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                        playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                        deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                relLayout.setVisibility(View.INVISIBLE);
+                endRound();
             }
+        });
 
 
-            //ib.setImageResource(player1.getCard2().getImageId());
-            final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
-            final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
-
-            final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
 
-            //set the images to be invisible on start
-            //ib.setVisibility(View.INVISIBLE);
-            //ib2.setVisibility(View.INVISIBLE);
 
-            //setting default image to carBack
-            ib.setImageResource(R.drawable.cardback);
-            //ib.setTag(R.drawable.cardBack);
-            ib2.setImageResource(R.drawable.cardback);
-            //ib2.setTag(1);
 
-            //Integer cardBackTag = (Integer) ib.getTag();
-
-            //call the onListner method to do stuff when you click on an image button, pass in the two images
-            //**FIX THIS**
-
-            //set up on click for button1
-
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (cardChoice == 1) {
-                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
-                    } else {
-                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
-                    }
-                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                    endTurn();
+        //this method sets the images visible or invisible when clicked...this is the toggle button
+        mainButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    ib.setImageResource(playerOrder[turnOrder].getCard1().getImageId());
+                    ib2.setImageResource(playerOrder[turnOrder].getCard2().getImageId());
+                    Toast.makeText(getApplicationContext(),"Choose a card", Toast.LENGTH_SHORT).show();
                 }
-            });
+                else
+                {
+                    ib.setImageResource(R.drawable.cardback);
+                    ib2.setImageResource(R.drawable.cardback);
 
-            button2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (cardChoice == 1) {
-                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
-                    } else {
-                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
-                    }
-                    mainButton.setChecked(false); //set toggle buttton back when a player has made their choice
-                    endTurn();
+                    RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                    relLayout.setVisibility(View.INVISIBLE);
+
                 }
-            });
-
-            button3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (cardChoice == 1) {
-                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
-                    } else {
-                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
-                    }
-                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                    endTurn();
-                }
-            });
-
-
-            //this method sets the images visible or invisible when clicked...this is the toggle button
-            mainButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        //call the addButtonListen here, when toggle is switched to reveal cards
-                        addListnerOnButton(ib, ib2);
-                        ib.setImageResource(playerOrder[turnOrder].getCard1().getImageId());
-                        ib2.setImageResource(playerOrder[turnOrder].getCard2().getImageId());
-                        Toast.makeText(getApplicationContext(), "Choose a card", Toast.LENGTH_SHORT).show();
-                    } else {
-                        //set the buttons to be unClickable when they are toggled to cardBack
-                        ib.setClickable(false);
-                        ib2.setClickable(false);
-                        ib.setImageResource(R.drawable.cardback);
-                        ib2.setImageResource(R.drawable.cardback);
-
-                        RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                        relLayout.setVisibility(View.INVISIBLE);
-
-                    }
-                }
-            });
-        }
+            }
+        });
     }
 
     //beginRound method that does the things required for each round
     private void beginRound()
     {
-        player1.setPlaying(true);
-        player2.setPlaying(true);
-        player3.setPlaying(true);
-        player4.setPlaying(true);
-
-        player1.setPlayedHandmaid(false);
-        player2.setPlayedHandmaid(false);
-        player3.setPlayedHandmaid(false);
-        player4.setPlayedHandmaid(false);
-
         //CARD SETUP
+        mainDeck.populateDeck(); // populate the deck
         mainDeck.shuffleDeck(); //shuffle the deck
-
-        deckLength = deck1.length - 1;
 
         //DEAL CARDS
         deckLength = burnCard(deckLength); //burn off a card before dealing
@@ -270,11 +212,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //we will need an end round function to check and update stuff at the end of every round
-    private void endTurn()
+    private void endRound()
     {
         RelativeLayout relLayout = (RelativeLayout)findViewById(R.id.threeButtonLayout);
         relLayout.setVisibility(View.INVISIBLE);
-
         //check to see if 3 players are knocked out
         int isOutCount = 0;
 
@@ -296,8 +237,6 @@ public class MainActivity extends AppCompatActivity {
             if (player1.getIsPlaying()) {
                 player1.setScore(player1.getPlayerScore() + 1);
                 System.out.println(player1.getPlayerName() + " is the last player standing and has won the round!");
-                toastWinner(player1);
-                winnerTurn(player1, playerOrder);
                 if (player1.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -306,8 +245,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (player2.getIsPlaying()) {
                 player2.setScore(player2.getPlayerScore() + 1);
                 System.out.println(player2.getPlayerName() + " is the last player standing and has won the round!");
-                toastWinner(player2);
-                winnerTurn(player2, playerOrder);
                 if (player2.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -316,8 +253,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (player3.getIsPlaying()) {
                 player3.setScore(player3.getPlayerScore() + 1);
                 System.out.println(player3.getPlayerName() + " is the last player standing and has won the round!");
-                toastWinner(player3);
-                winnerTurn(player3, playerOrder);
                 if (player3.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -326,8 +261,6 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 player4.setScore(player4.getPlayerScore() + 1);
                 System.out.println(player4.getPlayerName() + " is the last player standing and has won the round!");
-                toastWinner(player4);
-                winnerTurn(player4, playerOrder);
                 if (player4.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -359,8 +292,6 @@ public class MainActivity extends AppCompatActivity {
             if (cardVal1 > cardVal2 && cardVal1 > cardVal3 && cardVal1 > cardVal4) {
                 player1.setScore(player1.getPlayerScore() + 1);
                 System.out.println(player1.getPlayerName() + " has the highest value card and has won the round!");
-                toastWinner(player1);
-                winnerTurn(player1, playerOrder);
                 if (player1.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -369,8 +300,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (cardVal2 > cardVal1 && cardVal2 > cardVal3 && cardVal2 > cardVal4) {
                 player2.setScore(player2.getPlayerScore() + 1);
                 System.out.println(player2.getPlayerName() + " has the highest value card and has won the round!");
-                toastWinner(player2);
-                winnerTurn(player2, playerOrder);
                 if (player2.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -379,8 +308,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (cardVal3 > cardVal1 && cardVal3 > cardVal2 && cardVal3 > cardVal4) {
                 player3.setScore(player3.getPlayerScore() + 1);
                 System.out.println(player3.getPlayerName() + " has the highest value card and has won the round!");
-                toastWinner(player3);
-                winnerTurn(player3, playerOrder);
                 if (player3.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -389,8 +316,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (cardVal4 > cardVal1 && cardVal4 > cardVal2 && cardVal4 > cardVal3) {
                 player4.setScore(player4.getPlayerScore() + 1);
                 System.out.println(player4.getPlayerName() + " has the highest value card and has won the round!");
-                toastWinner(player4);
-                winnerTurn(player4, playerOrder);
                 if (player4.getPlayerScore() == 4) {
                     endGame();
                 } else {
@@ -398,12 +323,35 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else {
                 System.out.println("No one has the highest value card\nThis round is a draw!");
-                Toast.makeText(this, "Draw", Toast.LENGTH_SHORT).show();
                 beginRound();
             }
         }
 
-        nextTurn();
+        //next player
+        if (turnOrder == 3) {
+            turnOrder = 0;
+        } else {
+            turnOrder++;
+        }
+
+        //shift every other player up a number
+        if (turnOrder2 == 3) {
+            turnOrder2 = 0;
+        } else {
+            turnOrder2++;
+        }
+
+        if (turnOrder3 == 3) {
+            turnOrder3 = 0;
+        } else {
+            turnOrder3++;
+        }
+
+        if (turnOrder4 == 3) {
+            turnOrder4 = 0;
+        } else {
+            turnOrder4++;
+        }
 
         beginTurn();
     }
@@ -421,8 +369,6 @@ public class MainActivity extends AppCompatActivity {
 
         //set up player order
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
-
-        mainDeck.populateDeck(); // populate the deck
 
         //send the program off to beginRound
         beginRound();
@@ -482,65 +428,6 @@ public class MainActivity extends AppCompatActivity {
         return array;
     }
 
-    public void toastWinner(Player winner){
-        Toast.makeText(this, winner.getPlayerName() + " has won the round!", Toast.LENGTH_SHORT).show();
-    }
-
-    public void nextTurn(){
-        //next player
-        if (turnOrder == 3) {
-            turnOrder = 0;
-        } else {
-            turnOrder++;
-        }
-
-        //shift every other player up a number
-        if (turnOrder2 == 3) {
-            turnOrder2 = 0;
-        } else {
-            turnOrder2++;
-        }
-
-        if (turnOrder3 == 3) {
-            turnOrder3 = 0;
-        } else {
-            turnOrder3++;
-        }
-
-        if (turnOrder4 == 3) {
-            turnOrder4 = 0;
-        } else {
-            turnOrder4++;
-        }
-    }
-
-    public void winnerTurn(Player winner, Player [] playerArray){
-        for(int x = 0; x < playerArray.length; x++) {
-            if(winner.getPlayerName().equals(playerArray[x])){
-                turnOrder = x;
-                if(turnOrder == 0){
-                    turnOrder2 = 1;
-                    turnOrder3 = 2;
-                    turnOrder4 = 3;
-                }
-                else if(turnOrder==1){
-                    turnOrder2 = 2;
-                    turnOrder3 = 3;
-                    turnOrder4 = 0;
-                }
-                else if(turnOrder==2){
-                    turnOrder2 = 3;
-                    turnOrder3 = 0;
-                    turnOrder4 = 1;
-                }else{
-                    turnOrder2 = 0;
-                    turnOrder3 = 1;
-                    turnOrder4 = 2;
-                }
-            }
-        }
-    }
-
     //this method let's you do stuff when you click on a button
     public void addListnerOnButton(View ib, View ib2)
     {
@@ -550,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     cardChoice = 1;
-                    Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard1().getCardName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "You pressed button ONE", Toast.LENGTH_SHORT).show();
                     RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
                     relLayout.setVisibility(View.VISIBLE);
                 }
@@ -560,11 +447,11 @@ public class MainActivity extends AppCompatActivity {
         ib2.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  cardChoice = 2;
-                  Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard2().getCardName(), Toast.LENGTH_SHORT).show();
-                  RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                  relLayout.setVisibility(View.VISIBLE);
-              }
+                    cardChoice = 2;
+                    Toast.makeText(getApplicationContext(), "You pressed button TWO", Toast.LENGTH_SHORT).show();
+                    RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                    relLayout.setVisibility(View.VISIBLE);
+                }
             }
         );
 

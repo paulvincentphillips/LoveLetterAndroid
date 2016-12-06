@@ -3,7 +3,13 @@ package com.example.padcf.loveletter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+<<<<<<< HEAD
+import android.support.v7.app.AppCompatAct
+
+ivity;
+=======
 import android.support.v7.app.AppCompatActivity;
+>>>>>>> 288abc9eb1a3ca5318d35e83f95df485c80b0a8a
 import android.view.View;
 import android.widget.ImageView;
 
@@ -52,4 +58,8 @@ public class Splash extends AppCompatActivity {
         };      //end of the thread
         myThread.start();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 288abc9eb1a3ca5318d35e83f95df485c80b0a8a
