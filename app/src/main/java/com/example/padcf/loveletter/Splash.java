@@ -3,13 +3,9 @@ package com.example.padcf.loveletter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-<<<<<<< HEAD
-import android.support.v7.app.AppCompatAct
 
-ivity;
-=======
 import android.support.v7.app.AppCompatActivity;
->>>>>>> 288abc9eb1a3ca5318d35e83f95df485c80b0a8a
+
 import android.view.View;
 import android.widget.ImageView;
 
@@ -23,7 +19,7 @@ import static com.example.padcf.loveletter.R.drawable.tempestloveletter;
 public class Splash extends AppCompatActivity {
 
     //method doesn't work but will implement it later for a different starr
-    public void fade (View view) {
+    public void fade(View view) {
 
         ImageView tempestloveletter = (ImageView) findViewById(R.id.tempestloveletter);
 
@@ -35,8 +31,6 @@ public class Splash extends AppCompatActivity {
     /*Splashscreen running onto the main screen with a wait time of 3 secs*/
 
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +39,10 @@ public class Splash extends AppCompatActivity {
         Thread myThread = new Thread() {
 
             @Override
-            public void run(){
+            public void run() {
                 try {
                     sleep(3000);
-                    Intent startMainScreen = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent startMainScreen = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(startMainScreen);
                     finish();
                 } catch (InterruptedException e) {
@@ -58,8 +52,4 @@ public class Splash extends AppCompatActivity {
         };      //end of the thread
         myThread.start();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 288abc9eb1a3ca5318d35e83f95df485c80b0a8a
