@@ -146,6 +146,12 @@ public class MainActivity extends AppCompatActivity {
     //this is the beginTurn method which does stuff for each playerTurn
     private void beginTurn()
     {
+        if (!playerOrder[turnOrder].getIsPlaying()) {
+            endTurn();
+        } else {
+            playerOrder[turnOrder].setPlayedHandmaid(false);
+        }
+
         //deal 2nd card to current player
         deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
 
@@ -196,8 +202,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // this method will contain the different displays for the relevant guard
-    //pass in the card id and the display() method will select the correct code depending on that ID.
+    // this method will contain the different displays for the relevant card
+    //pass in the card id and the display() method will select the correct card depending on that ID.
     private void display(int cardId)
     {
         //instantiate the mainToggle button again to access it
@@ -209,97 +215,173 @@ public class MainActivity extends AppCompatActivity {
         //displays for guard
         if(cardChosenId == 1)
         {
+            //code goes here
+            //bring in the relative layout and make it visible
+            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+            relLayout.setVisibility(View.VISIBLE);
 
+            //set up button objects to use here
+            final Button button1 = (Button) findViewById(R.id.button1);
+            final Button button2 = (Button) findViewById(R.id.button2);
+            final Button button3 = (Button) findViewById(R.id.button3);
+
+            //Display each players name on the button and their current score
+            button1.setText(playerOrder[turnOrder2].getPlayerName() + " " + playerOrder[turnOrder2].getPlayerScore());
+            button2.setText(playerOrder[turnOrder3].getPlayerName() + " " + playerOrder[turnOrder3].getPlayerScore());
+            button3.setText(playerOrder[turnOrder4].getPlayerName() + " " + playerOrder[turnOrder4].getPlayerScore());
+
+            button1.setEnabled(true);
+            button2.setEnabled(true);
+            button3.setEnabled(true);
+
+            if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
+                button1.setEnabled(false);
+            }
+            if (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) {
+                button2.setEnabled(false);
+            }
+            if (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()) {
+                button3.setEnabled(false);
+            }
+
+            //set up on click for buttons
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
         }
 
         //Displays for priest, Baron and King
         if(cardId == 2 || cardId == 3 || cardId == 6)
         {
-            if (!playerOrder[turnOrder].getIsPlaying()) {
-                endTurn();
-            } else {
-                playerOrder[turnOrder].setPlayedHandmaid(false);
 
-                //bring in the relative layout and make it visible
-                RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                relLayout.setVisibility(View.VISIBLE);
+            playerOrder[turnOrder].setPlayedHandmaid(false);
 
-                //set up button objects to use here
-                final Button button1 = (Button) findViewById(R.id.button1);
-                final Button button2 = (Button) findViewById(R.id.button2);
-                final Button button3 = (Button) findViewById(R.id.button3);
+            //bring in the relative layout and make it visible
+            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+            relLayout.setVisibility(View.VISIBLE);
 
-                //Display each players name on the button and their current score
-                button1.setText(playerOrder[turnOrder2].getPlayerName() + " " + playerOrder[turnOrder2].getPlayerScore());
-                button2.setText(playerOrder[turnOrder3].getPlayerName() + " " + playerOrder[turnOrder3].getPlayerScore());
-                button3.setText(playerOrder[turnOrder4].getPlayerName() + " " + playerOrder[turnOrder4].getPlayerScore());
+            //set up button objects to use here
+            final Button button1 = (Button) findViewById(R.id.button1);
+            final Button button2 = (Button) findViewById(R.id.button2);
+            final Button button3 = (Button) findViewById(R.id.button3);
 
-                button1.setEnabled(true);
-                button2.setEnabled(true);
-                button3.setEnabled(true);
+            //Display each players name on the button and their current score
+            button1.setText(playerOrder[turnOrder2].getPlayerName() + " " + playerOrder[turnOrder2].getPlayerScore());
+            button2.setText(playerOrder[turnOrder3].getPlayerName() + " " + playerOrder[turnOrder3].getPlayerScore());
+            button3.setText(playerOrder[turnOrder4].getPlayerName() + " " + playerOrder[turnOrder4].getPlayerScore());
 
-                if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
-                    button1.setEnabled(false);
-                }
-                if (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) {
-                    button2.setEnabled(false);
-                }
-                if (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()) {
-                    button3.setEnabled(false);
-                }
+            button1.setEnabled(true);
+            button2.setEnabled(true);
+            button3.setEnabled(true);
 
-                //set up on click for buttons
-                button1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (cardChoice == 1) {
-                            deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                    playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                    deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
-                        } else {
-                            deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                    playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                    deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
-                        }
-                        mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                        endTurn();
-                    }
-                });
-
-                button2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (cardChoice == 1) {
-                            deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                    playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                    deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
-                        } else {
-                            deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                    playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                    deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
-                        }
-                        mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                        endTurn();
-                    }
-                });
-
-                button3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (cardChoice == 1) {
-                            deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                    playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                    deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
-                        } else {
-                            deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                    playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                    deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
-                        }
-                        mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                        endTurn();
-                    }
-                });
+            if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
+                button1.setEnabled(false);
             }
+            if (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) {
+                button2.setEnabled(false);
+            }
+            if (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()) {
+                button3.setEnabled(false);
+            }
+
+            //set up on click for buttons
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
         }
 
         //display for handmaid
@@ -314,7 +396,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        //displays for prince
+        //displays for countess
         if(cardChosenId == 7)
         {
 
@@ -613,7 +695,6 @@ public class MainActivity extends AppCompatActivity {
                                       cardChosenId = playerOrder[turnOrder].getCard1().getCardValue();
                                       Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard1().getCardName(), Toast.LENGTH_SHORT).show();
                                       RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                                      System.out.println("IT WORKS: " + cardChosenId);
                                       display(cardChosenId);
                                       //relLayout.setVisibility(View.VISIBLE);
                                   }
@@ -627,7 +708,6 @@ public class MainActivity extends AppCompatActivity {
                                        cardChosenId = playerOrder[turnOrder].getCard2().getCardValue();
                                        Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard2().getCardName(), Toast.LENGTH_SHORT).show();
                                        RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                                       System.out.println("IT WORKS: " + cardChosenId);
                                        display(cardChosenId); //pass in the chosenCardID here, because it needs to then be passed to display() which in turn will filter the content to display
                                        //relLayout.setVisibility(View.VISIBLE);
                                    }
