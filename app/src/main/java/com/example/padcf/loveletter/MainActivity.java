@@ -195,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
 
                     RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
                     relLayout.setVisibility(View.INVISIBLE);
+                    Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+                    fourSevenEight.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -384,32 +386,156 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        //display for handmaid
-        if(cardChosenId == 4)
+        //display for handmaid, countess and princess done here
+        if(cardChosenId == 4 || cardChosenId == 7 || cardChosenId == 8)
         {
+
+            //set up on click for buttons
+            final Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+            if(cardChosenId == 4)
+            {
+                fourSevenEight.setText("Play Handmaid");
+            }
+            else if(cardChosenId == 7)
+            {
+                fourSevenEight.setText("Play Countess");
+            }
+            else
+            {
+                fourSevenEight.setText("Play Princess");
+            }
+
+            fourSevenEight.setVisibility(View.VISIBLE);
+            fourSevenEight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, 0, cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, 0, cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    fourSevenEight.setVisibility(View.INVISIBLE);
+                    endTurn();
+                }
+            });
+
+
 
         }
 
         //displays for prince
         if(cardChosenId == 5)
         {
+            //bring in the relative layout and make it visible
+            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+            relLayout.setVisibility(View.VISIBLE);
 
+            //set up button objects to use here
+            final Button button1 = (Button) findViewById(R.id.button1);
+            final Button button2 = (Button) findViewById(R.id.button2);
+            final Button button3 = (Button) findViewById(R.id.button3);
+
+            //Display each players name on the button and their current score
+            button1.setText(playerOrder[turnOrder2].getPlayerName() + " " + playerOrder[turnOrder2].getPlayerScore());
+            button2.setText(playerOrder[turnOrder3].getPlayerName() + " " + playerOrder[turnOrder3].getPlayerScore());
+            button3.setText(playerOrder[turnOrder4].getPlayerName() + " " + playerOrder[turnOrder4].getPlayerScore());
+
+            button1.setEnabled(true);
+            button2.setEnabled(true);
+            button3.setEnabled(true);
+
+            if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
+                button1.setEnabled(false);
+            }
+            if (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) {
+                button2.setEnabled(false);
+            }
+            if (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()) {
+                button3.setEnabled(false);
+            }
+
+            //set up on click for buttons
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+
+            //display for handmaid, countess and princess done here
+            //set up on click for buttons
+            final Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+
+            fourSevenEight.setText("Play Prince");
+
+            fourSevenEight.setVisibility(View.VISIBLE);
+            fourSevenEight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, 0, cardChoice);
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, 0, cardChoice);
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    fourSevenEight.setVisibility(View.INVISIBLE);
+                    endTurn();
+                }
+            });
         }
-
-        //displays for countess
-        if(cardChosenId == 7)
-        {
-
-        }
-        //displays for princess
-        if(cardChosenId == 8)
-        {
-
-        }
-
-
-
-
 
 
     }
@@ -659,7 +785,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void winnerTurn(Player winner, Player [] playerArray){
         for(int x = 0; x < playerArray.length; x++) {
-            if(winner.getPlayerName().equals(playerArray[x])){
+            if(winner.getPlayerName().equals(playerArray[x].getPlayerName())){
                 turnOrder = x;
                 if(turnOrder == 0){
                     turnOrder2 = 1;

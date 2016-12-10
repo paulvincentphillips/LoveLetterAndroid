@@ -56,13 +56,33 @@ public class Prince implements Card{
         //then that player draws the burned card from the start of the game deck[15]
         if(length == 0){
             if(tag == 1){
-                targetPlayer1.setCard1(deck[15]);
+                if(targetPlayer1.getCard1().getCardValue() == 8){
+                    targetPlayer1.setPlaying(false);
+                }else {
+                    targetPlayer1.setCard1(deck[15]);
+                }
             }
             else if(tag == 2){
-                targetPlayer2.setCard1(deck[15]);
+                if(targetPlayer2.getCard1().getCardValue() == 8){
+                    targetPlayer1.setPlaying(false);
+                }else {
+                    targetPlayer2.setCard1(deck[15]);
+                }
+            }
+            else if(tag == 3){
+                if(targetPlayer2.getCard1().getCardValue() == 8){
+                    targetPlayer1.setPlaying(false);
+                }else {
+                    targetPlayer2.setCard1(deck[15]);
+                }
             }
             else{
-                targetPlayer3.setCard1(deck[15]);
+                if(currentPlayer.getCard1().getCardValue() == 8 || currentPlayer.getCard2().getCardValue() == 8)
+                {
+                    currentPlayer.setPlaying(false);
+                }else {
+                    currentPlayer.setCard1(deck[15]);
+                }
             }
         }else {
             if (tag == 1) {
@@ -89,6 +109,19 @@ public class Prince implements Card{
                     length--;
                     System.out.println(targetPlayer3.getPlayerName() + " has discarded their hand and drawn a new one from the deck");
                 }
+            }
+            else
+            {
+                if(currentPlayer.getCard1().getCardValue() == 8 || currentPlayer.getCard2().getCardValue() == 8)
+                {
+                    currentPlayer.setPlaying(false);
+                }
+                else{
+                    currentPlayer.setCard1(deck[length]);
+                    length--;
+                    System.out.println(currentPlayer.getPlayerName() + " has discarded their hand and drawn a new one from the deck");
+                }
+
             }
         }
         //having chosen prince card, we now want to choose a player to apply that card on.
