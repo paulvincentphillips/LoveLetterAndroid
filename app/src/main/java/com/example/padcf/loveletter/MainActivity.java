@@ -3,6 +3,8 @@ package com.example.padcf.loveletter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -99,11 +101,24 @@ public class MainActivity extends AppCompatActivity {
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
     int deckLength;
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.feeds_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
     //here's the onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //set up player order
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
