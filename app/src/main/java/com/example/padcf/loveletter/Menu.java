@@ -41,7 +41,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
 
         switch (view.getId()) {
             case R.id.play:
-                Intent intent = new Intent(Menu.this, MainActivity.class);
+                Intent intent = new Intent(Menu.this, playerName.class);
                 startActivity(intent);
                 break;
 

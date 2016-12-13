@@ -39,7 +39,10 @@
         <activity android:name=".EndGame" />
         <activity
             android:name=".playedCards"
-            android:label="@string/title_activity_played_cards"></activity>
+            android:label="@string/title_activity_played_cards" />
+        <activity android:name=".playerName">
+
+        </activity>
     </application>
 
 </manifest>

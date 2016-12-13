@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     //CLASS VARIABLES AND OBJECTS INSTANTIATED HERE
 
+
+
     //turn order variables. Side note here: there is a way we can use modulo to deal with this. Something to consider when all is finished etc
     int turnOrder = 0;
     int turnOrder2 = 1;
@@ -89,13 +91,10 @@ public class MainActivity extends AppCompatActivity {
     int cardChosenId= 0;
 
     //set up the four player objects
-    Player player1 = new Player("james");
-    //System.out.println("Player 2, please enter your name");
-    Player player2 = new Player("patrick");
-    //System.out.println("Player 3, please enter your name");
-    Player player3 = new Player("paul");
-    //System.out.println("Player 4, please enter your name");
-    Player player4 = new Player("fiona");
+    Player player1 = new Player("");
+    Player player2 = new Player("");
+    Player player3 = new Player("");
+    Player player4 = new Player("");
 
     //instantiate the playerOrder array
     Player[] playerOrder = new Player[4];
@@ -104,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
     Deck mainDeck = new Deck(); //instantiate the deck of cards
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
     int deckLength;
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,7 +124,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //take in the string array from the previous activity
+        Bundle b = this.getIntent().getExtras();
+        String[] nameArray = b.getStringArray("namesArray");
 
+        //System.out.println("First" + nameArray[0]);
+        //System.out.println("Second" +nameArray[1]);
+        //System.out.println("Third" +nameArray[2]);
+        //System.out.println(nameArray.length);
+
+        //set up the players with user input from previous activity
+        player1.setPlayerName(nameArray[0]);
+        player2.setPlayerName(nameArray[1]);
+        player3.setPlayerName(nameArray[2]);
+        player4.setPlayerName(nameArray[3]);
 
         //set up player order
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
