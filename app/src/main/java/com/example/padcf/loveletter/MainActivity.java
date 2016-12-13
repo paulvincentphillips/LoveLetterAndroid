@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.icu.text.IDNA;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuView;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
     int deckLength;
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.feeds_menu, menu);
@@ -115,11 +116,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     //here's the onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         //set up player order
@@ -172,8 +175,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
+
         //send the program off to beginRound
         beginRound();
+
+
     }
 
     //beginRound method that does the things required for each round
@@ -953,4 +961,6 @@ public class MainActivity extends AppCompatActivity {
         deckLength--;
         return deckLength;
     }
+
+
 }
