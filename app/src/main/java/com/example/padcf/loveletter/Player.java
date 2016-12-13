@@ -1,5 +1,6 @@
 package com.example.padcf.loveletter;
 
+
 /**
  * Created by padcf on 19/11/2016.
  */
@@ -12,6 +13,12 @@ public class Player {
     private Card card1;
     private Card card2;
     private boolean playedHandmaid = false;
+
+    //array to store cards played by a player + counter to store place in array
+    private  Card[] playedCards = new Card[16];
+
+    private int playedCardsArrayLength = -1;
+
 
     //getter and setter methods for state
 
@@ -67,5 +74,52 @@ public class Player {
 
     public void setPlayedHandmaid(boolean playedHandmaid) {
         this.playedHandmaid = playedHandmaid;
+    }
+
+    public int getPlayedCardsArrayLength() { return playedCardsArrayLength; }
+
+    public void setPlayedCardsArrayLength(int playedCardsArrayLength) { this.playedCardsArrayLength = playedCardsArrayLength; }
+
+    public boolean isPlayedCardsArrayEmpty() {
+        if (playedCardsArrayLength == -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public String getPlayedCards() {
+
+        String toReturn = "";
+
+        if(!isPlayedCardsArrayEmpty()) //if the array is not empty then print out below
+        {
+            for(int i=0; i<=playedCardsArrayLength; i++)
+            {
+                toReturn = toReturn + " " + playedCards[i].getCardName();
+                //toReturn + " " + playedCards[0].getCardName();
+            }
+
+
+            return toReturn;
+        }
+        else
+        {
+            return  "NO CARD PLAYED YET";
+        }
+
+    }
+
+    //method to add a playedCard to the playedCardsArray
+    public void setPlayedCard(Card card)
+    {
+        playedCardsArrayLength++; //increment the arrayLength
+        this.playedCards[playedCardsArrayLength] = card; //insert the card
+    }
+
+    public void resetPlayedCardsArray()
+    {
+        playedCardsArrayLength = -1;
     }
 }

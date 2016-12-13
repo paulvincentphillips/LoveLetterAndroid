@@ -1,129 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.padcf.loveletter.MainActivity"
-    android:weightSum="1"
-    android:background="@drawable/background1">
+    android:layout_height="match_parent">
 
 
-
-    <ToggleButton
-        android:text="Reveal Cards"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/toggleButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textOn="Hide Cards"
-        android:textOff="Reveal Cards"
-        tools:background="@android:drawable/button_onoff_indicator_on"
-        android:isScrollContainer="false"
-        android:textColorLink="@android:color/holo_red_light"
-        android:background="@android:color/holo_purple"
-        android:textSize="24sp"
-        android:textColor="@android:color/holo_orange_light"
-        tools:fontFamily="sans-serif"
-        android:fontFamily="serif"
-        android:shadowColor="@color/colorPrimary" />
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.padcf.loveletter.MainActivity"
+        android:weightSum="1"
+        android:background="@drawable/background1">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/baron"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp"
-        android:id="@+id/imageButton"
-        android:layout_above="@+id/toggleButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="124dp"
-        android:cropToPadding="true" />
+        <ToggleButton
+            android:text="Reveal Cards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/toggleButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textOn="Hide Cards"
+            android:textOff="Reveal Cards"
+            tools:background="@android:drawable/button_onoff_indicator_on"
+            android:isScrollContainer="false"
+            android:textColorLink="@android:color/holo_red_light"
+            android:background="@android:color/holo_purple"
+            android:textSize="24sp"
+            android:textColor="@android:color/holo_orange_light"
+            tools:fontFamily="sans-serif"
+            android:fontFamily="serif"
+            android:shadowColor="@color/colorPrimary" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/countess"
-        android:id="@+id/imageButton2"
-        android:layout_alignTop="@+id/imageButton"
-        android:layout_toRightOf="@+id/imageButton"
-        android:layout_toEndOf="@+id/imageButton"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp" />
-
-    <RelativeLayout
-        android:visibility="invisible"
-        android:id="@+id/threeButtonLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="55dp">
-
-        <Button
-            android:text="P4"
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button3"
-            android:tag="3"
-            android:layout_alignTop="@+id/button2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:enabled="true"/>
+            app:srcCompat="@drawable/baron"
+            android:layout_marginLeft="37dp"
+            android:layout_marginStart="37dp"
+            android:id="@+id/imageButton"
+            android:layout_above="@+id/toggleButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="124dp"
+            android:cropToPadding="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/countess"
+            android:id="@+id/imageButton2"
+            android:layout_alignTop="@+id/imageButton"
+            android:layout_toRightOf="@+id/imageButton"
+            android:layout_toEndOf="@+id/imageButton"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp" />
+
+        <RelativeLayout
+            android:visibility="invisible"
+            android:id="@+id/threeButtonLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imageButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="55dp">
+
+            <Button
+                android:text="P4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3"
+                android:tag="3"
+                android:layout_alignTop="@+id/button2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:enabled="true"/>
+
+            <Button
+                android:text="P2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/button1"
+                android:enabled="true"/>
+
+            <Button
+                android:text="P3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2"
+                android:tag="2"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:enabled="true"/>
+        </RelativeLayout>
+
+        <Button
+            android:visibility="invisible"
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imageButton"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/fourSevenEight" />
+
+        //buttons for testing
+        <Button
+            android:text="P1"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="27dp"
+            android:id="@+id/cardsPlayedP1"
+            android:layout_above="@+id/toggleButton"
+            android:layout_alignLeft="@+id/imageButton"
+            android:layout_alignStart="@+id/imageButton"
+            android:layout_width="50dp" />
 
         <Button
             android:text="P2"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="1"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/button1"
-            android:enabled="true"/>
+            android:id="@+id/cardsPlayedP2"
+            android:layout_width="50dp"
+            android:layout_alignBaseline="@+id/cardsPlayedP1"
+            android:layout_alignBottom="@+id/cardsPlayedP1"
+            android:layout_toRightOf="@+id/cardsPlayedP1"
+            android:layout_toEndOf="@+id/cardsPlayedP1"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp" />
 
         <Button
             android:text="P3"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            android:tag="2"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:enabled="true"/>
+            android:id="@+id/cardsPlayedP3"
+            android:layout_width="50dp"
+            android:layout_alignBaseline="@+id/cardsPlayedP2"
+            android:layout_alignBottom="@+id/cardsPlayedP2"
+            android:layout_alignRight="@+id/fourSevenEight"
+            android:layout_alignEnd="@+id/fourSevenEight" />
+
+        <Button
+            android:text="P4"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardsPlayedP4"
+            android:layout_width="50dp"
+            android:layout_alignBaseline="@+id/cardsPlayedP3"
+            android:layout_alignBottom="@+id/cardsPlayedP3"
+            android:layout_toRightOf="@+id/cardsPlayedP3"
+            android:layout_toEndOf="@+id/cardsPlayedP3"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp" />
+
+
     </RelativeLayout>
 
-    <TextView
-        android:text="CurrentPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/threeButtonLayout"
-        android:layout_alignLeft="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton"
-        android:layout_marginBottom="23dp"
-        android:id="@+id/currentPlayer"
-        android:textColor="?attr/colorButtonNormal" />
-
-    <Button
-        android:visibility="invisible"
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/fourSevenEight" />
+</android.support.v4.widget.DrawerLayout>
 
 
-</RelativeLayout>
