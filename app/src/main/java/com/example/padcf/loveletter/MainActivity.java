@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     //stores which card the user has pressed
     int cardChoice = 0;
     //store the uniqueID of the card chosen
-    int cardChosenId= 0;
+    int cardChosenId = 0;
 
     //set up the four player objects
     Player player1 = new Player("james");
@@ -105,19 +105,45 @@ public class MainActivity extends AppCompatActivity {
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
     int deckLength;
 
+    //On create method for the options menu in top rght hand corner of main screen
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //MenuInflater menuInflater = getMenuInflater();
         getMenuInflater().inflate(R.menu.feeds_menu, menu);
         return true;
     }
 
+    //method for selecting items in that menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+
+        if (id == R.id.playedCardsMenu) {
+            Intent intent = new Intent(MainActivity.this, playedCards.class);
+            startActivity(intent);
+            return true;
+        }
+
+        //switch (item.getItemId()) {
+        // case R.id.playedCardsMenu:
+
+        // Intent intent = new Intent(this, playedCards.class);
+        //  startActivity(intent);
+
+
+        // break;
+        //case R.id.settings:
+        //break;
+        //case R.id.help:
+        //}
         return super.onOptionsItemSelected(item);
     }
 
 
-    //here's the onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
+
+    //onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,53 +155,6 @@ public class MainActivity extends AppCompatActivity {
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
 
         mainDeck.populateDeck(); // populate the deck
-
-
-        //test to see what the recorded player cards are at any point during the game
-        Button p1Cards = (Button)findViewById(R.id.cardsPlayedP1);
-        Button p2Cards = (Button)findViewById(R.id.cardsPlayedP2);
-        Button p3Cards = (Button)findViewById(R.id.cardsPlayedP3);
-        Button p4Cards = (Button)findViewById(R.id.cardsPlayedP4);
-
-        p1Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder].getPlayedCards());
-                //}
-
-            }
-        });
-        p2Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder2].getPlayedCards());
-                //}
-
-            }
-        });
-        p3Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder3].getPlayedCards());
-                //}
-
-            }
-        });
-        p4Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder4].getPlayedCards());
-                //}
-
-            }
-        });
-
-
-
 
 
         //send the program off to beginRound

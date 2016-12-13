@@ -1,6 +1,53 @@
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.padcf.loveletter.playedCards" />
+    tools:context="com.example.padcf.loveletter.playedCards" >
+
+    android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="cardsPlayedP1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="163dp"
+        android:id="@+id/button4" />
+
+    <Button
+        android:text="cardsPlayedP3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardsPlayedP2"
+        android:layout_alignRight="@+id/cardsPlayedP2"
+        android:layout_alignEnd="@+id/cardsPlayedP2"
+        android:id="@+id/cardsPlayedP3" />
+
+    <Button
+        android:text="cardsPlayedP4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardsPlayedP3"
+        android:layout_alignLeft="@+id/cardsPlayedP3"
+        android:layout_alignStart="@+id/cardsPlayedP3"
+        android:id="@+id/cardsPlayedP4" />
+
+    <Button
+        android:text="cardsPlayedP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardsPlayedP2"
+        android:layout_below="@+id/button4"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4" />
+
+    </LinearLayout>
+
+
+
+
