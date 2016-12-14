@@ -104,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
     int deckLength;
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.feeds_menu, menu);
@@ -114,9 +112,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.playedCardsMenu)
+        {
+            Intent intent = new Intent(MainActivity.this, playedCards.class);
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
-
 
     //here's the onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
     @Override
@@ -127,11 +131,6 @@ public class MainActivity extends AppCompatActivity {
         //take in the string array from the previous activity
         Bundle b = this.getIntent().getExtras();
         String[] nameArray = b.getStringArray("namesArray");
-
-        //System.out.println("First" + nameArray[0]);
-        //System.out.println("Second" +nameArray[1]);
-        //System.out.println("Third" +nameArray[2]);
-        //System.out.println(nameArray.length);
 
         //set up the players with user input from previous activity
         player1.setPlayerName(nameArray[0]);
@@ -145,48 +144,6 @@ public class MainActivity extends AppCompatActivity {
         mainDeck.populateDeck(); // populate the deck
 
 
-        //test to see what the recorded player cards are at any point during the game
-        Button p1Cards = (Button)findViewById(R.id.cardsPlayedP1);
-        Button p2Cards = (Button)findViewById(R.id.cardsPlayedP2);
-        Button p3Cards = (Button)findViewById(R.id.cardsPlayedP3);
-        Button p4Cards = (Button)findViewById(R.id.cardsPlayedP4);
-
-        p1Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder].getPlayedCards());
-                //}
-
-            }
-        });
-        p2Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder2].getPlayedCards());
-                //}
-
-            }
-        });
-        p3Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder3].getPlayedCards());
-                //}
-
-            }
-        });
-        p4Cards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //if(!playerOrder[turnOrder].isPlayedCardsArrayEmpty()){
-                System.out.println(playerOrder[turnOrder4].getPlayedCards());
-                //}
-
-            }
-        });
 
 
 
