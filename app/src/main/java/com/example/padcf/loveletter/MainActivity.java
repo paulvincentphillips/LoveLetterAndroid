@@ -145,12 +145,23 @@ public class MainActivity extends AppCompatActivity {
 
         //create button for showing previously played cards
         Button playedCardsButton = (Button)findViewById(R.id.playedCardsButton);
-
+        //create the onClick listen to gather information and put into a bundle
+        //next start the popUp window activity and pass information for each player to that activity
         playedCardsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle playedCardsBundle = new Bundle();
+                //bundle players previously played cards as strings,
                 playedCardsBundle.putString("stringCurrentPlayer", playerOrder[turnOrder].getPlayedCards());
+                playedCardsBundle.putString("stringPlayer2", playerOrder[turnOrder2].getPlayedCards());
+                playedCardsBundle.putString("stringPlayer3", playerOrder[turnOrder3].getPlayedCards());
+                playedCardsBundle.putString("stringPlayer4", playerOrder[turnOrder4].getPlayedCards());
+                //bundle players names as strings
+                playedCardsBundle.putString("nameCurrentPlayer", playerOrder[turnOrder].getPlayerName());
+                playedCardsBundle.putString("namePlayer2", playerOrder[turnOrder2].getPlayerName());
+                playedCardsBundle.putString("namePlayer3", playerOrder[turnOrder3].getPlayerName());
+                playedCardsBundle.putString("namePlayer4", playerOrder[turnOrder4].getPlayerName());
+
                 Intent playedCardsIntent = new Intent(MainActivity.this, PlayedCardsReal.class);
                 playedCardsIntent.putExtras(playedCardsBundle);
                 startActivity(playedCardsIntent);

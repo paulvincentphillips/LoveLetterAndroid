@@ -106,7 +106,7 @@ public class Player {
         }
         else
         {
-            return  "NO CARD PLAYED YET";
+            return  "No cards played in this round";
         }
 
     }
