@@ -23,59 +23,6 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*
-        Comments here are what my notes from the conversation with my friend Jack , it's a bit messy as we were working on this over lovely pints of IPA :) So if it doesn't all make sense
-        don't worry.
-
-        The onCreate method should do feck all except set up some small stuff like:
-
-        1) set up initial game stuff
-        2) attach any event listeners i.e 'when this button is pressed, do this'
-        3) Will have something like an 'end turn button' that when pressed wi
-
-        We can't create the while loop inside onCreate, it needs to done outside of it in another method. Basically,
-        onCreate needs to start and finish, needs to return a 'I'm finsihed creating the stuff' message to android so we don't look around in here.
-
-        In android we don't have the diving force of the overarching while loop that we did in java ( while(true) ) . Game flow needs to be compartmentalised.\
-        It's user input through buttons that will progress the game along, similar to what Tom told us in the previous lab.
-
-        Our cardChosen function - each card should have a card ID. This seems ok adn the variable cardAbility is unique to each card. The reason for this is
-        that is it difficult to pass a whole class through buttons, it's better to use an ID for each class/object. This is a bit confusing...probably
-
-        //we shouldn't do this - we shouldn't pass through a whole object as a parameter.
-        public void CardChosen(Card chosenCard)
-        {
-            chosenCard.getSpecialAbility();
-        }
-
-        instead we should do this, use a reference int, (getCardById) to refer to the ard, then create a new Card variable and create the reference this
-        way. This is basically a best practice, I think. It may work doing the above but it can cause problems.
-
-        public void CardChosen(int chosenCardId)
-        {
-            Card chosenCard = getCardById(chosenCardId);
-            chosenCard.getSpecialAbility();
-        }
-
-        In general:
-
-        Have to approach dev in android backwards in relation to the java implementation, because in java you tell the user what to do, you define
-        flow of events, whereas in android the user tells you what order things happen in, you need to work out 'how do i react to what the user has done'.
-
-        Again, this was done over pints, some of it doesn't make a lot of sense :D
-     */
-
-    //CODE BEGINS HERE *********
-    //******************
-    //******************
-
-    //so i had to create some new methods - beginRound, beginTurn.
-    //in beginRound we do stuff that is only required at the beginning of the round. We start beginRound by calling is from onCreate
-    //Once everything is finished in beginRound we call beginTurn which then does all the things we need to be doing for each player turn.
-    //because there are many methods working here, I needed to increase the scope of quite a few variables/objects, so they are now at the very top of the
-    //class as you can see.
-
-    //CLASS VARIABLES AND OBJECTS INSTANTIATED HERE
 
     //turn order variables. Side note here: there is a way we can use modulo to deal with this. Something to consider when all is finished etc
     int turnOrder = 0;
@@ -89,13 +36,10 @@ public class MainActivity extends AppCompatActivity {
     int cardChosenId = 0;
 
     //set up the four player objects
-    Player player1 = new Player("james");
-    //System.out.println("Player 2, please enter your name");
-    Player player2 = new Player("patrick");
-    //System.out.println("Player 3, please enter your name");
-    Player player3 = new Player("paul");
-    //System.out.println("Player 4, please enter your name");
-    Player player4 = new Player("fiona");
+    Player player1 = new Player("");
+    Player player2 = new Player("");
+    Player player3 = new Player("");
+    Player player4 = new Player("");
 
     //instantiate the playerOrder array
     Player[] playerOrder = new Player[4];
@@ -104,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     Deck mainDeck = new Deck(); //instantiate the deck of cards
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
     int deckLength;
+
 
     //On create method for the options menu in top rght hand corner of main screen
     @Override
@@ -120,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
 
-        if (id == R.id.playedCardsMenu) {
+        if (id == R.id.playCardsMenu) {
             Intent intent = new Intent(MainActivity.this, playedCards.class);
             startActivity(intent);
             return true;
@@ -142,14 +87,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     //onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //take in the string array from the previous activity
+        Bundle b = this.getIntent().getExtras();
+        String[] nameArray = b.getStringArray("namesArray");
 
+        //System.out.println("First" + nameArray[0]);
+        //System.out.println("Second" +nameArray[1]);
+        //System.out.println("Third" +nameArray[2]);
+        //System.out.println(nameArray.length);
+
+        //set up the players with user input from previous activity
+        player1.setPlayerName(nameArray[0]);
+        player2.setPlayerName(nameArray[1]);
+        player3.setPlayerName(nameArray[2]);
+        player4.setPlayerName(nameArray[3]);
 
         //set up player order
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
