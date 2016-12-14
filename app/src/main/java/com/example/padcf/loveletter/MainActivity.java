@@ -143,8 +143,28 @@ public class MainActivity extends AppCompatActivity {
 
         mainDeck.populateDeck(); // populate the deck
 
+        //create button for showing previously played cards
+        Button playedCardsButton = (Button)findViewById(R.id.playedCardsButton);
 
+        playedCardsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle playedCardsBundle = new Bundle();
+                playedCardsBundle.putString("stringCurrentPlayer", playerOrder[turnOrder].getPlayedCards());
+                Intent playedCardsIntent = new Intent(MainActivity.this, PlayedCardsReal.class);
+                playedCardsIntent.putExtras(playedCardsBundle);
+                startActivity(playedCardsIntent);
 
+                final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
+                final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
+
+                final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
+
+                //ib.setVisibility(View.INVISIBLE);
+                //ib2.setVisibility(View.INVISIBLE);
+                //mainButton.setVisibility(View.INVISIBLE);
+            }
+        });
 
 
 
@@ -932,6 +952,8 @@ public class MainActivity extends AppCompatActivity {
         deckLength--;
         return deckLength;
     }
+
+
 
 
 }
