@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
+    android:background="@android:drawable/title_bar"
     android:orientation="vertical">
 
     <TextView
@@ -9,7 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pC1"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:textColor="@android:color/background_dark" />
 
     <TextView
         android:text="TextView"
@@ -17,19 +18,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/pC2"
         android:layout_gravity="center_vertical"
-        />
+        android:textColor="@android:color/background_dark" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pC3"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:textColor="@android:color/background_dark" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pC4"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:textColor="@android:color/background_dark" />
+
 </LinearLayout>

@@ -110,17 +110,17 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.playedCardsMenu)
+        if(id == R.id.playCardsMenu)
         {
             Intent intent = new Intent(MainActivity.this, playedCards.class);
             startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     //here's the onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
     @Override

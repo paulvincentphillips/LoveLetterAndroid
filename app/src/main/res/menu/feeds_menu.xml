@@ -2,8 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Played Cards This Round"
-        android:id="@+id/playCardsMenu" />
     <item android:title="Settings"
         android:id="@+id/settings" />
     <item android:title="Help"
