@@ -43,6 +43,11 @@
         <activity android:name=".playerName">
 
         </activity>
+        <activity android:name=".PlayedCardsReal"
+            android:theme="@style/Theme.AppCompat.CustomTheme">
+        </activity>
+
+
     </application>
 
 </manifest>

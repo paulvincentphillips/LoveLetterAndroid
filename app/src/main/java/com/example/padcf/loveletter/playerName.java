@@ -33,7 +33,7 @@ public class playerName extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER )) {
                     namesArray[0] = name.getText().toString();
                     System.out.println(namesArray[0]);
                     name.setVisibility(View.INVISIBLE);
@@ -48,8 +48,8 @@ public class playerName extends AppCompatActivity {
         name1.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)) {
+                //name1.focus
+                if ((event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER )) {
                     namesArray[1] = name1.getText().toString();
                     System.out.println(namesArray[1]);
                     name1.setVisibility(View.INVISIBLE);
@@ -65,7 +65,7 @@ public class playerName extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)) {
                     namesArray[2] = name2.getText().toString();
                     System.out.println(namesArray[2]);
                     name2.setVisibility(View.INVISIBLE);
@@ -81,7 +81,7 @@ public class playerName extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER)) {
                     namesArray[3] = name3.getText().toString();
                     System.out.println("Length of array first: " + namesArray.length);
 
