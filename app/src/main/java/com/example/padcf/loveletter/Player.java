@@ -13,6 +13,7 @@ public class Player {
     private Card card1;
     private Card card2;
     private boolean playedHandmaid = false;
+    private int cardChoice = 0;
 
     //array to store cards played by a player + counter to store place in array
     private  Card[] playedCards = new Card[16];
@@ -21,6 +22,14 @@ public class Player {
 
 
     //getter and setter methods for state
+
+    public int getCardChoice(){
+        return cardChoice;
+    }
+
+    public void setCardChoice(int cardChoice){
+        this.cardChoice = cardChoice;
+    }
 
     public Card getCard2() {
         return card2;

@@ -57,9 +57,4 @@ public class PlayedCardsReal extends Activity {
 
 
     }
-
-    public void finishActivity()
-    {
-
-    }
 }

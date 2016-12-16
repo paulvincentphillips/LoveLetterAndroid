@@ -2,6 +2,8 @@ package com.example.padcf.loveletter;
 
 import android.content.Intent;
 import android.icu.text.IDNA;
+import android.media.MediaPlayer;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuView;
@@ -76,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
     //class as you can see.
 
     //CLASS VARIABLES AND OBJECTS INSTANTIATED HERE
-
 
 
     //turn order variables. Side note here: there is a way we can use modulo to deal with this. Something to consider when all is finished etc
@@ -189,6 +190,13 @@ public class MainActivity extends AppCompatActivity {
     //beginRound method that does the things required for each round
     private void beginRound()
     {
+        final MediaPlayer cardShuffleSound = MediaPlayer.create(this, R.raw.cardfan);
+        cardShuffleSound.start();
+
+        player1.setCardChoice(0);
+        player2.setCardChoice(0);
+        player3.setCardChoice(0);
+        player4.setCardChoice(0);
         //reset players playedCards to -1
         player1.resetPlayedCardsArray();
         player2.resetPlayedCardsArray();
@@ -211,12 +219,13 @@ public class MainActivity extends AppCompatActivity {
         deckLength = deck1.length - 1;
 
         //DEAL CARDS
-        deckLength = burnCard(deckLength); //burn off a card before dealing
+        //deckLength = burnCard(deckLength); //burn off a card before dealing
 
         //method to deal out the cards and also hold the new value of deckLength returned from method in deckLength variable
         //this method will only work for starting hands as method stores cards in Card1 slot only
         deckLength = dealCards(player1, player2, player3, player4, deckLength, deck1);
 
+        System.out.println(deckLength);
         //once finished here, move the program on to beginTurn
         beginTurn();
     }
@@ -224,57 +233,65 @@ public class MainActivity extends AppCompatActivity {
     //this is the beginTurn method which does stuff for each playerTurn
     private void beginTurn()
     {
+        final MediaPlayer cardFlipSound = MediaPlayer.create(this, R.raw.cardflip);
+
         if (!playerOrder[turnOrder].getIsPlaying()) {
             endTurn();
         } else {
             playerOrder[turnOrder].setPlayedHandmaid(false);
-        }
 
-        //deal 2nd card to current player
-        deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
+            System.out.println("Dealing from dealCard method");
+            //deal 2nd card to current player
+            deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
 
-        //ib.setImageResource(player1.getCard2().getImageId());
-        final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
-        final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
+            System.out.println(deckLength);
 
-        final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
+            //ib.setImageResource(player1.getCard2().getImageId());
+            final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
+            final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
 
-        mainButton.setText("Reveal " + playerOrder[turnOrder].getPlayerName() + " 's cards" );
-        mainButton.setTextOff("Reveal " + playerOrder[turnOrder].getPlayerName() + " 's cards" );
-        //setting default image to cardBack
-        ib.setImageResource(R.drawable.cardback);
-        ib2.setImageResource(R.drawable.cardback);
-        //give the imageButtons functionality
-        addListnerOnButton(ib, ib2);
-        //but make them unclickable at the moment, because they currently have their cardBacks facing the user
-        ib.setClickable(false);
-        ib2.setClickable(false);
+            final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
-        //this method toggles the images between cardBack and the cardFace when REVEAL button is clicked...this is the toggle button
-        mainButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    //call the addButtonListen here, when toggle is switched to reveal cards
-                    ib.setClickable(true);
-                    ib2.setClickable(true);
-                    ib.setImageResource(playerOrder[turnOrder].getCard1().getImageId());
-                    ib2.setImageResource(playerOrder[turnOrder].getCard2().getImageId());
-                    Toast.makeText(getApplicationContext(), "Choose a card", Toast.LENGTH_SHORT).show();
-                } else {
-                    //set the buttons to be unClickable when they are toggled to cardBack
-                    ib.setClickable(false);
-                    ib2.setClickable(false);
-                    ib.setImageResource(R.drawable.cardback);
-                    ib2.setImageResource(R.drawable.cardback);
+            mainButton.setText("Reveal " + playerOrder[turnOrder].getPlayerName() + " 's cards");
+            mainButton.setTextOff("Reveal " + playerOrder[turnOrder].getPlayerName() + " 's cards");
+            //setting default image to cardBack
+            ib.setImageResource(R.drawable.cardback);
+            ib2.setImageResource(R.drawable.cardback);
+            //give the imageButtons functionality
+            addListnerOnButton(ib, ib2);
+            //but make them unclickable at the moment, because they currently have their cardBacks facing the user
+            ib.setClickable(false);
+            ib2.setClickable(false);
 
-                    RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                    relLayout.setVisibility(View.INVISIBLE);
-                    Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
-                    fourSevenEight.setVisibility(View.INVISIBLE);
+            //this method toggles the images between cardBack and the cardFace when REVEAL button is clicked...this is the toggle button
+            mainButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    cardFlipSound.start();
+                    if (isChecked) {
+                        //call the addButtonListen here, when toggle is switched to reveal cards
+                        ib.setClickable(true);
+                        ib2.setClickable(true);
+                        ib.setImageResource(playerOrder[turnOrder].getCard1().getImageId());
+                        ib2.setImageResource(playerOrder[turnOrder].getCard2().getImageId());
+                        Toast.makeText(getApplicationContext(), "Choose a card", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        //set the buttons to be unClickable when they are toggled to cardBack
+                        ib.setClickable(false);
+                        ib2.setClickable(false);
+                        ib.setImageResource(R.drawable.cardback);
+                        ib2.setImageResource(R.drawable.cardback);
+
+
+                        RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                        relLayout.setVisibility(View.INVISIBLE);
+                        Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+                        fourSevenEight.setVisibility(View.INVISIBLE);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     // this method will contain the different displays for the relevant card
@@ -284,16 +301,35 @@ public class MainActivity extends AppCompatActivity {
         //instantiate the mainToggle button again to access it
         final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
+        //if player can't target anyone due to a mixture of eliminated players and played handmaids
+        //player will discard a card with no effect if it's a card which targets anyone but himself
+        /*if(playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying() &&
+                playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying() &&
+                playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()){
+
+            final Button button1 = (Button) findViewById(R.id.button1);
+            final Button button2 = (Button) findViewById(R.id.button2);
+            final Button button3 = (Button) findViewById(R.id.button3);
+
+            button1.setText(playerOrder[turnOrder2].getPlayerName() + " " + playerOrder[turnOrder2].getPlayerScore());
+            button2.setText(playerOrder[turnOrder3].getPlayerName() + " " + playerOrder[turnOrder3].getPlayerScore());
+            button3.setText(playerOrder[turnOrder4].getPlayerName() + " " + playerOrder[turnOrder4].getPlayerScore());
+
+            button1.setEnabled(false);
+            button2.setEnabled(false);
+            button3.setEnabled(false);
+
+            final Button discardCard = (Button)findViewById(R.id.fourSevenEight);
+            discardCard.setVisibility(View.VISIBLE);
+        }*/
+
 
         //*** BEGIN OF CARD DISPLAYS ***
 
         //displays for guard
-        if(cardChosenId == 1)
-        {
-            //code goes here
-            //bring in the relative layout and make it visible
-            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-            relLayout.setVisibility(View.VISIBLE);
+        if(cardChosenId == 1) {
+
+            final Intent guardIntent = new Intent(MainActivity.this, GuardLayout.class);
 
             //set up button objects to use here
             final Button button1 = (Button) findViewById(R.id.button1);
@@ -318,6 +354,9 @@ public class MainActivity extends AppCompatActivity {
             if (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()) {
                 button3.setEnabled(false);
             }
+
+            startActivity(guardIntent);
+
 
             //set up on click for buttons
             button1.setOnClickListener(new View.OnClickListener() {
@@ -382,6 +421,7 @@ public class MainActivity extends AppCompatActivity {
                     endTurn();
                 }
             });
+
         }
 
         //Displays for priest, Baron and King
@@ -797,16 +837,27 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
+        playerOrder[turnOrder].setCardChoice(cardChoice);
 
         nextTurn();
-
-        beginTurn();
     }
 
 
     private void endGame(){
+        Bundle playerScoresNames = new Bundle();
+        playerScoresNames.putInt("Player 1 Score", player1.getPlayerScore());
+        playerScoresNames.putInt("Player 2 Score", player2.getPlayerScore());
+        playerScoresNames.putInt("Player 3 Score", player3.getPlayerScore());
+        playerScoresNames.putInt("Player 4 Score", player4.getPlayerScore());
+        playerScoresNames.putString("Player 1 Name", player1.getPlayerName());
+        playerScoresNames.putString("Player 2 Name", player2.getPlayerName());
+        playerScoresNames.putString("Player 3 Name", player3.getPlayerName());
+        playerScoresNames.putString("Player 4 Name", player4.getPlayerName());
 
+
+        Intent endGameIntent = new Intent(MainActivity.this, EndGame.class);
+        endGameIntent.putExtras(playerScoresNames);
+        startActivity(endGameIntent);
     }
 
 
@@ -827,11 +878,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //burn off one card
-    public static int burnCard(int deckLength)
+    /*public static int burnCard(int deckLength)
     {
         deckLength--;
         return deckLength;
-    }
+    }*/
 
     //random player method to randomise player order
     public static Player [] randomPlayer(Player[] array, Player pOne, Player pTwo, Player pThree, Player pFour){
@@ -894,6 +945,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             turnOrder4++;
         }
+
+        beginTurn();
     }
 
     public void winnerTurn(Player winner, Player [] playerArray){
@@ -959,7 +1012,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static int dealCard2(Player player, int deckLength, Card[] deck){
-        player.setCard2(deck[deckLength]);
+        if(player.getCardChoice() == 1){
+            player.setCard1(deck[deckLength]);
+        }else{
+            player.setCard2(deck[deckLength]);
+        }
         deckLength--;
         return deckLength;
     }

@@ -101,6 +101,7 @@
             android:layout_toEndOf="@+id/imageButton" />
 
         <ToggleButton
+            android:soundEffectsEnabled="false"
             android:text="Reveal Cards"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
