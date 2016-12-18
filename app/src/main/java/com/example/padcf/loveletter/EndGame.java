@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class EndGame extends AppCompatActivity {
+public class
+EndGame extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

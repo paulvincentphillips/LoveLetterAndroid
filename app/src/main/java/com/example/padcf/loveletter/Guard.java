@@ -41,10 +41,6 @@ public class Guard implements Card {
 
         System.out.println("You've played a guard");
 
-
-
-
-
         return length;
     }
 }
