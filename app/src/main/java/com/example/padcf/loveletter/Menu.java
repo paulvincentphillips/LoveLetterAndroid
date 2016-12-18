@@ -27,7 +27,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         final MediaPlayer buttonSound = MediaPlayer.create(this,R.raw.button);
 
         //Declaring the imagebuttons used on the menu screen-PlayGame, Tutorial
-        ImageButton PlayGame = (ImageButton) findViewById(R.id.play);
+        ImageButton PlayGame = (ImageButton) this.findViewById(R.id.play);
         ImageButton videotutorial = (ImageButton) this.findViewById(R.id.tutorial);
 
 

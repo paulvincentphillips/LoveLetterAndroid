@@ -2,6 +2,7 @@
 
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -33,17 +34,6 @@
             android:layout_marginBottom="55dp">
 
             <Button
-                android:text="P4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button3"
-                android:tag="3"
-                android:layout_alignTop="@+id/button2"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:enabled="true"/>
-
-            <Button
                 android:text="P2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +42,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:id="@+id/button1"
-                android:enabled="true"/>
+                android:enabled="true"
+                android:background="@android:color/holo_green_dark"
+                android:textColor="@android:color/holo_orange_light" />
 
             <Button
                 android:text="P3"
@@ -60,9 +52,24 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/button2"
                 android:tag="2"
+                android:enabled="true"
+                android:background="@android:color/holo_green_dark"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:enabled="true"/>
+                android:textColor="@android:color/holo_orange_light" />
+
+            <Button
+                android:text="P4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3"
+                android:tag="3"
+                android:enabled="true"
+                android:background="@android:color/holo_green_dark"
+                android:textColor="@android:color/holo_orange_light"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
 
         <Button
@@ -72,7 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/imageButton"
             android:layout_centerHorizontal="true"
-            android:id="@+id/fourSevenEight" />
+            android:id="@+id/fourSevenEight"
+            android:background="@android:color/holo_red_dark"
+            android:textColor="@android:color/holo_orange_light" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -128,7 +137,10 @@
             android:layout_marginBottom="10dp"
             android:id="@+id/playedCardsButton"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/holo_blue_light"
+            android:textColorLink="@android:color/holo_orange_light"
+            android:textColor="@android:color/holo_orange_light" />
 
 
     </RelativeLayout>

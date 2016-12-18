@@ -81,13 +81,4 @@
         android:layout_alignStart="@+id/kingChoice"
         android:tag="8"/>
 
-    <Button
-        android:text="Return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/princessChoice"
-        android:layout_alignStart="@+id/princessChoice"
-        android:layout_marginBottom="60dp"
-        android:id="@+id/returnChoice" />
 </RelativeLayout>
