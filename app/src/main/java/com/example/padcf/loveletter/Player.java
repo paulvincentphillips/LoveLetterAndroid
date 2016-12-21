@@ -21,6 +21,11 @@ public class Player {
     private int playedCardsArrayLength = -1;
 
 
+    //array to store cards that a current player has + counter to store place in array
+    private Card[] currentCards = new Card [16];
+   private int currentCardsArrayLength = -1;
+
+
     //getter and setter methods for state
 
     public int getCardChoice(){
@@ -85,12 +90,35 @@ public class Player {
         this.playedHandmaid = playedHandmaid;
     }
 
-    public int getPlayedCardsArrayLength() { return playedCardsArrayLength; }
+    public int getPlayedCardsArrayLength() {
+        return playedCardsArrayLength;
+    }
 
-    public void setPlayedCardsArrayLength(int playedCardsArrayLength) { this.playedCardsArrayLength = playedCardsArrayLength; }
+    public int getCurrentCardsArrayLength() {
+        return currentCardsArrayLength;
+    }
+
+    public void setPlayedCardsArrayLength(int playedCardsArrayLength) {
+        this.playedCardsArrayLength = playedCardsArrayLength;
+    }
+
+    public void setCurrentCardsArrayLength(int currentCardsArrayLength) {
+        this.currentCardsArrayLength = currentCardsArrayLength;
+    }
+
 
     public boolean isPlayedCardsArrayEmpty() {
         if (playedCardsArrayLength == -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    public boolean isCurrentCardsEmpty() {
+        if (currentCardsArrayLength == -1) {
             return true;
         }
         else {
@@ -120,15 +148,53 @@ public class Player {
 
     }
 
-    //method to add a playedCard to the playedCardsArray
+    public String getCurrentCards() {
+
+        String toReturn = "";
+
+        if(!isCurrentCardsEmpty()) //if the array is not empty then print out below
+        {
+            for(int i=0; i<=currentCardsArrayLength; i++)
+            {
+                toReturn = toReturn + " " + currentCards[i].getCardName();
+                //toReturn + " " + playedCards[0].getCardName();
+            }
+
+
+            return toReturn;
+        }
+        else
+        {
+            return  "The player has no cards to see, they are out of the round";
+        }
+
+    }
+
+
+    //method to add a playedCard to the currentCardsArray
+    public void setCurrentCard(Card card)
+    {
+        currentCardsArrayLength++; //increment the arrayLength
+        this.currentCards[currentCardsArrayLength] = card; //insert the card
+    }
+
+
+    //method to add a playedCard to the currentplayedCardsArray
     public void setPlayedCard(Card card)
     {
         playedCardsArrayLength++; //increment the arrayLength
         this.playedCards[playedCardsArrayLength] = card; //insert the card
     }
 
-    public void resetPlayedCardsArray()
-    {
-        playedCardsArrayLength = -1;
+
+
+    public void resetCurrentCardsArray() {
+        currentCardsArrayLength = -1;
+    }
+
+    public void resetPlayedCardsArray() {
     }
 }
+
+
+

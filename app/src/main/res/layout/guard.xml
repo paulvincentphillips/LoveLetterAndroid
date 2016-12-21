@@ -5,19 +5,6 @@
     android:background="@drawable/background1">
 
     <Button
-        android:text="Priest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="89dp"
-        android:layout_marginStart="89dp"
-        android:id="@+id/priestChoice"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="97dp"
-        android:tag="2"/>
-
-    <Button
         android:text="Handmaid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,5 +67,28 @@
         android:layout_alignLeft="@+id/kingChoice"
         android:layout_alignStart="@+id/kingChoice"
         android:tag="8"/>
+
+    <Button
+        android:text="Priest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="89dp"
+        android:layout_marginStart="89dp"
+        android:id="@+id/priestChoice"
+        android:layout_marginTop="98dp"
+        android:tag="2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Double-Tap to choose Card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/baronChoice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/textView"
+        android:textColor="?attr/actionModeSplitBackground" />
 
 </RelativeLayout>

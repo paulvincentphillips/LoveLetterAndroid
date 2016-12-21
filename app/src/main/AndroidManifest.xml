@@ -41,6 +41,9 @@
         <activity
             android:name=".playerName">
         </activity>
+        <activity
+            android:name=".PriestLayout">
+        </activity>
             <activity
                 android:name=".GuardLayout">
 </activity>
