@@ -38,8 +38,8 @@ public class King implements Card {
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
-        if(tag == 1){
-            if(cardChoice == 1){
+        if(tag == 1){       //player 1
+            if(cardChoice == 1){ //player1 card 1
                 Card temp = targetPlayer1.getCard1();
                 targetPlayer1.setCard1(currentPlayer.getCard2());
                 currentPlayer.setCard1(temp);
