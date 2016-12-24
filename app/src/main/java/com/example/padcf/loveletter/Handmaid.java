@@ -34,9 +34,13 @@ public class Handmaid implements Card{
         return this.cardName;
     }
 
+    //IMPORTANT: Handmaid doesn't do anything until mainActivity is complete (line 263). This is because
+    //while playing the game the game may reach a state where you cannot progress due to a mixture of
+    //played handmaids and eliminated players
+    //This results in a player not being able to target anyone
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
-        currentPlayer.setPlayedHandmaid(true);
+        currentPlayer.setPlayedHandmaid(false);
         System.out.println("You are immune this until your next turn");
         //System.out.println(currentPlayer.isPlayedHandmaid());
         return length;
