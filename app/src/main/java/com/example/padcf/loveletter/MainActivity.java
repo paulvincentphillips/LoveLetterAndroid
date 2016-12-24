@@ -291,6 +291,9 @@ public class MainActivity extends AppCompatActivity {
             RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
             relLayout.setVisibility(View.VISIBLE);
 
+            Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+            fourSevenEight.setVisibility(View.INVISIBLE);
+
 
             //set up button objects to use here
             final Button button1 = (Button) findViewById(R.id.button1);
@@ -427,6 +430,9 @@ public class MainActivity extends AppCompatActivity {
             RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
             relLayout.setVisibility(View.VISIBLE);
 
+            Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+            fourSevenEight.setVisibility(View.INVISIBLE);
+
             //set up button objects to use here
             final Button button1 = (Button) findViewById(R.id.button1);
             final Button button2 = (Button) findViewById(R.id.button2);
@@ -536,6 +542,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             fourSevenEight.setVisibility(View.VISIBLE);
+
+            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+            relLayout.setVisibility(View.INVISIBLE);
+
             fourSevenEight.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -661,7 +671,7 @@ public class MainActivity extends AppCompatActivity {
             //set up on click for buttons
             final Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
 
-            fourSevenEight.setText("Play Prince");
+            fourSevenEight.setText("Target Yourself");
 
             fourSevenEight.setVisibility(View.VISIBLE);
             fourSevenEight.setOnClickListener(new View.OnClickListener() {
