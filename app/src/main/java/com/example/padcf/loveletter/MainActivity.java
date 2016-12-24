@@ -337,6 +337,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, GuardLayout.class);
                         startActivity(intent);
 
+
                     } else { //if(cardChoice  ==2 ) the other card
 
                         deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
