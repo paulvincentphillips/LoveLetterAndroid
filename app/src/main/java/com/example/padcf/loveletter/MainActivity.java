@@ -1,86 +1,37 @@
 package com.example.padcf.loveletter;
 
 import android.content.Intent;
-import android.icu.text.IDNA;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.MenuView;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*
-        Comments here are what my notes from the conversation with my friend Jack , it's a bit messy as we were working on this over lovely pints of IPA :) So if it doesn't all make sense
-        don't worry.
-
-        The onCreate method should do feck all except set up some small stuff like:
-
-        1) set up initial game stuff
-        2) attach any event listeners i.e 'when this button is pressed, do this'
-        3) Will have something like an 'end turn button' that when pressed wi
-
-        We can't create the while loop inside onCreate, it needs to done outside of it in another method. Basically,
-        onCreate needs to start and finish, needs to return a 'I'm finsihed creating the stuff' message to android so we don't look around in here.
-
-        In android we don't have the diving force of the overarching while loop that we did in java ( while(true) ) . Game flow needs to be compartmentalised.\
-        It's user input through buttons that will progress the game along, similar to what Tom told us in the previous lab.
-
-        Our cardChosen function - each card should have a card ID. This seems ok adn the variable cardAbility is unique to each card. The reason for this is
-        that is it difficult to pass a whole class through buttons, it's better to use an ID for each class/object. This is a bit confusing...probably
-
-        //we shouldn't do this - we shouldn't pass through a whole object as a parameter.
-        public void CardChosen(Card chosenCard)
-        {
-            chosenCard.getSpecialAbility();
-        }
-
-        instead we should do this, use a reference int, (getCardById) to refer to the ard, then create a new Card variable and create the reference this
-        way. This is basically a best practice, I think. It may work doing the above but it can cause problems.
-
-        public void CardChosen(int chosenCardId)
-        {
-            Card chosenCard = getCardById(chosenCardId);
-            chosenCard.getSpecialAbility();
-        }
-
-        In general:
-
-        Have to approach dev in android backwards in relation to the java implementation, because in java you tell the user what to do, you define
-        flow of events, whereas in android the user tells you what order things happen in, you need to work out 'how do i react to what the user has done'.
-
-        Again, this was done over pints, some of it doesn't make a lot of sense :D
+    /**
+     * This is an android implementation of the AEG published card game 'Love Letter'. This is a
+     * 'pass and play' version of the game ie. there is no AI, this is an alternative to the
+     * physical card game. Players take their individual turns, playing a card and, when their turn
+     * is complete, they pass the device to another player.
      */
 
-    //CODE BEGINS HERE *********
-    //******************
-    //******************
-
-    //so i had to create some new methods - beginRound, beginTurn.
-    //in beginRound we do stuff that is only required at the beginning of the round. We start beginRound by calling is from onCreate
+    /*in beginRound we do stuff that is only required at the beginning of the round. We start beginRound by calling is from onCreate
     //Once everything is finished in beginRound we call beginTurn which then does all the things we need to be doing for each player turn.
     //because there are many methods working here, I needed to increase the scope of quite a few variables/objects, so they are now at the very top of the
-    //class as you can see.
+    class as you can see*/
 
     //CLASS VARIABLES AND OBJECTS INSTANTIATED HERE
 
 
-    //turn order variables. Side note here: there is a way we can use modulo to deal with this. Something to consider when all is finished etc
+    //turn order variables which will allow us to refer to player1 (turnOrder), player2 (turnOrder2) etc. when needed
     int turnOrder = 0;
     int turnOrder2 = 1;
     int turnOrder3 = 2;
@@ -103,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     //deck variables setup
     Deck mainDeck = new Deck(); //instantiate the deck of cards
     Card[] deck1 = mainDeck.getDeck(); //get the deck and store it in deck1 variable
-    int deckLength;
+    int deckLength; //length of deck variable used when dealing cards etc.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }*/
 
-    //here's the onCreate which simply set's up the player Order. Perhaps this could be done elsewhere?
+    //processes which happen when the app begins
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         player3.setPlayerName(nameArray[2]);
         player4.setPlayerName(nameArray[3]);
 
-        //set up player order
+        //set up player order by calling randomPlayer method
         playerOrder = randomPlayer(playerOrder, player1, player2, player3, player4);
 
         mainDeck.populateDeck(); // populate the deck
@@ -172,15 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
                 final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
-                //ib.setVisibility(View.INVISIBLE);
-                //ib2.setVisibility(View.INVISIBLE);
-                //mainButton.setVisibility(View.INVISIBLE);
-
-
             }
         });
-
-
 
 
         //send the program off to beginRound
@@ -192,24 +136,31 @@ public class MainActivity extends AppCompatActivity {
     //beginRound method that does the things required for each round
     private void beginRound()
     {
+        //card shuffle sound which happens at the beginning of each round
         final MediaPlayer cardShuffleSound = MediaPlayer.create(this, R.raw.cardfan);
         cardShuffleSound.start();
 
+        //resets players' card choices to 0 (ie. nothing) at the start of each round
+        //this will ensure that the first 2nd card dealt to a player will be stored in card2 slot
+        //ie. will not overwrite card1
         player1.setCardChoice(0);
         player2.setCardChoice(0);
         player3.setCardChoice(0);
         player4.setCardChoice(0);
         //reset players playedCards to -1
+        //each player's playedCardsArray allows us to show the users the history of played cards
         player1.resetPlayedCardsArray();
         player2.resetPlayedCardsArray();
         player3.resetPlayedCardsArray();
         player4.resetPlayedCardsArray();
 
+        //reset every player to playing ie. not eliminated as round has just begun again
         player1.setPlaying(true);
         player2.setPlaying(true);
         player3.setPlaying(true);
         player4.setPlaying(true);
 
+        //set everyone to not played handmaid ie. no player has handmaid immunity because of new round
         player1.setPlayedHandmaid(false);
         player2.setPlayedHandmaid(false);
         player3.setPlayedHandmaid(false);
@@ -235,11 +186,14 @@ public class MainActivity extends AppCompatActivity {
     //this is the beginTurn method which does stuff for each playerTurn
     private void beginTurn()
     {
+        //card flip sound which will be used every time a player turns over their cards
         final MediaPlayer cardFlipSound = MediaPlayer.create(this, R.raw.cardflip);
 
+        //if the player has been previously knocked out of the round go to the endTurn method
         if (!playerOrder[turnOrder].getIsPlaying()) {
             endTurn();
         } else {
+            //reset players immunity from playing handmaid to false(not immune)
             playerOrder[turnOrder].setPlayedHandmaid(false);
 
             System.out.println("Dealing from dealCard method");
@@ -248,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
 
             System.out.println(deckLength);
 
-            //ib.setImageResource(player1.getCard2().getImageId());
             final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
             final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
 
@@ -269,11 +222,14 @@ public class MainActivity extends AppCompatActivity {
             mainButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    //play the cardFlip sound
                     cardFlipSound.start();
                     if (isChecked) {
                         //call the addButtonListen here, when toggle is switched to reveal cards
+                        //we can now click and use our cards because they are no longer face down
                         ib.setClickable(true);
                         ib2.setClickable(true);
+                        //set the images of the cards to what the player currently has in his hand
                         ib.setImageResource(playerOrder[turnOrder].getCard1().getImageId());
                         ib2.setImageResource(playerOrder[turnOrder].getCard2().getImageId());
                         Toast.makeText(getApplicationContext(), "Choose a card", Toast.LENGTH_SHORT).show();
@@ -736,9 +692,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
     //we will need an end round function to check and update stuff at the end of every round
     private void endTurn()
     {
@@ -808,12 +761,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //check if deck is empty -- then compare isPlaying players' cards for highest value -- award point if highest value -- no point if draw -- reveal burned card
-        if (deckLength == 0) {
+        //IMPORTANT: Another rule to implement:
+        //If highest cards revealed = draw ie. I have a baron and so do you and we're the last players remaining
+        //Count up all other discarded cards and highest sum wins
+
+        //if deck is empty do the following
+        //the 'burned card' at the start of the game is stored in deck array slot 0
+        //therefore the deck is technically empty at deckLength==1 however there are circumstances where
+        //a player may have to draw the burned card (see Prince card class)
+        //IMPORTANT: Double check if this or statement makes sense
+        if (deckLength == 0 || deckLength == 1) {
+            //set up variables to store card values of players' held card at the end of the game
             int cardVal1 = 0;
             int cardVal2 = 0;
             int cardVal3 = 0;
             int cardVal4 = 0;
 
+            //check to see if player is playing then store his card value
             if (player1.getIsPlaying()) {
                 cardVal1 = player1.getCard1().getCardValue();
             }
@@ -827,10 +791,15 @@ public class MainActivity extends AppCompatActivity {
                 cardVal4 = player4.getCard1().getCardValue();
             }
 
+            //now compare each player's card value with everyone else's. If player has highest card award point
+            //if player's points = 4 then end the game. Else, begin a new round
+            //repeat until someone reaches the goal of 4 points
             if (cardVal1 > cardVal2 && cardVal1 > cardVal3 && cardVal1 > cardVal4) {
                 player1.setScore(player1.getPlayerScore() + 1);
                 System.out.println(player1.getPlayerName() + " has the highest value card and has won the round!");
                 toastWinner(player1);
+                //winner turn will set the turn order for the next round
+                //if starts with the winner of the previous round
                 winnerTurn(player1, playerOrder);
                 if (player1.getPlayerScore() == 4) {
                     endGame();
@@ -876,11 +845,14 @@ public class MainActivity extends AppCompatActivity {
 
         playerOrder[turnOrder].setCardChoice(cardChoice);
 
+        //if none of the above is true increment each players' turn variable which will begin the next player's turn
         nextTurn();
     }
 
 
     private void endGame(){
+        //send the following information to EndGame intent
+        //this will simple bring up an intent to display who won the game
         Bundle playerScoresNames = new Bundle();
         playerScoresNames.putInt("Player 1 Score", player1.getPlayerScore());
         playerScoresNames.putInt("Player 2 Score", player2.getPlayerScore());
@@ -897,12 +869,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(endGameIntent);
     }
 
-
-    //BELOW ARE THE OTHER METHODS TAKEN FORM THE JAVA VERSION
-
     //deal out cards
     public static int dealCards(Player pOne, Player pTwo, Player pThree, Player pFour, int deckLength, Card[] deck)
     {
+        //set a player's card to current deckLength in the array then decrement deckLength, simulating
+        //a deck decreasing in size
         pOne.setCard1(deck[deckLength]);
         deckLength--;
         pTwo.setCard1(deck[deckLength]);
@@ -914,23 +885,19 @@ public class MainActivity extends AppCompatActivity {
         return deckLength;
     }
 
-    //burn off one card
-    /*public static int burnCard(int deckLength)
-    {
-        deckLength--;
-        return deckLength;
-    }*/
-
     //random player method to randomise player order
     public static Player [] randomPlayer(Player[] array, Player pOne, Player pTwo, Player pThree, Player pFour){
-        int random =(int)(Math.random()*4);
+        //random number between 1 + 4
+        int random =(int)(Math.random()*4+1);
 
+        //if the random number is 1, set player1 to first player then 2nd player as player 2 etc.
         if(random == 1){
             array[0] = pOne;
             array[1] = pTwo;
             array[2] = pThree;
             array[3] = pFour;
         }
+        ////if the random number is 2, set player2 to first player then 3rd player as player 3 etc.
         else if(random == 2){
             array[0] = pTwo;
             array[1] = pThree;
@@ -956,6 +923,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, winner.getPlayerName() + " has won the round!", Toast.LENGTH_SHORT).show();
     }
 
+    //a method to
     public void nextTurn(){
         //next player
         if (turnOrder == 3) {
@@ -986,10 +954,17 @@ public class MainActivity extends AppCompatActivity {
         beginTurn();
     }
 
+    //this will change the turnorder variables depending on who won the last round
+    //we do this by setting up a for loop and a variable x
+    //we then loop through the player array
     public void winnerTurn(Player winner, Player [] playerArray){
         for(int x = 0; x < playerArray.length; x++) {
+            //if the winner's name is equal to the name we are currently accessing in the player array
             if(winner.getPlayerName().equals(playerArray[x].getPlayerName())){
+                //turnOrder = x ie. turnOrder is the same as the slot the winning player's name is in the player array
                 turnOrder = x;
+                //if the player is in the player array 0 slot then we set everyone else's turnOrder variables
+                //in relation to his position
                 if(turnOrder == 0){
                     turnOrder2 = 1;
                     turnOrder3 = 2;
@@ -1048,6 +1023,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //dealCard2 will deal the current player's 2nd card to them
+    //when a turn begins you only hold 1 card until your 2nd is dealt to you
+    //the logic below simply tells the device which card to overwrite in the player's hand
+    //ie. if the player played card1 then replace card1 with the new card
+    //if player played card2 then replace card2 with new card
     public static int dealCard2(Player player, int deckLength, Card[] deck){
         if(player.getCardChoice() == 1){
             player.setCard1(deck[deckLength]);

@@ -48,7 +48,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
 
      //By clicking the tutorial button on the Menu screen, it will redirect to the below youtube tutorial.
             case R.id.tutorial:
-                Intent webintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=6XHpHrKtIEM&t=502s"));
+                Intent webintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=5sgbgXsDxfc"));
                 startActivity(webintent);
                 break;
 
