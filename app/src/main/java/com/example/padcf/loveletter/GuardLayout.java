@@ -1,14 +1,16 @@
 package com.example.padcf.loveletter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 /**
- * Created by batemanapproves on 16/12/2016.
+ * Layout for guard class
+ * This is necessary as after you choose your target player you must then guess a card which they may or may not possess
+ * A new intent is the cleanest way we found of accomplishing this task
+ * Created by padcf, paulvincentphillips & bradyc12 on 16/12/2016.
  */
 
 public class GuardLayout extends Activity {
@@ -48,9 +50,6 @@ public class GuardLayout extends Activity {
             }
         });
 
-        //Intent intent = new Intent(getApplicationContext(), Main.class);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        //startActivity(intent);
 
         handmaidChoice.setOnClickListener(new View.OnClickListener() {
             @Override

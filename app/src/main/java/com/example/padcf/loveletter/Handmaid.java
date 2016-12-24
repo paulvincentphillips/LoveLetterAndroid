@@ -2,7 +2,9 @@ package com.example.padcf.loveletter;
 
 /**
  * This class creates the Handmaid card which contains functionality and attributes unique to this class
- * Created by padcf & paulvincentphillips on 01/11/16.
+ * Having played the handmaid, the player will become immune from all other player effects until their
+ * next turn when playedHandmaid variable will be turned back to false
+ * Created by padcf, paulvincentphillips & bradyc12 on 01/11/16.
  */
 
 public class Handmaid implements Card{

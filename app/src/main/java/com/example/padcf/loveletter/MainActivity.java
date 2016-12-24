@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
      * 'pass and play' version of the game ie. there is no AI, this is an alternative to the
      * physical card game. Players take their individual turns, playing a card and, when their turn
      * is complete, they pass the device to another player.
+     * Created by padcf, paulvincentphillips & bradyc12 on 01/11/16
      */
 
     /*in beginRound we do stuff that is only required at the beginning of the round. We start beginRound by calling is from onCreate

@@ -7,6 +7,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * Created by padcf, paulvincentphillips & bradyc12 on 14/12/16.
+ */
+
 public class playerName extends AppCompatActivity {
 
     final String[] namesArray = new String[4];

@@ -3,13 +3,12 @@ package com.example.padcf.loveletter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.ToggleButton;
+
 
 /**
- * Created by padcf on 14/12/2016.
+ * Creates intent for showing history of played cards
+ * Created by padcf, paulvincentphillips & bradyc12 on 14/12/2016.
  */
 public class PlayedCardsReal extends Activity {
     @Override

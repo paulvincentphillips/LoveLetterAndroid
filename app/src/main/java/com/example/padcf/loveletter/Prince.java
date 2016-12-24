@@ -2,13 +2,9 @@ package com.example.padcf.loveletter;
 
 /**
  * This class creates the Prince card which contains functionality and attributes unique to this class
- * Created by padcf & paulvincentphillips on 01/11/16.
+ * Choose any player (including yourself) to discard his or her hand and draw a new card
+ * Created by padcf, paulvincentphillips & bradyc12 on 01/11/16.
  */
-
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
 
 import java.util.Scanner;
 
@@ -21,16 +17,12 @@ public class Prince implements Card{
     private int imageId = R.drawable.prince;
 
 
-    //Jack
     public int getImageId() {
         return imageId;
     }
 
-
-
     Scanner sc = new Scanner(System.in);
 
-    //Scanner sc = new Scanner(System.in);
 
     @Override
     public int getCardValue() {
@@ -53,7 +45,7 @@ public class Prince implements Card{
         //we check to see if deckLength is 0 because:
         //if a prince is played it forces a player to discard their card and draw a new one
         //but what happens if length is 0(deck is empty)?
-        //then that player draws the burned card from the start of the game deck[15]
+        //then that player draws the burned card from the start of the game deck[0]
         if(length == 0){
             if(tag == 1){
                 if(targetPlayer1.getCard1().getCardValue() == 8){

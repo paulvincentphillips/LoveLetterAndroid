@@ -2,7 +2,9 @@ package com.example.padcf.loveletter;
 
 
 /**
- * Created by padcf on 19/11/2016.
+ * Getters and setters for each player object
+ * Keeps track of certain variables that are unique to each player such as player score
+ * Created by padcf, paulvincentphillips & bradyc12 on 19/11/2016.
  */
 
 public class Player {

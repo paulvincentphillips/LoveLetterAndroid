@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
- * Created by Lenovo on 05/12/2016.
+ * The Love Letter splash screen
+ * If you discard this card, you are out of the round 05/12/2016.
  */
 
 public class Splash extends AppCompatActivity {
