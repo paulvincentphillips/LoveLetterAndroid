@@ -5,35 +5,51 @@
     android:orientation="vertical">
 
     <TextView
+        android:gravity="center_vertical"
+        android:fontFamily="cursive"
         android:text="TextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:id="@+id/pC1"
         android:layout_gravity="center_vertical"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_weight="1"
+        android:textSize="18sp" />
 
     <TextView
+        android:gravity="center_vertical"
         android:text="TextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:id="@+id/pC2"
         android:layout_gravity="center_vertical"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_weight="1"
+        android:fontFamily="cursive"
+        android:textSize="18sp" />
 
     <TextView
+        android:gravity="center_vertical"
         android:text="TextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:id="@+id/pC3"
         android:layout_gravity="center_vertical"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_weight="1"
+        android:fontFamily="cursive"
+        android:textSize="18sp" />
 
     <TextView
+        android:gravity="center_vertical"
         android:text="TextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:id="@+id/pC4"
         android:layout_gravity="center_vertical"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_weight="1"
+        android:fontFamily="cursive"
+        android:textSize="18sp" />
 
 </LinearLayout>
