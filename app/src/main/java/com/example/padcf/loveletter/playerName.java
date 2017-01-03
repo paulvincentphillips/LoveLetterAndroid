@@ -10,7 +10,7 @@ import android.widget.EditText;
 /**
  * Created by padcf, paulvincentphillips & bradyc12 on 14/12/16.
  * This activity asks users to enter their names. Their names are then stored in a String Array and passed in a bundle using an intent to the main
- * activty.
+ * activity.
  */
 
 public class playerName extends AppCompatActivity {
@@ -57,7 +57,7 @@ public class playerName extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 //name1.focus
                 if ((event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER )) {
-                    namesArray[1] = name1.getText().toString();
+                    namesArray[1] = name1.getText().toString(); 
                     System.out.println(namesArray[1]);
                     name1.setVisibility(View.INVISIBLE);
                     name1.clearComposingText();

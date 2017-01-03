@@ -2,6 +2,7 @@ package com.example.padcf.loveletter;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -215,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             ib2.setImageResource(R.drawable.cardback);
             //give the imageButtons functionality
             addListnerOnButton(ib, ib2);
-            //but make them unclickable at the moment, because they currently have their cardBacks facing the user
+            //but make them un-clickable at the moment, because they currently have their cardBacks facing the user
             ib.setClickable(false);
             ib2.setClickable(false);
 
@@ -422,13 +423,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        //Displays for priest, Baron and King
-        if(cardId == 2 || cardId == 3 || cardId == 6)
+        //Displays for Priest here
+        if(cardId == 2)
         {
 
             playerOrder[turnOrder].setPlayedHandmaid(false);
 
-            //bring in the relative layout and make it visible
+            //bring in the 3 button relative layout and make it visible
             RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
             relLayout.setVisibility(View.VISIBLE);
 
@@ -449,6 +450,7 @@ public class MainActivity extends AppCompatActivity {
             button2.setEnabled(true);
             button3.setEnabled(true);
 
+
             if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
                 button1.setEnabled(false);
             }
@@ -463,6 +465,7 @@ public class MainActivity extends AppCompatActivity {
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
@@ -476,7 +479,8 @@ public class MainActivity extends AppCompatActivity {
                         //add the played card to the array of played cards in the Player Class
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
-                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    //mainButton.setChecked(false); //set toggle button back when a player has made their choice
+
                     endTurn();
                 }
             });
@@ -484,6 +488,297 @@ public class MainActivity extends AppCompatActivity {
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+
+                    endTurn();
+                }
+            });
+
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    endTurn();
+                }
+            });
+        }
+        //Displays for Baron
+        //*****NEED TO DO ONE OF THESE FOR EACH CARD*****
+        //if(cardId == 2 || cardId == 3 || cardId == 6)
+        if(cardId == 3)
+        {
+
+            playerOrder[turnOrder].setPlayedHandmaid(false);
+
+            //bring in the 3 button relative layout and make it visible
+            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+            relLayout.setVisibility(View.VISIBLE);
+
+            Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+            fourSevenEight.setVisibility(View.INVISIBLE);
+
+            //set up button objects to use here
+            final Button button1 = (Button) findViewById(R.id.button1);
+            final Button button2 = (Button) findViewById(R.id.button2);
+            final Button button3 = (Button) findViewById(R.id.button3);
+
+            //Display each players name on the button and their current score
+            button1.setText(playerOrder[turnOrder2].getPlayerName() + " " + playerOrder[turnOrder2].getPlayerScore());
+            button2.setText(playerOrder[turnOrder3].getPlayerName() + " " + playerOrder[turnOrder3].getPlayerScore());
+            button3.setText(playerOrder[turnOrder4].getPlayerName() + " " + playerOrder[turnOrder4].getPlayerScore());
+
+            button1.setEnabled(true);
+            button2.setEnabled(true);
+            button3.setEnabled(true);
+
+
+            if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
+                button1.setEnabled(false);
+            }
+            if (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) {
+                button2.setEnabled(false);
+            }
+            if (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()) {
+                button3.setEnabled(false);
+            }
+
+            //set up on click for buttons
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //testing popup activity here
+                    //bundle information about cards before the logic is run and cards are changed. We do this so that it appears to the user that the logic
+                    //happens in the activity popup screen.
+                    final Intent myIntent = new Intent(MainActivity.this, Baronpop.class);//create your intent
+                    Bundle baronInfo = new Bundle();
+
+                    //bundle player and target player's name
+                    baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
+                    baronInfo.putString("targetName", playerOrder[turnOrder2].getPlayerName());
+                    //bundle player's card ability and target player's ability
+                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("targetCardAbility", playerOrder[turnOrder2].getCard1().getCardValue());
+
+                    //bundle player and target player's card images
+                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard1().getImageId());
+                    baronInfo.putInt("targetCardImage", playerOrder[turnOrder2].getCard1().getImageId());
+                    //bundle player and target player's card names
+                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder2].getCard1().getCardName());
+                    myIntent.putExtras(baronInfo);//put the bundle with the intent
+
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+                    }
+                    //mainButton.setChecked(false); //set toggle button back when a player has made their choice
+
+
+
+
+
+                    startActivity(myIntent);
+
+                    endTurn();
+                }
+            });
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //testing popup activity here
+                    //bundle information about cards before the logic is run and cards are changed. We do this so that it appears to the user that the logic
+                    //happens in the activity popup screen.
+                    final Intent myIntent = new Intent(MainActivity.this, Baronpop.class);//create your intent
+                    Bundle baronInfo = new Bundle();
+
+                    //bundle player and target player's name
+                    baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
+                    baronInfo.putString("targetName", playerOrder[turnOrder3].getPlayerName());
+                    //bundle player's card ability and target player's ability
+                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("targetCardAbility", playerOrder[turnOrder3].getCard1().getCardValue());
+
+                    //bundle player and target player's card images
+                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard1().getImageId());
+                    baronInfo.putInt("targetCardImage", playerOrder[turnOrder3].getCard1().getImageId());
+                    //bundle player and target player's card names
+                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder3].getCard1().getCardName());
+                    myIntent.putExtras(baronInfo);//put the bundle with the intent
+
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+
+                    startActivity(myIntent);
+                    endTurn();
+                }
+            });
+
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //testing popup activity here
+                    //bundle information about cards before the logic is run and cards are changed. We do this so that it appears to the user that the logic
+                    //happens in the activity popup screen.
+                    final Intent myIntent = new Intent(MainActivity.this, Baronpop.class);//create your intent
+                    Bundle baronInfo = new Bundle();
+
+                    //bundle player and target player's name
+                    baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
+                    baronInfo.putString("targetName", playerOrder[turnOrder4].getPlayerName());
+                    //bundle player's card ability and target player's ability
+                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("targetCardAbility", playerOrder[turnOrder4].getCard1().getCardValue());
+
+                    //bundle player and target player's card images
+                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard1().getImageId());
+                    baronInfo.putInt("targetCardImage", playerOrder[turnOrder4].getCard1().getImageId());
+                    //bundle player and target player's card names
+                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder4].getCard1().getCardName());
+                    myIntent.putExtras(baronInfo);//put the bundle with the intent
+
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+                    }
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    startActivity(myIntent);
+                    endTurn();
+                }
+            });
+        }
+
+        //Display for the Priest goes here
+        if(cardId == 6)
+        {
+
+            playerOrder[turnOrder].setPlayedHandmaid(false);
+
+            //bring in the 3 button relative layout and make it visible
+            RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+            relLayout.setVisibility(View.VISIBLE);
+
+            Button fourSevenEight = (Button) findViewById(R.id.fourSevenEight);
+            fourSevenEight.setVisibility(View.INVISIBLE);
+
+            //set up button objects to use here
+            final Button button1 = (Button) findViewById(R.id.button1);
+            final Button button2 = (Button) findViewById(R.id.button2);
+            final Button button3 = (Button) findViewById(R.id.button3);
+
+            //Display each players name on the button and their current score
+            button1.setText(playerOrder[turnOrder2].getPlayerName() + " " + playerOrder[turnOrder2].getPlayerScore());
+            button2.setText(playerOrder[turnOrder3].getPlayerName() + " " + playerOrder[turnOrder3].getPlayerScore());
+            button3.setText(playerOrder[turnOrder4].getPlayerName() + " " + playerOrder[turnOrder4].getPlayerScore());
+
+            button1.setEnabled(true);
+            button2.setEnabled(true);
+            button3.setEnabled(true);
+
+
+            if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
+                button1.setEnabled(false);
+            }
+            if (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) {
+                button2.setEnabled(false);
+            }
+            if (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying()) {
+                button3.setEnabled(false);
+            }
+
+            //set up on click for buttons
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (cardChoice == 1) {
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+                    } else {
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+                    }
+                    //mainButton.setChecked(false); //set toggle button back when a player has made their choice
+
+                    endTurn();
+                }
+            });
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
@@ -505,6 +800,7 @@ public class MainActivity extends AppCompatActivity {
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
@@ -1009,7 +1305,7 @@ public class MainActivity extends AppCompatActivity {
                                   public void onClick(View v) {
                                       cardChoice = 1;
                                       cardChosenId = playerOrder[turnOrder].getCard1().getCardValue();
-                                      Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard1().getCardName(), Toast.LENGTH_SHORT).show();
+                                      //Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard1().getCardName(), Toast.LENGTH_SHORT).show();
                                       RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
                                       display(cardChosenId);
                                       //relLayout.setVisibility(View.VISIBLE);
@@ -1022,7 +1318,7 @@ public class MainActivity extends AppCompatActivity {
                                    public void onClick(View v) {
                                        cardChoice = 2;
                                        cardChosenId = playerOrder[turnOrder].getCard2().getCardValue();
-                                       Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard2().getCardName(), Toast.LENGTH_SHORT).show();
+                                       //Toast.makeText(getApplicationContext(), playerOrder[turnOrder].getCard2().getCardName(), Toast.LENGTH_SHORT).show();
                                        RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
                                        display(cardChosenId); //pass in the chosenCardID here, because it needs to then be passed to display() which in turn will filter the content to display
                                        //relLayout.setVisibility(View.VISIBLE);
