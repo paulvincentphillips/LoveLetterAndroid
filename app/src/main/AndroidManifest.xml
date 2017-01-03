@@ -47,5 +47,7 @@
         <activity android:name=".PlayedCardsReal"
             android:theme="@style/Theme.AppCompat.CustomTheme">
         </activity>
+        <activity android:name=".Baronpop"
+            android:theme="@style/Theme.AppCompat.CustomTheme"></activity>
     </application>
 </manifest>
