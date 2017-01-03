@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
- * Created by Lenovo on 05/12/2016.
+ * The Love Letter splash screen
+ * If you discard this card, you are out of the round 05/12/2016.
  */
 
 public class Splash extends AppCompatActivity {
@@ -20,9 +21,7 @@ public class Splash extends AppCompatActivity {
         tempestloveletter.animate().translationXBy(1000f).setDuration(1000);
     }
 
-
-
-    //splash_screen running onto the main screen with a wait time of 3 secs
+    //splash_screen running into the main screen with a wait time of 3 secs
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +33,8 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(2000);
-                    Intent startContentScreen = new Intent(getApplicationContext(), Menu.class);
-                    startActivity(startContentScreen);
+                    Intent startMenuScreen = new Intent(getApplicationContext(), Menu.class);
+                    startActivity(startMenuScreen);
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

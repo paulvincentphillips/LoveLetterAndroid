@@ -7,6 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * End of game intent
+ * Shows the winner of the game and gives options to play again or return to the main menu
+ * Created by padcf, paulvincentphillips & bradyc12 on 16/12/2016.
+ */
+
+
 public class
 EndGame extends AppCompatActivity {
 

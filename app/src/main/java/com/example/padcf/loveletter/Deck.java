@@ -1,7 +1,12 @@
 package com.example.padcf.loveletter;
 
 /**
- * Created by padcf on 19/11/2016.
+ * Created by padcf, paulvincentphillips & bradyc12 on 19/11/2016.
+ * This class sets up the deck array of 16 card slots
+ * It contains methods to populate the array with the appropriate number of each card
+ * and to shuffle the deck, making the deck randomised
+ * the card at element location 0 in the array is the 'burned' card
+ * ie. the card which is removed at the beginning of the game
  */
 
 public class Deck {

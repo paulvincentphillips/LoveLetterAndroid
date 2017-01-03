@@ -2,7 +2,9 @@ package com.example.padcf.loveletter;
 
 
 /**
- * Created by padcf on 19/11/2016.
+ * Getters and setters for each player object
+ * Keeps track of certain variables that are unique to each player such as player score
+ * Created by padcf, paulvincentphillips & bradyc12 on 19/11/2016.
  */
 
 public class Player {
@@ -17,7 +19,6 @@ public class Player {
 
     //array to store cards played by a player + counter to store place in array
     private  Card[] playedCards = new Card[16];
-
     private int playedCardsArrayLength = -1;
 
 
@@ -165,14 +166,14 @@ public class Player {
         }
         else
         {
-            return  "The player has no cards to see, they are out of the round";
+            return  "The player has no cards to see, their turn has not passed yet or they are out of this round";
         }
 
     }
 
 
     //method to add a playedCard to the currentCardsArray
-    public void setCurrentCard(Card card)
+    public void setCurrentCards(Card card)
     {
         currentCardsArrayLength++; //increment the arrayLength
         this.currentCards[currentCardsArrayLength] = card; //insert the card

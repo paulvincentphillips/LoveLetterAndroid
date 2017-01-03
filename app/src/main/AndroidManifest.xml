@@ -21,8 +21,10 @@
             android:name=".Menu"
             android:label="">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"
-                android:launchMode = "singleTask"/>
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:launchMode="singleTask" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -35,20 +37,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".EndGame"></activity>
+        <activity android:name=".playerName"></activity>
+        <activity android:name=".PriestLayout"></activity>
+        <activity android:name=".GuardLayout"></activity>
         <activity
-            android:name=".EndGame" >
-    </activity>
-        <activity
-            android:name=".playerName">
-        </activity>
-        <activity
-            android:name=".PriestLayout">
-        </activity>
-            <activity
-                android:name=".GuardLayout">
-</activity>
-        <activity android:name=".PlayedCardsReal"
-            android:theme="@style/Theme.AppCompat.CustomTheme">
-        </activity>
+            android:name=".PlayedCardsReal"
+            android:theme="@style/Theme.AppCompat.CustomTheme"></activity>
+        <activity android:name=".CurrentPlayersCards"></activity>
     </application>
+
 </manifest>

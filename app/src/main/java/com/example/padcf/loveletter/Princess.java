@@ -2,7 +2,10 @@ package com.example.padcf.loveletter;
 
 /**
  * This class creates the Princess card which contains functionality and attributes unique to this class
- * Created by padcf & paulvincentphillips on 01/11/16.
+ * If you discard the princess, you are out of the round
+ * If another player forces you to discard the princess, ie. through the use of a prince
+ * Then you are also out of the game
+ * Created by padcf, paulvincentphillips & bradyc12 on 01/11/16.
  */
 
 public class Princess implements Card {
