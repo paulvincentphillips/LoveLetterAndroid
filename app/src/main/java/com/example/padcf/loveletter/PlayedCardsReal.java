@@ -25,7 +25,7 @@ public class PlayedCardsReal extends Activity {
         //store as width and height below
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int)(width * 0.8), (int)(height * 0.8)); //set the size of popup
+        getWindow().setLayout((int)(width * 0.8), (int)(height * 0.4)); //set the size of popup
 
         //create four textViews to display the information
         TextView one = (TextView)findViewById(R.id.pC1);

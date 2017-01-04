@@ -16,15 +16,12 @@ public class Player {
     private Card card2;
     private boolean playedHandmaid = false;
     private int cardChoice = 0;
+    private int potentialNumberOfCardsPlayed = 16;
 
     //array to store cards played by a player + counter to store place in array
-    private  Card[] playedCards = new Card[16];
-    private int playedCardsArrayLength = -1;
+    private  Card[] playedCards = new Card[potentialNumberOfCardsPlayed];
 
-
-    //array to store cards that a current player has + counter to store place in array
-    private Card[] currentCards = new Card [16];
-   private int currentCardsArrayLength = -1;
+    private int numberOfCardsPlayedThisRound = -1;
 
 
     //getter and setter methods for state
@@ -91,35 +88,12 @@ public class Player {
         this.playedHandmaid = playedHandmaid;
     }
 
-    public int getPlayedCardsArrayLength() {
-        return playedCardsArrayLength;
-    }
+    public int getNumberOfCardsPlayedThisRound() { return numberOfCardsPlayedThisRound; }
 
-    public int getCurrentCardsArrayLength() {
-        return currentCardsArrayLength;
-    }
-
-    public void setPlayedCardsArrayLength(int playedCardsArrayLength) {
-        this.playedCardsArrayLength = playedCardsArrayLength;
-    }
-
-    public void setCurrentCardsArrayLength(int currentCardsArrayLength) {
-        this.currentCardsArrayLength = currentCardsArrayLength;
-    }
-
+    public void setNumberOfCardsPlayedThisRound(int numberOfCardsPlayedThisRound) { this.numberOfCardsPlayedThisRound = numberOfCardsPlayedThisRound; }
 
     public boolean isPlayedCardsArrayEmpty() {
-        if (playedCardsArrayLength == -1) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-
-    public boolean isCurrentCardsEmpty() {
-        if (currentCardsArrayLength == -1) {
+        if (numberOfCardsPlayedThisRound == -1) {
             return true;
         }
         else {
@@ -133,9 +107,9 @@ public class Player {
 
         if(!isPlayedCardsArrayEmpty()) //if the array is not empty then print out below
         {
-            for(int i=0; i<=playedCardsArrayLength; i++)
+            for(int i = 0; i<= numberOfCardsPlayedThisRound; i++)
             {
-                toReturn = toReturn + " " + playedCards[i].getCardName();
+                toReturn = toReturn + " " + playedCards[i].getCardName() + ", ";
                 //toReturn + " " + playedCards[0].getCardName();
             }
 
@@ -144,58 +118,20 @@ public class Player {
         }
         else
         {
-            return  "No cards played in this round";
+            return  "-";
         }
 
     }
 
-    public String getCurrentCards() {
-
-        String toReturn = "";
-
-        if(!isCurrentCardsEmpty()) //if the array is not empty then print out below
-        {
-            for(int i=0; i<=currentCardsArrayLength; i++)
-            {
-                toReturn = toReturn + " " + currentCards[i].getCardName();
-                //toReturn + " " + playedCards[0].getCardName();
-            }
-
-
-            return toReturn;
-        }
-        else
-        {
-            return  "The player has no cards to see, their turn has not passed yet or they are out of this round";
-        }
-
-    }
-
-
-    //method to add a playedCard to the currentCardsArray
-    public void setCurrentCards(Card card)
-    {
-        currentCardsArrayLength++; //increment the arrayLength
-        this.currentCards[currentCardsArrayLength] = card; //insert the card
-    }
-
-
-    //method to add a playedCard to the currentplayedCardsArray
+    //method to add a playedCard to the playedCardsArray
     public void setPlayedCard(Card card)
     {
-        playedCardsArrayLength++; //increment the arrayLength
-        this.playedCards[playedCardsArrayLength] = card; //insert the card
+        numberOfCardsPlayedThisRound++; //increment the arrayLength
+        this.playedCards[numberOfCardsPlayedThisRound] = card; //insert the card
     }
 
-
-
-    public void resetCurrentCardsArray() {
-        currentCardsArrayLength = -1;
-    }
-
-    public void resetPlayedCardsArray() {
+    public void resetPlayedCardsArray()
+    {
+        numberOfCardsPlayedThisRound = -1;
     }
 }
-
-
-

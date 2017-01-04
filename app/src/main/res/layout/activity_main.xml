@@ -83,7 +83,6 @@
             android:layout_marginStart="42dp"
             android:id="@+id/imageButton"
 
-
             android:cropToPadding="true"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
@@ -120,7 +119,9 @@
             android:shadowColor="@color/colorPrimary"
             android:layout_below="@+id/imageButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="52dp" />
+            android:layout_marginTop="52dp"
+            android:padding="10dp"
+            />
 
         <Button
             android:text="Played Cards"
@@ -130,9 +131,10 @@
             android:id="@+id/playedCardsButton"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:background="@android:color/holo_blue_light"
             android:textColorLink="@android:color/holo_orange_light"
-            android:textColor="@android:color/holo_orange_light" />
+            android:textColor="@android:color/holo_orange_light"
+            android:background="@drawable/roundbutton"
+            android:padding="10dp"/>
 
         <Button
             android:text="Current Players Cards"
