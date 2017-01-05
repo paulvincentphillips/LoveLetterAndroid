@@ -17,8 +17,6 @@ public class playerName extends AppCompatActivity {
 
     final String[] namesArray = new String[4];//create a String array which will hold the user names.
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

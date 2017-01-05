@@ -75,31 +75,6 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/fourSevenEight" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/baron"
-            android:layout_marginLeft="42dp"
-            android:layout_marginStart="42dp"
-            android:id="@+id/imageButton"
-
-            android:cropToPadding="true"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/countess"
-            android:id="@+id/imageButton2"
-
-            android:layout_marginLeft="35dp"
-            android:layout_marginStart="35dp"
-            android:layout_below="@+id/threeButtonLayout"
-            android:layout_toRightOf="@+id/imageButton"
-            android:layout_toEndOf="@+id/imageButton" />
-
         <ToggleButton
             android:soundEffectsEnabled="false"
             android:text="Reveal Cards"
@@ -135,6 +110,39 @@
             android:textColor="@android:color/holo_orange_light"
             android:background="@drawable/roundbutton"
             android:padding="10dp"/>
+
+        <Button
+            android:text="Cards Ability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardreferencebutton"
+            android:layout_below="@+id/imageButton"
+            android:layout_alignRight="@+id/playedCardsButton"
+            android:layout_alignEnd="@+id/playedCardsButton" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/baron"
+            android:id="@+id/imageButton"
+
+            android:cropToPadding="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageButton2"
+            android:layout_toStartOf="@+id/imageButton2"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/countess"
+            android:id="@+id/imageButton2"
+
+            android:layout_below="@+id/threeButtonLayout"
+            android:layout_above="@+id/toggleButton"
+            android:layout_alignRight="@+id/toggleButton"
+            android:layout_alignEnd="@+id/toggleButton" />
 
 
     </RelativeLayout>

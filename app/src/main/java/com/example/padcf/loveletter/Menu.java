@@ -16,14 +16,10 @@ import android.widget.ImageButton;
 
 public class Menu extends AppCompatActivity implements View.OnClickListener {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_screen);
-
-
-
         final MediaPlayer buttonSound = MediaPlayer.create(this,R.raw.button);
 
         //Declaring the imagebuttons used on the menu screen-PlayGame, Tutorial
@@ -35,24 +31,21 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         videotutorial.setOnClickListener(this);
     }
 
-
     //By clicking the game button on the Menu screen, it will begin a new game from the MainActivity class.
     @Override
     public void onClick(View view) {
 
         switch (view.getId()) {
             case R.id.play:
-                Intent intent = new Intent(Menu.this, playerName.class);
-                startActivity(intent);
+                Intent playerName = new Intent(Menu.this, playerName.class);
+                startActivity(playerName);
                 break;
 
      //By clicking the tutorial button on the Menu screen, it will redirect to the below youtube tutorial.
             case R.id.tutorial:
-                Intent webintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=5sgbgXsDxfc"));
-                startActivity(webintent);
+                Intent Video = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=5sgbgXsDxfc"));
+                startActivity(Video);
                 break;
-
-
         }
     }
 }
