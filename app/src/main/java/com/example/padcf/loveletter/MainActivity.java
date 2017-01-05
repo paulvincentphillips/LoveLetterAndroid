@@ -103,26 +103,7 @@ public class MainActivity extends AppCompatActivity {
         //this button will show the dialog box for the card's abilities
         Button cardreference = (Button) findViewById(R.id.cardreferencebutton);
 
-        cardreference.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //set up dialog
-                Dialog dialog = new Dialog(MainActivity.this);
-                dialog.setContentView(R.layout.activity_cardreference);
-                //dialog.setTitle("Card Reference");
-                dialog.setCancelable(true);
-                //there are a lot of settings, for dialog, here they are all checked to true!
-
-                //set up image view
-                ImageView img = (ImageView) dialog.findViewById(R.id.cardreferenceimage);
-                img.setImageResource(R.drawable.referencecard2);
-
-                dialog.show();
-            }
-        });
-
-
-
+        
 
         //create button for showing previously played cardss
         Button playedCardsButton = (Button)findViewById(R.id.playedCardsButton);
