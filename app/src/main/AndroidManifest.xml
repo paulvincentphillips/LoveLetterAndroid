@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.light">
         <activity
+            android:screenOrientation="portrait"
             android:name=".Splash"
             android:label="">
             <intent-filter>
@@ -18,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Menu"
             android:label="">
             <intent-filter>
@@ -27,6 +29,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:label="">
             <intent-filter>
@@ -36,26 +39,33 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".EndGame" >
     </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".playerName">
         </activity>
             <activity
+                android:screenOrientation="portrait"
                 android:name=".GuardLayout">
 </activity>
         <activity android:name=".PlayedCardsReal"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.CustomTheme">
         </activity>
 
         <activity android:name=".Baronpop"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.CustomTheme">
         </activity>
 
         <activity android:name=".PriestPop"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.CustomTheme">
         </activity>
         <activity android:name=".KingPop"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.CustomTheme">
         </activity>
     </application>
