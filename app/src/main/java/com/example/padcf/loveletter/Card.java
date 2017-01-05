@@ -7,12 +7,12 @@ package com.example.padcf.loveletter;
  */
 
 public interface Card {
-
+    //state variables
     int getCardValue();
     String getCardAbility();
     String getCardName();
     int getImageId();
 
+    //abstract functions
     int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice);
-
 }
