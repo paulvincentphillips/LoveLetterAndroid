@@ -37,23 +37,33 @@ public class GuardLayout extends Activity {
         priestChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //guardChoice.putInt("Guard choice", 2);
                 returnIntent.putExtra("guardChoice", 2);
                 setResult(Activity.RESULT_OK, returnIntent);
                 //System.out.println("Hello from GuardLayout");
                 finish();       //destroys this activity and returns to main
+
+                guardChoice.putInt("Guard choice", 2);
+
                 Toast.makeText(getApplicationContext()," Priest", Toast.LENGTH_SHORT).show();
+                onBackPressed();     //destroys this activity and returns to main
             }
         });
 
         baronChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //guardChoice.putInt("Guard choice", 3);
                 returnIntent.putExtra("guardChoice", 3);
                 setResult(Activity.RESULT_OK, returnIntent);
                 //System.out.println("Hello from GuardLayout");
                 finish();       //destroys this activity and returns to main
+
+                guardChoice.putInt("Guard choice", 3);
+                onBackPressed();     //destroys this activity and returns to main
+
                 Toast.makeText(getApplicationContext()," Baron", Toast.LENGTH_SHORT).show();
             }
         });

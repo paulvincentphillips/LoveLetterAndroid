@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_current_players_cards"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.padcf.loveletter.CurrentPlayersCards">
+
+    <TextView
+        android:text="Player1's Current Cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pCC1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Player2's Current Cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pCC1"
+        android:layout_alignRight="@+id/pCC1"
+        android:layout_alignEnd="@+id/pCC1"
+        android:layout_marginTop="20dp"
+        android:id="@+id/pCC2" />
+
+    <TextView
+        android:text="Player3's Current Cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pCC2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp"
+        android:id="@+id/pCC3" />
+
+    <TextView
+        android:text="Player4's Current Cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pCC3"
+        android:layout_alignRight="@+id/pCC3"
+        android:layout_alignEnd="@+id/pCC3"
+        android:layout_marginTop="27dp"
+        android:id="@+id/pCC4" />
+</RelativeLayout>
