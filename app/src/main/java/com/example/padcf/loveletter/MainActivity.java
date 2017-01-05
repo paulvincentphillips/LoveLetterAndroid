@@ -1,6 +1,5 @@
 package com.example.padcf.loveletter;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -100,12 +98,6 @@ public class MainActivity extends AppCompatActivity {
         mainDeck.populateDeck(); // populate the deck
 
 
-        //this button will show the dialog box for the card's abilities
-        Button cardreference = (Button) findViewById(R.id.cardreferencebutton);
-
-        
-
-        //create button for showing previously played cardss
         Button playedCardsButton = (Button)findViewById(R.id.playedCardsButton);
         //create the onClick listen to gather information and put into a bundle
         //next start the popUp window activity and pass information for each player to that activity
@@ -130,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
                 final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
                 final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
-
 
                 final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
 
@@ -216,10 +207,7 @@ public class MainActivity extends AppCompatActivity {
             final ImageButton ib = (ImageButton) findViewById(R.id.imageButton);
             final ImageButton ib2 = (ImageButton) findViewById(R.id.imageButton2);
 
-
             final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
-
-
 
             mainButton.setText("Reveal " + playerOrder[turnOrder].getPlayerName() + " 's cards");
             mainButton.setTextOff("Reveal " + playerOrder[turnOrder].getPlayerName() + " 's cards");

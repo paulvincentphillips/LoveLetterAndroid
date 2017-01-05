@@ -36,8 +36,8 @@ public class GuardLayout extends Activity {
             @Override
             public void onClick(View v) {
                 guardChoice.putInt("Guard choice", 2);
+                finish();       //destroys this activity and returns to main
                 Toast.makeText(getApplicationContext()," Priest", Toast.LENGTH_SHORT).show();
-                onBackPressed();     //destroys this activity and returns to main
             }
         });
 
@@ -45,7 +45,7 @@ public class GuardLayout extends Activity {
             @Override
             public void onClick(View v) {
                 guardChoice.putInt("Guard choice", 3);
-                onBackPressed();     //destroys this activity and returns to main
+                finish();       //destroys this activity and returns to main
                 Toast.makeText(getApplicationContext()," Baron", Toast.LENGTH_SHORT).show();
             }
         });
