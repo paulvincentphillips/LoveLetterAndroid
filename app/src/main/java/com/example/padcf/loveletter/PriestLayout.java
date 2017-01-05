@@ -20,22 +20,22 @@ public class PriestLayout extends Activity {
 
         setContentView(R.layout.priestlayout); //need to set up a view
 
-        //create four textViews to display the information
+        //create player textView to display the player's Cards
         TextView one = (TextView) findViewById(R.id.chosenplayercards);
 
         //catch the bundle
         Bundle priestBundle = this.getIntent().getExtras();
 
-
-        //sort out player played cards from the bundle here,
+        //sort out player's current cards from the bundle here,
         String chosenPlayerCards = priestBundle.getString("stringCurrentPlayer");
 
         //sort out player names from the bundle here,
         String currentPlayerName = priestBundle.getString("nameCurrentPlayer");
-
+        String chosenPlayerName = priestBundle.getString("chosenPlayerName");
 
         //set the text on the textview to show the player name and current cards
-        one.setText(currentPlayerName + "'s current cards: " + chosenPlayerCards);
+       // one.setText(currentPlayerName + "'s current cards: " + currentPlayerPlayedCard);
+        one.setText(chosenPlayerName + "'s current cards: " + chosenPlayerCards);
     }
 }
 
