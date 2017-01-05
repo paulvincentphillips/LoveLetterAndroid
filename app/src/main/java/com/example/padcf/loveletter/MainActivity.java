@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //set up image view
                 ImageView img = (ImageView) dialog.findViewById(R.id.cardreferenceimage);
-                img.setImageResource(R.drawable.referencecard);
+                img.setImageResource(R.drawable.referencecard2);
 
                 dialog.show();
             }
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //create button for showing previously played cards
+        //create button for showing previously played cardss
         Button playedCardsButton = (Button)findViewById(R.id.playedCardsButton);
         //create the onClick listen to gather information and put into a bundle
         //next start the popUp window activity and pass information for each player to that activity
