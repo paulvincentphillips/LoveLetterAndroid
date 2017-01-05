@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //set up image view
                 ImageView img = (ImageView) dialog.findViewById(R.id.cardreferenceimage);
-                img.setImageResource(R.drawable.referencecard2);
+                img.setImageResource(R.drawable.referencecard);
 
                 dialog.show();
             }

@@ -19,7 +19,9 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/nameBox"
-        android:hint="enter player 1 name" />
+        android:hint="enter player 1 name"
+        android:textColor="?android:attr/textColorPrimaryInverseDisableOnly"
+        android:textColorHint="@android:color/black" />
 
     <EditText
         android:visibility="invisible"
@@ -30,7 +32,8 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/nameBox1"
-        android:hint="enter player 2 name" />
+        android:hint="enter player 2 name"
+        android:textColorHint="@android:color/black" />
 
     <EditText
         android:visibility="invisible"
@@ -41,7 +44,8 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/nameBox2"
-        android:hint="enter player 3 name" />
+        android:hint="enter player 3 name"
+        android:textColorHint="@android:color/black" />
 
     <EditText
 
@@ -51,8 +55,11 @@
         android:layout_height="wrap_content"
         android:inputType="textCapSentences"
         android:ems="10"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:id="@+id/nameBox3"
-        android:hint="enter player 4 name" />
+        android:hint="enter player 4 name"
+        android:textColor="@android:color/black"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/nameBox"
+        android:layout_alignStart="@+id/nameBox"
+        android:textColorHint="@android:color/black" />
 </RelativeLayout>

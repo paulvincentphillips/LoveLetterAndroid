@@ -116,36 +116,36 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/countess"
             android:id="@+id/imageButton2"
-
+            android:background="#00000000"
             android:layout_below="@+id/threeButtonLayout"
             android:layout_toRightOf="@+id/playedCardsButton"
             android:layout_toEndOf="@+id/playedCardsButton"
             android:layout_marginLeft="11dp"
             android:layout_marginStart="11dp" />
 
-        <Button
-            android:text="Card Reference"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cardreferencebutton"
-            android:background="@android:color/holo_green_dark"
-            android:textColor="@android:color/holo_orange_light"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/imageButton2"
-            android:layout_toStartOf="@+id/imageButton2" />
-
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/baron"
             android:id="@+id/imageButton"
-
+            android:background="#00000000"
             android:cropToPadding="true"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/playedCardsButton"
             android:layout_toStartOf="@+id/playedCardsButton"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp" />
+
+        <Button
+            android:text="Reference Card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardreferencebutton"
+            android:background="@android:color/holo_green_dark"
+            android:textColor="@android:color/holo_orange_light"
+            android:layout_marginBottom="72dp"
+            android:layout_alignBottom="@+id/toggleButton"
+            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>
