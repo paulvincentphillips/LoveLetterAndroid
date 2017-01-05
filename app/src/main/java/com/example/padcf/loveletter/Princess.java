@@ -35,6 +35,14 @@ public class Princess implements Card {
     }
     @Override
 
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    @Override
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice, int guardChoice) {
+
+
     //this is the 'special' overridden function which caters for the unique functionality for each card.
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
         System.out.println("You have discarded a Princess \nYou are out of the round!");
