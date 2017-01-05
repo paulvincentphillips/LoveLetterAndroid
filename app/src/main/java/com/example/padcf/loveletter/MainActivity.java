@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         mainDeck.populateDeck(); // populate the deck
 
-        //create button for showing previously played cards
+
         Button playedCardsButton = (Button)findViewById(R.id.playedCardsButton);
         //create the onClick listen to gather information and put into a bundle
         //next start the popUp window activity and pass information for each player to that activity
