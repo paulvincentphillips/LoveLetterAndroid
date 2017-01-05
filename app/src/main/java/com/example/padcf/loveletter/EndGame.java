@@ -28,7 +28,6 @@ EndGame extends AppCompatActivity {
 
         Bundle bundlePlayerScoresNames = this.getIntent().getExtras();
 
-
         int player1Score = bundlePlayerScoresNames.getInt("Player 1 Score");
         int player2Score = bundlePlayerScoresNames.getInt("Player 2 Score");
         int player3Score = bundlePlayerScoresNames.getInt("Player 3 Score");

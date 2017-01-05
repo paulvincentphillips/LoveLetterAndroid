@@ -6,6 +6,7 @@ package com.example.padcf.loveletter;
  * Created by padcf, paulvincentphillips & bradyc12 on 01/11/16.
  */
 
+import java.util.Scanner;
 
 public class King implements Card {
     private int cardValue = 6;
@@ -13,10 +14,7 @@ public class King implements Card {
     private String cardAbility = "Trade hands with another player of your choice.";
     private int imageId = R.drawable.king;
 
-    @Override
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
-    }
+    Scanner sc = new Scanner(System.in);
 
     @Override
     public int getImageId() {
@@ -39,7 +37,7 @@ public class King implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice, int guardChoice) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
         //player chose player 1(tag 1)
         if(tag == 1){

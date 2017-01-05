@@ -14,7 +14,10 @@ public class PlayedCardsReal extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.playedcardsreal);
+
 
         //you want to get the size of the phone screen here, then set the pop up to be a percentage of that size
         DisplayMetrics dm = new DisplayMetrics();

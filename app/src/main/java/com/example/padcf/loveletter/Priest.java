@@ -35,12 +35,7 @@ public class Priest implements Card {
     }
 
     @Override
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
-    }
-
-    @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice, int guardChoice) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
 
         //java rewrite follows
 
