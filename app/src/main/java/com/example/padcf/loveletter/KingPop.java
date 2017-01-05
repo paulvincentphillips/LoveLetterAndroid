@@ -25,10 +25,10 @@ public class KingPop extends Activity {
 
         //below we are catching all necessary information form the main activity intent and storing it to use in this activity.
         Bundle kingInfo = this.getIntent().getExtras();
-        //String playerName = kingInfo.getString("playerName");
+        String playerName = kingInfo.getString("playerName");
         String targetName = kingInfo.getString("targetName");
 
-        //TextView kingInfoText = (TextView) findViewById(R.id.kingInfo);
-        //kingInfoText.setText("You have traded cards with " + targetName);
+        TextView kingInfoText = (TextView) findViewById(R.id.kingInfo);
+        kingInfoText.setText("You have traded cards with " + targetName);
     }
 }
