@@ -37,7 +37,12 @@ public class Countess implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    @Override
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice, int guardChoice) {
 
         System.out.println(currentPlayer.getPlayerName() + " has discarded a Countess");
         return length;

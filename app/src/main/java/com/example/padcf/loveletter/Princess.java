@@ -9,36 +9,42 @@ package com.example.padcf.loveletter;
  */
 
 public class Princess implements Card {
-
-    //state
     private int cardValue = 8;
     private String cardName = "princess";
     private String cardAbility = "If you discard this card, you are out of the round";
-    private int imageId = R.drawable.princess; //this is how we reference an image for each card
+    private int imageId = R.drawable.princess;
 
-    //getter and sett methods
     @Override
     public int getImageId() {
         return imageId;
     }
+
     @Override
     public int getCardValue() {
         return this.cardValue;
     }
+
     @Override
     public String getCardAbility() {
         return this.cardAbility;
     }
+
     @Override
     public String getCardName() {
         return this.cardName;
     }
-    @Override
 
-    //this is the 'special' overridden function which caters for the unique functionality for each card.
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
+    @Override
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    @Override
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice, int guardChoice) {
+
         System.out.println("You have discarded a Princess \nYou are out of the round!");
         currentPlayer.setPlaying(false);
         return length;
     }
 }
+
