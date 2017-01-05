@@ -8,12 +8,13 @@ package com.example.padcf.loveletter;
 
 public class Guard implements Card {
 
+    //state and variables for the Guard
     private int cardValue = 1;
     private String cardName = "guard";
     private String cardAbility = "Name a non-Guard card and choose another player. \nIf that player has that card, he or she is out of the round.";
     private int imageId = R.drawable.guard;
 
-
+    //getter and setter methods
     @Override
     public int getImageId() {
         return imageId;
@@ -36,8 +37,6 @@ public class Guard implements Card {
 
     @Override
     public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
-
-
 
         System.out.println("You've played a guard");
 

@@ -73,5 +73,4 @@ public class Deck {
         deck[14] = new Countess();
         deck[15] = new Princess();
     }
-
 }

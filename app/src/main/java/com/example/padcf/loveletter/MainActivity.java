@@ -318,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
         //*** BEGIN OF CARD DISPLAYS ***
 
         //displays for guard
-        if(cardChosenId == 1) {         //chose the guard whether its card 1 or card2 on the mainActivity screen
+        if(cardChosenId == 1) {  //chose the guard whether its card 1 or card2 on the mainActivity screen
 
             //bring in the relative layout and make it visible
             RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
@@ -342,6 +342,7 @@ public class MainActivity extends AppCompatActivity {
             button2.setEnabled(true);
             button3.setEnabled(true);
 
+            //grey out buttons if the player is no longer in the round
             if (playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) {
                 button1.setEnabled(false);
             }
@@ -446,7 +447,6 @@ public class MainActivity extends AppCompatActivity {
                     endTurn();
                     Intent intent = new Intent(MainActivity.this, GuardLayout.class);
                     startActivity(intent);
-
                 }
             });
 
@@ -497,6 +497,17 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    final Intent myIntent = new Intent(MainActivity.this, PriestPop.class);
+
+                    Bundle priestInfo = new Bundle();
+
+                    //bundle target player's name for use in pop-up activity
+                    priestInfo.putString("targetName", playerOrder[turnOrder].getPlayerName());
+                    //bundle target player's card for use in pop-up activity
+                    priestInfo.putString("targetCard", playerOrder[turnOrder2].getCard1().getCardName());
+                    //pass the extra into the intent
+                    myIntent.putExtras(priestInfo);
+
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
@@ -510,8 +521,8 @@ public class MainActivity extends AppCompatActivity {
                         //add the played card to the array of played cards in the Player Class
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
-                    //mainButton.setChecked(false); //set toggle button back when a player has made their choice
-
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    startActivity(myIntent);
                     endTurn();
                 }
             });
@@ -520,6 +531,15 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    final Intent myIntent = new Intent(MainActivity.this, PriestPop.class);
+                    Bundle priestInfo = new Bundle();
+
+                    //bundle target player's name for use in pop-up activity
+                    priestInfo.putString("targetName", playerOrder[turnOrder].getPlayerName());
+                    //bundle target player's card for use in pop-up activity
+                    priestInfo.putString("targetCard", playerOrder[turnOrder3].getCard1().getCardName());
+                    //pass the extra into the intent
+                    myIntent.putExtras(priestInfo);
 
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
@@ -535,7 +555,7 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
-
+                    startActivity(myIntent);
                     endTurn();
                 }
             });
@@ -544,6 +564,16 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    final Intent myIntent = new Intent(MainActivity.this, PriestPop.class);
+                    Bundle priestInfo = new Bundle();
+
+                    //bundle target player's name for use in pop-up activity
+                    priestInfo.putString("targetName", playerOrder[turnOrder].getPlayerName());
+                    //bundle target player's card for use in pop-up activity
+                    priestInfo.putString("targetCard", playerOrder[turnOrder4].getCard1().getCardName());
+                    //pass the extra into the intent
+                    myIntent.putExtras(priestInfo);
+
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
@@ -558,6 +588,7 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    startActivity(myIntent);
                     endTurn();
                 }
             });
@@ -641,7 +672,7 @@ public class MainActivity extends AppCompatActivity {
                         //add the played card to the array of played cards in the Player Class
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
-                    //mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
 
 
 
@@ -743,7 +774,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        //Display for the Priest goes here
+        //Display for the King goes here
         if(cardId == 6)
         {
 
@@ -786,6 +817,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    Intent myIntent = new Intent(MainActivity.this, KingPop.class);
+                    Bundle kingInfo = new Bundle();
+
+                    //bundle player and target player's name
+                    kingInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
+                    kingInfo.putString("targetName", playerOrder[turnOrder2].getPlayerName());
+                    myIntent.putExtras(kingInfo);
+
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
@@ -799,8 +838,8 @@ public class MainActivity extends AppCompatActivity {
                         //add the played card to the array of played cards in the Player Class
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
-                    //mainButton.setChecked(false); //set toggle button back when a player has made their choice
-
+                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    startActivity(myIntent);
                     endTurn();
                 }
             });
@@ -809,6 +848,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    Intent myIntent = new Intent(MainActivity.this, KingPop.class);
+                    Bundle kingInfo = new Bundle();
+
+                    //bundle player and target player's name
+                    kingInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
+                    kingInfo.putString("targetName", playerOrder[turnOrder3].getPlayerName());
+                    myIntent.putExtras(kingInfo);
+
 
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
@@ -824,6 +871,7 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    startActivity(myIntent);
                     endTurn();
                 }
             });
@@ -832,6 +880,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    Intent myIntent = new Intent(MainActivity.this, KingPop.class);
+                    Bundle kingInfo = new Bundle();
+
+                    //bundle player and target player's name
+                    kingInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
+                    kingInfo.putString("targetName", playerOrder[turnOrder4].getPlayerName());
+                    myIntent.putExtras(kingInfo);
+
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
@@ -846,6 +902,7 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    startActivity(myIntent);
                     endTurn();
                 }
             });
