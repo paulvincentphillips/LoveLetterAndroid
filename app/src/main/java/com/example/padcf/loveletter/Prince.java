@@ -6,8 +6,6 @@ package com.example.padcf.loveletter;
  * Created by padcf, paulvincentphillips & bradyc12 on 01/11/16.
  */
 
-import java.util.Scanner;
-
 
 
 public class Prince implements Card{
@@ -16,13 +14,15 @@ public class Prince implements Card{
     private String cardAbility = "Choose any player (including yourself) to discard his or her hand and draw a new card.";
     private int imageId = R.drawable.prince;
 
+    @Override
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
 
+    @Override
     public int getImageId() {
         return imageId;
     }
-
-    Scanner sc = new Scanner(System.in);
-
 
     @Override
     public int getCardValue() {
@@ -40,7 +40,7 @@ public class Prince implements Card{
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice, int guardChoice) {
 
         //we check to see if deckLength is 0 because:
         //if a prince is played it forces a player to discard their card and draw a new one

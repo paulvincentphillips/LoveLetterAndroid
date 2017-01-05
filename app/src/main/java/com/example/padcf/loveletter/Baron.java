@@ -1,9 +1,9 @@
 package com.example.padcf.loveletter;
 
 /**
-*the baron's function is to compare your card with your chosen target player's card
-*the highest card wins and the loser is eliminated
-*in case of draw nothing happens
+ *the baron's function is to compare your card with your chosen target player's card
+ *the highest card wins and the loser is eliminated
+ *in case of draw nothing happens
  * Created by padcf, paulvincentphillips & bradyc12 on 01/11/16.
  */
 
@@ -35,8 +35,12 @@ public class Baron implements Card {
     }
 
     @Override
-    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice) {
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
 
+    @Override
+    public int specialFunction(Player currentPlayer, Player targetPlayer1, Player targetPlayer2, Player targetPlayer3, int length, Card[] deck, int tag, int cardChoice, int guardChoice) {
 
 
         if(cardChoice == 1) {
