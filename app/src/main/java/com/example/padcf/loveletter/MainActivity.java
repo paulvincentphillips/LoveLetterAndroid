@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     //stores which card the user has pressed
     int cardChoice = 0;
     //store the uniqueID of the card chosen
-    int cardChosenId= 0;
+    int cardChosenId = 0;
 
     //target card concerning guard card
     int guardChoice = 0;
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         mainDeck.populateDeck(); // populate the deck
 
         //create button for showing previously played cards
-        Button playedCardsButton = (Button)findViewById(R.id.playedCardsButton);
+        Button playedCardsButton = (Button) findViewById(R.id.playedCardsButton);
         //create the onClick listen to gather information and put into a bundle
         //next start the popUp window activity and pass information for each player to that activity
         playedCardsButton.setOnClickListener(new View.OnClickListener() {
@@ -127,8 +127,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //beginRound method that does the things required for each round
-    private void beginRound()
-    {
+    private void beginRound() {
         //card shuffle sound which happens at the beginning of each round
         final MediaPlayer cardShuffleSound = MediaPlayer.create(this, R.raw.cardfan);
         cardShuffleSound.start();
@@ -178,8 +177,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //this is the beginTurn method which does stuff for each playerTurn
-    private void beginTurn()
-    {
+    private void beginTurn() {
 
         //card flip sound which will be used every time a player turns over their cards
         final MediaPlayer cardFlipSound = MediaPlayer.create(this, R.raw.cardflip);
@@ -196,16 +194,14 @@ public class MainActivity extends AppCompatActivity {
             deckLength = dealCard2(playerOrder[turnOrder], deckLength, deck1);
 
             //reset king and prince from black and white back to color
-            if(playerOrder[turnOrder].getCard1().getCardValue() == 6){
+            if (playerOrder[turnOrder].getCard1().getCardValue() == 6) {
                 playerOrder[turnOrder].getCard1().setImageId(R.drawable.king);
-            }
-            else if(playerOrder[turnOrder].getCard2().getCardValue() == 6){
+            } else if (playerOrder[turnOrder].getCard2().getCardValue() == 6) {
                 playerOrder[turnOrder].getCard2().setImageId(R.drawable.king);
             }
-            if(playerOrder[turnOrder].getCard1().getCardValue() == 5){
+            if (playerOrder[turnOrder].getCard1().getCardValue() == 5) {
                 playerOrder[turnOrder].getCard1().setImageId(R.drawable.prince);
-            }
-            else if(playerOrder[turnOrder].getCard2().getCardValue() == 5){
+            } else if (playerOrder[turnOrder].getCard2().getCardValue() == 5) {
                 playerOrder[turnOrder].getCard2().setImageId(R.drawable.prince);
             }
 
@@ -290,11 +286,11 @@ public class MainActivity extends AppCompatActivity {
 
             if ((playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) &&
                     (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) &&
-                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())){
+                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())) {
                 fourSevenEight.setVisibility(View.VISIBLE);
                 fourSevenEight.setText("No Effect");
 
-            }else{
+            } else {
                 fourSevenEight.setVisibility(View.INVISIBLE);
             }
 
@@ -466,8 +462,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Displays for Priest here
-        if(cardId == 2)
-        {
+        if (cardId == 2) {
 
             playerOrder[turnOrder].setPlayedHandmaid(false);
 
@@ -479,11 +474,11 @@ public class MainActivity extends AppCompatActivity {
 
             if ((playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) &&
                     (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) &&
-                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())){
+                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())) {
                 fourSevenEight.setVisibility(View.VISIBLE);
                 fourSevenEight.setText("No Effect");
 
-            }else{
+            } else {
                 fourSevenEight.setVisibility(View.INVISIBLE);
             }
 
@@ -615,8 +610,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Baron
-        if(cardId == 3)
-        {
+        if (cardId == 3) {
 
             playerOrder[turnOrder].setPlayedHandmaid(false);
 
@@ -628,11 +622,11 @@ public class MainActivity extends AppCompatActivity {
 
             if ((playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) &&
                     (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) &&
-                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())){
+                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())) {
                 fourSevenEight.setVisibility(View.VISIBLE);
                 fourSevenEight.setText("No Effect");
 
-            }else{
+            } else {
                 fourSevenEight.setVisibility(View.INVISIBLE);
             }
 
@@ -701,9 +695,6 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
-
-
-
 
 
                     startActivity(myIntent);
@@ -803,8 +794,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Display for the King goes here
-        if(cardId == 6)
-        {
+        if (cardId == 6) {
 
             playerOrder[turnOrder].setPlayedHandmaid(false);
 
@@ -816,11 +806,11 @@ public class MainActivity extends AppCompatActivity {
 
             if ((playerOrder[turnOrder2].isPlayedHandmaid() || !playerOrder[turnOrder2].getIsPlaying()) &&
                     (playerOrder[turnOrder3].isPlayedHandmaid() || !playerOrder[turnOrder3].getIsPlaying()) &&
-                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())){
+                    (playerOrder[turnOrder4].isPlayedHandmaid() || !playerOrder[turnOrder4].getIsPlaying())) {
                 fourSevenEight.setVisibility(View.VISIBLE);
                 fourSevenEight.setText("No Effect");
 
-            }else{
+            } else {
                 fourSevenEight.setVisibility(View.INVISIBLE);
             }
 
@@ -1114,11 +1104,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     //we will need an end round function to check and update stuff at the end of every round
-    private void endTurn()
-    {
-        RelativeLayout relLayout = (RelativeLayout)findViewById(R.id.threeButtonLayout);
+    private void endTurn() {
+        RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
         relLayout.setVisibility(View.INVISIBLE);
 
         //check to see if 3 players are knocked out
@@ -1273,7 +1261,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void endGame(){
+    private void endGame() {
         //send the following information to EndGame intent
         //this will simple bring up an intent to display who won the game
         Bundle playerScoresNames = new Bundle();
@@ -1293,8 +1281,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //deal out cards
-    public static int dealCards(Player pOne, Player pTwo, Player pThree, Player pFour, int deckLength, Card[] deck)
-    {
+    public static int dealCards(Player pOne, Player pTwo, Player pThree, Player pFour, int deckLength, Card[] deck) {
         //set a player's card to current deckLength in the array then decrement deckLength, simulating
         //a deck decreasing in size
         pOne.setCard1(deck[deckLength]);
@@ -1309,30 +1296,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //random player method to randomise player order
-    public static Player [] randomPlayer(Player[] array, Player pOne, Player pTwo, Player pThree, Player pFour){
+    public static Player[] randomPlayer(Player[] array, Player pOne, Player pTwo, Player pThree, Player pFour) {
         //random number between 1 + 4
-        int random =(int)(Math.random()*4+1);
+        int random = (int) (Math.random() * 4 + 1);
 
         //if the random number is 1, set player1 to first player then 2nd player as player 2 etc.
-        if(random == 1){
+        if (random == 1) {
             array[0] = pOne;
             array[1] = pTwo;
             array[2] = pThree;
             array[3] = pFour;
         }
         ////if the random number is 2, set player2 to first player then 3rd player as player 3 etc.
-        else if(random == 2){
+        else if (random == 2) {
             array[0] = pTwo;
             array[1] = pThree;
             array[2] = pFour;
             array[3] = pOne;
-        }
-        else if(random == 3){
+        } else if (random == 3) {
             array[0] = pThree;
             array[1] = pFour;
             array[2] = pOne;
             array[3] = pTwo;
-        }else{
+        } else {
             array[0] = pFour;
             array[1] = pOne;
             array[2] = pTwo;
@@ -1342,12 +1328,12 @@ public class MainActivity extends AppCompatActivity {
         return array;
     }
 
-    public void toastWinner(Player winner){
+    public void toastWinner(Player winner) {
         Toast.makeText(this, winner.getPlayerName() + " has won the round!", Toast.LENGTH_SHORT).show();
     }
 
     //a method to
-    public void nextTurn(){
+    public void nextTurn() {
         //next player
         if (turnOrder == 3) {
             turnOrder = 0;
@@ -1380,29 +1366,27 @@ public class MainActivity extends AppCompatActivity {
     //this will change the turnorder variables depending on who won the last round
     //we do this by setting up a for loop and a variable x
     //we then loop through the player array
-    public void winnerTurn(Player winner, Player [] playerArray){
-        for(int x = 0; x < playerArray.length; x++) {
+    public void winnerTurn(Player winner, Player[] playerArray) {
+        for (int x = 0; x < playerArray.length; x++) {
             //if the winner's name is equal to the name we are currently accessing in the player array
-            if(winner.getPlayerName().equals(playerArray[x].getPlayerName())){
+            if (winner.getPlayerName().equals(playerArray[x].getPlayerName())) {
                 //turnOrder = x ie. turnOrder is the same as the slot the winning player's name is in the player array
                 turnOrder = x;
                 //if the player is in the player array 0 slot then we set everyone else's turnOrder variables
                 //in relation to his position
-                if(turnOrder == 0){
+                if (turnOrder == 0) {
                     turnOrder2 = 1;
                     turnOrder3 = 2;
                     turnOrder4 = 3;
-                }
-                else if(turnOrder==1){
+                } else if (turnOrder == 1) {
                     turnOrder2 = 2;
                     turnOrder3 = 3;
                     turnOrder4 = 0;
-                }
-                else if(turnOrder==2){
+                } else if (turnOrder == 2) {
                     turnOrder2 = 3;
                     turnOrder3 = 0;
                     turnOrder4 = 1;
-                }else{
+                } else {
                     turnOrder2 = 0;
                     turnOrder3 = 1;
                     turnOrder4 = 2;
@@ -1415,8 +1399,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
-                guardChoice=data.getIntExtra("guardChoice", 1);
+            if (resultCode == Activity.RESULT_OK) {
+                guardChoice = data.getIntExtra("guardChoice", 1);
             }
             /*if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
@@ -1425,8 +1409,7 @@ public class MainActivity extends AppCompatActivity {
     }//onActivityResult
 
     //this method let's you do stuff when you click on a button
-    public void addListnerOnButton(View ib, View ib2)
-    {
+    public void addListnerOnButton(View ib, View ib2) {
         //here we decide what happens when you click on either image. each image is passed in as a formal parameter, ib or ib2
         ib.setOnClickListener(new View.OnClickListener() {
                                   @Override
@@ -1441,18 +1424,16 @@ public class MainActivity extends AppCompatActivity {
         );
 
         ib2.setOnClickListener(new View.OnClickListener() {
-                                                           @Override
-                                                           public void onClick(View v) {
-                                                               cardChoice = 2;
-                                                               cardChosenId = playerOrder[turnOrder].getCard2().getCardValue();
-                                                               RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
-                                                               display(cardChosenId); //pass in the chosenCardID here, because it needs to then be passed to display() which in turn will filter the content to display
-                                                               //relLayout.setVisibility(View.VISIBLE);
-                                                           }
-                                                       }
+                                   @Override
+                                   public void onClick(View v) {
+                                       cardChoice = 2;
+                                       cardChosenId = playerOrder[turnOrder].getCard2().getCardValue();
+                                       RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.threeButtonLayout);
+                                       display(cardChosenId); //pass in the chosenCardID here, because it needs to then be passed to display() which in turn will filter the content to display
+                                       //relLayout.setVisibility(View.VISIBLE);
+                                   }
+                               }
         );
-
-
 
 
     }
@@ -1462,10 +1443,10 @@ public class MainActivity extends AppCompatActivity {
     //the logic below simply tells the device which card to overwrite in the player's hand
     //ie. if the player played card1 then replace card1 with the new card
     //if player played card2 then replace card2 with new card
-    public static int dealCard2(Player player, int deckLength, Card[] deck){
-        if(player.getCardChoice() == 1){
+    public static int dealCard2(Player player, int deckLength, Card[] deck) {
+        if (player.getCardChoice() == 1) {
             player.setCard1(deck[deckLength]);
-        }else{
+        } else {
             player.setCard2(deck[deckLength]);
         }
         deckLength--;
@@ -1476,31 +1457,29 @@ public class MainActivity extends AppCompatActivity {
     //if you hold either the king and countess or the prince and countess you are unable to choose any card but the countess
     //This method will change the non-countess card to black and white and make the card unclickable
 
-   /* public static void countess(Player player, ImageButton ib1, ImageButton ib2){
+    public static void countess(Player player, ImageButton ib1, ImageButton ib2) {
 
-        if(player.getCard1().getCardValue() == 7 && player.getCard2().getCardValue() == 6){
+        if (player.getCard1().getCardValue() == 7 && player.getCard2().getCardValue() == 6) {
             player.getCard2().setImageId(R.drawable.kingcountess);
             //set card2 to unclickable
             ib2.setClickable(false);
             System.out.println("false");
-        }
-        else if(player.getCard1().getCardValue() == 7 && player.getCard2().getCardValue() == 5) {
+        } else if (player.getCard1().getCardValue() == 7 && player.getCard2().getCardValue() == 5) {
             player.getCard2().setImageId(R.drawable.princecountess);
             //set card2 to unclickable
             ib2.setClickable(false);
             System.out.println("false");
-        }
-        else if(player.getCard2().getCardValue() == 7 && player.getCard1().getCardValue() == 6){
+        } else if (player.getCard2().getCardValue() == 7 && player.getCard1().getCardValue() == 6) {
             player.getCard1().setImageId(R.drawable.kingcountess);
             //set card1 to unclickable
             ib1.setClickable(false);
             System.out.println("false");
-        }
-        else if(player.getCard2().getCardValue() == 7 && player.getCard1().getCardValue() == 5){
+        } else if (player.getCard2().getCardValue() == 7 && player.getCard1().getCardValue() == 5) {
             player.getCard1().setImageId(R.drawable.princecountess);
             //set card1 to unclickable
             ib1.setClickable(false);
             System.out.println("false");
-        }*/
+        }
     }
+}
 
