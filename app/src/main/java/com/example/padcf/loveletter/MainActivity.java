@@ -543,7 +543,7 @@ public class MainActivity extends AppCompatActivity {
                     Bundle priestInfo = new Bundle();
 
                     //bundle target player's name for use in pop-up activity
-                    priestInfo.putString("targetName", playerOrder[turnOrder].getPlayerName());
+                    priestInfo.putString("targetName", playerOrder[turnOrder2].getPlayerName());
                     //bundle target player's card for use in pop-up activity
                     priestInfo.putString("targetCard", playerOrder[turnOrder2].getCard1().getCardName());
                     //pass the extra into the intent
@@ -576,7 +576,7 @@ public class MainActivity extends AppCompatActivity {
                     Bundle priestInfo = new Bundle();
 
                     //bundle target player's name for use in pop-up activity
-                    priestInfo.putString("targetName", playerOrder[turnOrder].getPlayerName());
+                    priestInfo.putString("targetName", playerOrder[turnOrder3].getPlayerName());
                     //bundle target player's card for use in pop-up activity
                     priestInfo.putString("targetCard", playerOrder[turnOrder3].getCard1().getCardName());
                     //pass the extra into the intent
@@ -609,7 +609,7 @@ public class MainActivity extends AppCompatActivity {
                     Bundle priestInfo = new Bundle();
 
                     //bundle target player's name for use in pop-up activity
-                    priestInfo.putString("targetName", playerOrder[turnOrder].getPlayerName());
+                    priestInfo.putString("targetName", playerOrder[turnOrder4].getPlayerName());
                     //bundle target player's card for use in pop-up activity
                     priestInfo.putString("targetCard", playerOrder[turnOrder4].getCard1().getCardName());
                     //pass the extra into the intent
