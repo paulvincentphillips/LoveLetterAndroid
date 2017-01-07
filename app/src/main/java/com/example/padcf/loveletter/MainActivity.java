@@ -755,6 +755,20 @@ public class MainActivity extends AppCompatActivity {
                     baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder3].getCard1().getCardName());
                     myIntent.putExtras(baronInfo);//put the bundle with the intent
 
+                    @Override
+                    public void onClick(View v) {
+
+                        final Intent myIntent = new Intent(MainActivity.this, PriestPop.class);
+
+                        Bundle priestInfo = new Bundle();
+
+                        //bundle target player's name for use in pop-up activity
+                        priestInfo.putString("targetName", playerOrder[turnOrder].getPlayerName());
+                        //bundle target player's card for use in pop-up activity
+                        priestInfo.putString("targetCard", playerOrder[turnOrder2].getCard1().getCardName());
+                        //pass the extra into the intent
+                        myIntent.putExtras(priestInfo);
+                        
                     if (cardChoice == 1) {
                         deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
                                 playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
