@@ -696,14 +696,14 @@ public class MainActivity extends AppCompatActivity {
                     baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
                     baronInfo.putString("targetName", playerOrder[turnOrder2].getPlayerName());
                     //bundle player's card ability and target player's ability
-                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard2().getCardValue());
                     baronInfo.putInt("targetCardAbility", playerOrder[turnOrder2].getCard1().getCardValue());
 
                     //bundle player and target player's card images
-                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard1().getImageId());
+                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
                     baronInfo.putInt("targetCardImage", playerOrder[turnOrder2].getCard1().getImageId());
                     //bundle player and target player's card names
-                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard2().getCardName());
                     baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder2].getCard1().getCardName());
                     myIntent.putExtras(baronInfo);//put the bundle with the intent
 
@@ -743,14 +743,14 @@ public class MainActivity extends AppCompatActivity {
                     baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
                     baronInfo.putString("targetName", playerOrder[turnOrder3].getPlayerName());
                     //bundle player's card ability and target player's ability
-                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard2().getCardValue());
                     baronInfo.putInt("targetCardAbility", playerOrder[turnOrder3].getCard1().getCardValue());
 
                     //bundle player and target player's card images
-                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard1().getImageId());
+                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
                     baronInfo.putInt("targetCardImage", playerOrder[turnOrder3].getCard1().getImageId());
                     //bundle player and target player's card names
-                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard2().getCardName());
                     baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder3].getCard1().getCardName());
                     myIntent.putExtras(baronInfo);//put the bundle with the intent
 
@@ -788,14 +788,14 @@ public class MainActivity extends AppCompatActivity {
                     baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
                     baronInfo.putString("targetName", playerOrder[turnOrder4].getPlayerName());
                     //bundle player's card ability and target player's ability
-                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard2().getCardValue());
                     baronInfo.putInt("targetCardAbility", playerOrder[turnOrder4].getCard1().getCardValue());
 
                     //bundle player and target player's card images
-                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard1().getImageId());
+                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
                     baronInfo.putInt("targetCardImage", playerOrder[turnOrder4].getCard1().getImageId());
                     //bundle player and target player's card names
-                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard2().getCardName());
                     baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder4].getCard1().getCardName());
                     myIntent.putExtras(baronInfo);//put the bundle with the intent
 
@@ -997,6 +997,18 @@ public class MainActivity extends AppCompatActivity {
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
                     fourSevenEight.setVisibility(View.INVISIBLE);
+                    if (cardChosenId == 4) {
+                        Toast.makeText(getApplicationContext(), "You are now immune and cannot be targeted for one round." + playerOrder[turnOrder2].getPlayerName() + " to discard his hand and pick up a new card.", Toast.LENGTH_SHORT).show();
+                        System.out.print("HANDMAID");
+                    } else if (cardChosenId == 7) {
+                        Toast.makeText(getApplicationContext(), "You have played the countess", Toast.LENGTH_SHORT).show();
+                        System.out.print("countess");
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "You have played the Princess. You are out of this round.", Toast.LENGTH_SHORT).show();
+                        System.out.print("princess");
+
+                    }
                     endTurn();
                 }
             });
@@ -1052,6 +1064,8 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    Toast.makeText(getApplicationContext(), "You have forced " + playerOrder[turnOrder2].getPlayerName() + " to discard his hand and pick up a new card.", Toast.LENGTH_SHORT).show();
+                    System.out.print("PRINCE");
                     endTurn();
                 }
             });
@@ -1073,6 +1087,8 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    Toast.makeText(getApplicationContext(), "You have forced " + playerOrder[turnOrder3].getPlayerName() + " to discard his hand and pick up a new card.", Toast.LENGTH_SHORT).show();
+                    System.out.print("PRINCE");
                     endTurn();
                 }
             });
@@ -1094,6 +1110,8 @@ public class MainActivity extends AppCompatActivity {
                         playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                    Toast.makeText(getApplicationContext(), "You have forced " + playerOrder[turnOrder4].getPlayerName() + " to discard his hand and pick up a new card.", Toast.LENGTH_SHORT).show();
+                    System.out.print("PRINCE");
                     endTurn();
                 }
             });
@@ -1122,6 +1140,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     mainButton.setChecked(false); //set toggle button back when a player has made their choice
                     fourSevenEight.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getApplicationContext(), "You have discarded your own hand and taken a fresh card form the deck.", Toast.LENGTH_SHORT).show();
                     endTurn();
                 }
             });
