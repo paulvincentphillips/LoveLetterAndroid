@@ -1506,10 +1506,8 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
                 guardChoice = data.getIntExtra("guardChoice", 1);
+                //System.out.println(guardChoice);
             }
-            /*if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
-            }*/
         }
     }//onActivityResult
 
