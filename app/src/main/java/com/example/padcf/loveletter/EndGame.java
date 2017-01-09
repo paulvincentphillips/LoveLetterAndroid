@@ -26,6 +26,8 @@ EndGame extends AppCompatActivity {
         Button mainMenuButton = (Button)findViewById(R.id.mainMenuButton);
         TextView winner = (TextView)findViewById(R.id.winnerTextView);
 
+        playAgainButton.setVisibility(View.INVISIBLE);
+
         Bundle bundlePlayerScoresNames = this.getIntent().getExtras();
 
         int player1Score = bundlePlayerScoresNames.getInt("Player 1 Score");
@@ -50,13 +52,13 @@ EndGame extends AppCompatActivity {
         }
 
 
-        playAgainButton.setOnClickListener(new View.OnClickListener() {
+        /*playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainActivityIntent = new Intent(EndGame.this, MainActivity.class);
                 startActivity(mainActivityIntent);
             }
-        });
+        });*/
 
         mainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override

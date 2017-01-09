@@ -48,24 +48,24 @@ public class Prince implements Card{
         //then that player draws the burned card from the start of the game deck[0]
         if(length == 0){
             if(tag == 1){
-                if(targetPlayer1.getCard1().getCardValue() == 8){
+                if(targetPlayer1.getCard1().getCardValue() == 8  || targetPlayer1.getCard2().getCardValue() == 8){
                     targetPlayer1.setPlaying(false);
                 }else {
                     targetPlayer1.setCard1(deck[0]);
                 }
             }
             else if(tag == 2){
-                if(targetPlayer2.getCard1().getCardValue() == 8){
-                    targetPlayer1.setPlaying(false);
+                if(targetPlayer2.getCard1().getCardValue() == 8  || targetPlayer2.getCard2().getCardValue() == 8){
+                    targetPlayer2.setPlaying(false);
                 }else {
                     targetPlayer2.setCard1(deck[0]);
                 }
             }
             else if(tag == 3){
-                if(targetPlayer2.getCard1().getCardValue() == 8){
-                    targetPlayer1.setPlaying(false);
+                if(targetPlayer3.getCard1().getCardValue() == 8  || targetPlayer3.getCard2().getCardValue() == 8){
+                    targetPlayer3.setPlaying(false);
                 }else {
-                    targetPlayer2.setCard1(deck[0]);
+                    targetPlayer3.setCard1(deck[0]);
                 }
             }
             else{
@@ -78,7 +78,7 @@ public class Prince implements Card{
             }
         }else {
             if (tag == 1) {
-                if (targetPlayer1.getCard1().getCardValue() == 8) {
+                if (targetPlayer1.getCard1().getCardValue() == 8  || targetPlayer1.getCard2().getCardValue() == 8) {
                     targetPlayer1.setPlaying(false);
                 } else {
                     targetPlayer1.setCard1(deck[length]);
@@ -86,7 +86,7 @@ public class Prince implements Card{
                     System.out.println(targetPlayer1.getPlayerName() + " has discarded their hand and drawn a new one from the deck");
                 }
             } else if (tag == 2) {
-                if (targetPlayer2.getCard1().getCardValue() == 8) {
+                if (targetPlayer2.getCard1().getCardValue() == 8 || targetPlayer2.getCard2().getCardValue() == 8) {
                     targetPlayer2.setPlaying(false);
                 } else {
                     targetPlayer2.setCard1(deck[length]);
@@ -94,7 +94,7 @@ public class Prince implements Card{
                     System.out.println(targetPlayer2.getPlayerName() + " has discarded their hand and drawn a new one from the deck");
                 }
             } else if (tag == 3) {
-                if (targetPlayer3.getCard1().getCardValue() == 8) {
+                if (targetPlayer3.getCard1().getCardValue() == 8 || targetPlayer3.getCard2().getCardValue() == 8) {
                     targetPlayer3.setPlaying(false);
                 } else {
                     targetPlayer3.setCard1(deck[length]);

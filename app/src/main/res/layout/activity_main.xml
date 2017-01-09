@@ -42,9 +42,7 @@
                 android:tag="2"
                 android:enabled="true"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/buttonswoodbackground"
-                android:textColor="@android:color/black" />
+                android:layout_centerHorizontal="true" />
 
             <Button
                 android:text="P4"
@@ -53,11 +51,10 @@
                 android:id="@+id/button3"
                 android:tag="3"
                 android:enabled="true"
-                android:background="@drawable/buttonswoodbackground"
+
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@android:color/black" />
+                android:layout_alignParentEnd="true" />
 
             <Button
                 android:text="P2"
@@ -66,11 +63,9 @@
                 android:tag="1"
                 android:id="@+id/button1"
                 android:enabled="true"
-                android:background="@drawable/buttonswoodbackground"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textColor="@android:color/black" />
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 
@@ -104,10 +99,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/fourSevenEight"
             android:layout_marginBottom="13dp"
-            android:background="@drawable/buttonswoodbackground"
             android:layout_above="@+id/imageButton2"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/black" />
+            android:layout_centerHorizontal="true" />
 
         <ImageButton
             android:layout_width="wrap_content"
