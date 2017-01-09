@@ -29,11 +29,18 @@ public class PriestPop extends Activity {
         Bundle priestInfo = this.getIntent().getExtras();
         //put the information into variables
         String targetPlayerName = priestInfo.getString("targetName");
-        String targetPlayerCardName = priestInfo.getString("targetCard");
+        String targetPlayerCardName1 = priestInfo.getString("targetCard1");
+        String targetPlayerCardName2 = priestInfo.getString("targetCard2");
+        int targetPlayerChoice = priestInfo.getInt("targetChoice");
 
         TextView revealCard = (TextView) findViewById(R.id.priestReveal);
 
-        revealCard.setText(targetPlayerName + " has a... " + targetPlayerCardName.toUpperCase() );
+        if(targetPlayerChoice == 1){
+            revealCard.setText(targetPlayerName + " has a... " + targetPlayerCardName2.toUpperCase() );
+        }else{
+            revealCard.setText(targetPlayerName + " has a... " + targetPlayerCardName1.toUpperCase() );
+        }
+
 
     }
 }

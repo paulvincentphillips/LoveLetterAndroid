@@ -268,11 +268,11 @@ public class MainActivity extends AppCompatActivity {
                         ib.setClickable(true);
                         ib2.setClickable(true);
                         //countess function, see below
-                        //countess(playerOrder[turnOrder], ib, ib2);
+                        countess(playerOrder[turnOrder], ib, ib2);
                         //set the images of the cards to what the player currently has in his hand
                         ib.setImageResource(playerOrder[turnOrder].getCard1().getImageId());
                         ib2.setImageResource(playerOrder[turnOrder].getCard2().getImageId());
-                        Toast.makeText(getApplicationContext(), "Choose a card", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Choose a card", Toast.LENGTH_SHORT).show();
 
                     } else {
                         //set the buttons to be unClickable when they are toggled to cardBack
@@ -545,7 +545,14 @@ public class MainActivity extends AppCompatActivity {
                     //bundle target player's name for use in pop-up activity
                     priestInfo.putString("targetName", playerOrder[turnOrder2].getPlayerName());
                     //bundle target player's card for use in pop-up activity
-                    priestInfo.putString("targetCard", playerOrder[turnOrder2].getCard1().getCardName());
+                    if(playerOrder[turnOrder2].getCardChoice() == 0){
+                        priestInfo.putString("targetCard1", playerOrder[turnOrder2].getCard1().getCardName());
+                    }else{
+                        priestInfo.putString("targetCard1", playerOrder[turnOrder2].getCard1().getCardName());
+                        priestInfo.putString("targetCard2", playerOrder[turnOrder2].getCard2().getCardName());
+                    }
+                    //bundle target player's cardChoice
+                    priestInfo.putInt("targetChoice", playerOrder[turnOrder2].getCardChoice());
                     //pass the extra into the intent
                     myIntent.putExtras(priestInfo);
 
@@ -578,7 +585,14 @@ public class MainActivity extends AppCompatActivity {
                     //bundle target player's name for use in pop-up activity
                     priestInfo.putString("targetName", playerOrder[turnOrder3].getPlayerName());
                     //bundle target player's card for use in pop-up activity
-                    priestInfo.putString("targetCard", playerOrder[turnOrder3].getCard1().getCardName());
+                    if(playerOrder[turnOrder3].getCardChoice() == 0){
+                        priestInfo.putString("targetCard1", playerOrder[turnOrder3].getCard1().getCardName());
+                    }else{
+                        priestInfo.putString("targetCard1", playerOrder[turnOrder3].getCard1().getCardName());
+                        priestInfo.putString("targetCard2", playerOrder[turnOrder3].getCard2().getCardName());
+                    }
+                    //bundle target player's cardChoice
+                    priestInfo.putInt("targetChoice", playerOrder[turnOrder3].getCardChoice());
                     //pass the extra into the intent
                     myIntent.putExtras(priestInfo);
 
@@ -611,7 +625,14 @@ public class MainActivity extends AppCompatActivity {
                     //bundle target player's name for use in pop-up activity
                     priestInfo.putString("targetName", playerOrder[turnOrder4].getPlayerName());
                     //bundle target player's card for use in pop-up activity
-                    priestInfo.putString("targetCard", playerOrder[turnOrder4].getCard1().getCardName());
+                    if(playerOrder[turnOrder4].getCardChoice() == 0){
+                        priestInfo.putString("targetCard1", playerOrder[turnOrder4].getCard1().getCardName());
+                    }else{
+                        priestInfo.putString("targetCard1", playerOrder[turnOrder4].getCard1().getCardName());
+                        priestInfo.putString("targetCard2", playerOrder[turnOrder4].getCard2().getCardName());
+                    }
+                    //bundle target player's cardChoice
+                    priestInfo.putInt("targetChoice", playerOrder[turnOrder4].getCardChoice());
                     //pass the extra into the intent
                     myIntent.putExtras(priestInfo);
 
@@ -695,16 +716,29 @@ public class MainActivity extends AppCompatActivity {
                     //bundle player and target player's name
                     baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
                     baronInfo.putString("targetName", playerOrder[turnOrder2].getPlayerName());
-                    //bundle player's card ability and target player's ability
-                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard2().getCardValue());
-                    baronInfo.putInt("targetCardAbility", playerOrder[turnOrder2].getCard1().getCardValue());
+                    //cardChoice for current and target player
+                    baronInfo.putInt("playerChoice", cardChoice);
+                    baronInfo.putInt("targetChoice", playerOrder[turnOrder2].getCardChoice());
+                    //bundle player's card ability and target player's value
+                    baronInfo.putInt("playerCardAbility1", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("playerCardAbility2", playerOrder[turnOrder].getCard2().getCardValue());
+                    if(playerOrder[turnOrder2].getCardChoice()==0){
+                        baronInfo.putInt("targetCardAbility1", playerOrder[turnOrder2].getCard1().getCardValue());
+                        baronInfo.putString("targetPlayerCardName1", playerOrder[turnOrder2].getCard1().getCardName());
+                    }else{
+                        baronInfo.putInt("targetCardAbility1", playerOrder[turnOrder2].getCard1().getCardValue());
+                        baronInfo.putInt("targetCardAbility2", playerOrder[turnOrder2].getCard2().getCardValue());
+                        baronInfo.putString("targetPlayerCardName1", playerOrder[turnOrder2].getCard1().getCardName());
+                        baronInfo.putString("targetPlayerCardName2", playerOrder[turnOrder2].getCard2().getCardName());
+                    }
 
                     //bundle player and target player's card images
-                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
-                    baronInfo.putInt("targetCardImage", playerOrder[turnOrder2].getCard1().getImageId());
+                    //baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
+                    //baronInfo.putInt("targetCardImage", playerOrder[turnOrder2].getCard1().getImageId());
                     //bundle player and target player's card names
-                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard2().getCardName());
-                    baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder2].getCard1().getCardName());
+                    baronInfo.putString("playerCardName1", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("playerCardName2", playerOrder[turnOrder].getCard2().getCardName());
+
                     myIntent.putExtras(baronInfo);//put the bundle with the intent
 
                     if (cardChoice == 1) {
@@ -742,16 +776,29 @@ public class MainActivity extends AppCompatActivity {
                     //bundle player and target player's name
                     baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
                     baronInfo.putString("targetName", playerOrder[turnOrder3].getPlayerName());
-                    //bundle player's card ability and target player's ability
-                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard2().getCardValue());
-                    baronInfo.putInt("targetCardAbility", playerOrder[turnOrder3].getCard1().getCardValue());
+                    //cardChoice for current and target player
+                    baronInfo.putInt("playerChoice", playerOrder[turnOrder].getCardChoice());
+                    baronInfo.putInt("targetChoice", playerOrder[turnOrder3].getCardChoice());
+                    //bundle player's card ability and target player's value
+                    baronInfo.putInt("playerCardAbility1", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("playerCardAbility2", playerOrder[turnOrder].getCard2().getCardValue());
+                    if(playerOrder[turnOrder3].getCardChoice()==0){
+                        baronInfo.putInt("targetCardAbility1", playerOrder[turnOrder3].getCard1().getCardValue());
+                        baronInfo.putString("targetPlayerCardName1", playerOrder[turnOrder3].getCard1().getCardName());
+                    }else{
+                        baronInfo.putInt("targetCardAbility1", playerOrder[turnOrder3].getCard1().getCardValue());
+                        baronInfo.putInt("targetCardAbility2", playerOrder[turnOrder3].getCard2().getCardValue());
+                        baronInfo.putString("targetPlayerCardName1", playerOrder[turnOrder3].getCard1().getCardName());
+                        baronInfo.putString("targetPlayerCardName2", playerOrder[turnOrder3].getCard2().getCardName());
+                    }
 
                     //bundle player and target player's card images
-                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
-                    baronInfo.putInt("targetCardImage", playerOrder[turnOrder3].getCard1().getImageId());
+                    //baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
+                    //baronInfo.putInt("targetCardImage", playerOrder[turnOrder2].getCard1().getImageId());
                     //bundle player and target player's card names
-                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard2().getCardName());
-                    baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder3].getCard1().getCardName());
+                    baronInfo.putString("playerCardName1", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("playerCardName2", playerOrder[turnOrder].getCard2().getCardName());
+
                     myIntent.putExtras(baronInfo);//put the bundle with the intent
 
                     if (cardChoice == 1) {
@@ -787,16 +834,29 @@ public class MainActivity extends AppCompatActivity {
                     //bundle player and target player's name
                     baronInfo.putString("playerName", playerOrder[turnOrder].getPlayerName());
                     baronInfo.putString("targetName", playerOrder[turnOrder4].getPlayerName());
-                    //bundle player's card ability and target player's ability
-                    baronInfo.putInt("playerCardAbility", playerOrder[turnOrder].getCard2().getCardValue());
-                    baronInfo.putInt("targetCardAbility", playerOrder[turnOrder4].getCard1().getCardValue());
+                    //cardChoice for current and target player
+                    baronInfo.putInt("playerChoice", playerOrder[turnOrder].getCardChoice());
+                    baronInfo.putInt("targetChoice", playerOrder[turnOrder4].getCardChoice());
+                    //bundle player's card ability and target player's value
+                    baronInfo.putInt("playerCardAbility1", playerOrder[turnOrder].getCard1().getCardValue());
+                    baronInfo.putInt("playerCardAbility2", playerOrder[turnOrder].getCard2().getCardValue());
+                    if(playerOrder[turnOrder4].getCardChoice()==0){
+                        baronInfo.putInt("targetCardAbility1", playerOrder[turnOrder4].getCard1().getCardValue());
+                        baronInfo.putString("targetPlayerCardName1", playerOrder[turnOrder4].getCard1().getCardName());
+                    }else{
+                        baronInfo.putInt("targetCardAbility1", playerOrder[turnOrder4].getCard1().getCardValue());
+                        baronInfo.putInt("targetCardAbility2", playerOrder[turnOrder4].getCard2().getCardValue());
+                        baronInfo.putString("targetPlayerCardName1", playerOrder[turnOrder4].getCard1().getCardName());
+                        baronInfo.putString("targetPlayerCardName2", playerOrder[turnOrder4].getCard2().getCardName());
+                    }
 
                     //bundle player and target player's card images
-                    baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
-                    baronInfo.putInt("targetCardImage", playerOrder[turnOrder4].getCard1().getImageId());
+                    //baronInfo.putInt("playerCardImage", playerOrder[turnOrder].getCard2().getImageId());
+                    //baronInfo.putInt("targetCardImage", playerOrder[turnOrder2].getCard1().getImageId());
                     //bundle player and target player's card names
-                    baronInfo.putString("playerCardName", playerOrder[turnOrder].getCard2().getCardName());
-                    baronInfo.putString("targetPlayerCardName", playerOrder[turnOrder4].getCard1().getCardName());
+                    baronInfo.putString("playerCardName1", playerOrder[turnOrder].getCard1().getCardName());
+                    baronInfo.putString("playerCardName2", playerOrder[turnOrder].getCard2().getCardName());
+
                     myIntent.putExtras(baronInfo);//put the bundle with the intent
 
                     if (cardChoice == 1) {
@@ -1446,10 +1506,8 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
                 guardChoice = data.getIntExtra("guardChoice", 1);
+                //System.out.println(guardChoice);
             }
-            /*if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
-            }*/
         }
     }//onActivityResult
 

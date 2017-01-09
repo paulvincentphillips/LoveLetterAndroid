@@ -44,7 +44,7 @@ public class Guard implements Card {
 
         //compare guardChoice int to the target player's card int
         //if they are the same, eliminate the other player
-        System.out.println(guardChoice);
+        System.out.println("yes, this finally works " + guardChoice);
 
         if(tag == 1){
             if(targetPlayer1.getCardChoice() == 1){
