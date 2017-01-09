@@ -1,5 +1,7 @@
 package com.example.padcf.loveletter;
 
+import android.widget.Toast;
+
 /**
  * This class creates the Prince card which contains functionality and attributes unique to this class
  * Choose any player (including yourself) to discard his or her hand and draw a new card
