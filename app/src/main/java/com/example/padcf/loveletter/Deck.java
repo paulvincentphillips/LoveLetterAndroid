@@ -65,7 +65,8 @@ public class Deck {
         //2 princes
         for(int i=11; i<13; i++)
         {
-            deck[i] = new Prince();
+            //deck[i] = new Prince();
+            deck[i] = new Baron();
         }
 
         //One King, Countess and Princess

@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     //target card concerning guard card
     int guardChoice = 0;
+    //button choice concerning guard card
+    int guardButton = 0;
 
     //set up the four player objects
     Player player1 = new Player("");
@@ -356,135 +358,32 @@ public class MainActivity extends AppCompatActivity {
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (cardChoice == 1) {
+                    guardButton = 1;
 
-                        Intent intent = new Intent(MainActivity.this, GuardLayout.class);
-                        //startActivity(intent);
-                        startActivityForResult(intent, 1);
-
-                        //Bundle bundleGuardChoice = intent.getExtras();
-                        //guardChoice = bundleGuardChoice.getInt("Guard choice");
-                        System.out.println("guardChoice = " + guardChoice);
-                        System.out.println("blah");
-
-                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice, guardChoice);
-                        //add the played card to the array of played cards in the Player Class
-                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
-
-                    } else { //if(cardChoice  ==2 ) the other card
-
-                        Intent intent = new Intent(MainActivity.this, GuardLayout.class);
-                        startActivityForResult(intent, 1);
-
-                        //Bundle bundleGuardChoice = intent.getExtras();
-                        //guardChoice = bundleGuardChoice.getInt("Guard choice");
-                        System.out.println("guardChoice = " + guardChoice);
-                        System.out.println("blah");
-
-                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice, guardChoice);
-                        //add the played card to the array of played cards in the Player Class
-                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
-
-                    }
-
-                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                    endTurn();
+                    Intent intent = new Intent(MainActivity.this, GuardLayout.class);
+                    startActivityForResult(intent, 1);
                 }
             });
 
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (cardChoice == 1) {
+                    guardButton = 2;
 
-                        Intent intent = new Intent(MainActivity.this, GuardLayout.class);
-                        //startActivity(intent);
-                        startActivityForResult(intent, 1);
-
-                        //Bundle bundleGuardChoice = intent.getExtras();
-                        //guardChoice = bundleGuardChoice.getInt("Guard choice");
-                        System.out.println("guardChoice = " + guardChoice);
-                        System.out.println("blah");
-
-                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice, guardChoice);
-                        //add the played card to the array of played cards in the Player Class
-                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
-
-                    } else {
-
-                        Intent intent = new Intent(MainActivity.this, GuardLayout.class);
-                        //startActivity(intent);
-                        startActivityForResult(intent, 1);
-
-                        //Bundle bundleGuardChoice = intent.getExtras();
-                        //guardChoice = bundleGuardChoice.getInt("Guard choice");
-                        System.out.println("guardChoice = " + guardChoice);
-                        System.out.println("blah");
-
-                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice, guardChoice);
-                        //add the played card to the array of played cards in the Player Class
-                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
-                    }
-
-                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                    endTurn();
+                    Intent intent = new Intent(MainActivity.this, GuardLayout.class);
+                    startActivityForResult(intent, 1);
                 }
             });
 
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (cardChoice == 1) {
+                    guardButton = 3;
 
-                        Intent intent = new Intent(MainActivity.this, GuardLayout.class);
-                        //startActivity(intent);
-                        startActivityForResult(intent, 1);
-
-                        //Bundle bundleGuardChoice = intent.getExtras();
-                        //guardChoice = bundleGuardChoice.getInt("Guard choice");
-                        System.out.println("guardChoice = " + guardChoice);
-                        System.out.println("blah");
-
-                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice, guardChoice);
-                        //add the played card to the array of played cards in the Player Class
-                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
-
-                    } else {
-
-                        Intent intent = new Intent(MainActivity.this, GuardLayout.class);
-                        //startActivity(intent);
-                        startActivityForResult(intent, 1);
-
-                        //Bundle bundleGuardChoice = intent.getExtras();
-                        //guardChoice = bundleGuardChoice.getInt("Guard choice");
-                        System.out.println("guardChoice = " + guardChoice);
-                        System.out.println("blah");
-
-                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
-                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
-                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice, guardChoice);
-                        //add the played card to the array of played cards in the Player Class
-                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
-
-                    }
-
-                    mainButton.setChecked(false); //set toggle button back when a player has made their choice
-                    endTurn();
-
+                    Intent intent = new Intent(MainActivity.this, GuardLayout.class);
+                    startActivityForResult(intent, 1);
                 }
             });
-
-
         }
 
         //Displays for Priest here
@@ -1500,6 +1399,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //guard functionality happens here
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -1507,6 +1407,75 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 guardChoice = data.getIntExtra("guardChoice", 1);
                 //System.out.println(guardChoice);
+                //set up button objects to use here
+                final Button button1 = (Button) findViewById(R.id.button1);
+                final Button button2 = (Button) findViewById(R.id.button2);
+                final Button button3 = (Button) findViewById(R.id.button3);
+
+                final ToggleButton mainButton = (ToggleButton) findViewById(R.id.toggleButton);
+
+                if(guardButton == 1){
+                    if (cardChoice == 1) {
+
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice, guardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+
+                    } else { //if(cardChoice  ==2 ) the other card
+
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button1.getTag().toString()), cardChoice, guardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+
+                    }
+                }
+                else if(guardButton == 2){
+                    if (cardChoice == 1) {
+
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice, guardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+
+                    } else {
+
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button2.getTag().toString()), cardChoice, guardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+                    }
+                }else{
+                    if (cardChoice == 1) {
+
+
+
+                        deckLength = playerOrder[turnOrder].getCard1().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice, guardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard1());
+
+                    } else {
+
+
+
+                        deckLength = playerOrder[turnOrder].getCard2().specialFunction(playerOrder[turnOrder],
+                                playerOrder[turnOrder2], playerOrder[turnOrder3], playerOrder[turnOrder4], deckLength,
+                                deck1, Integer.parseInt(button3.getTag().toString()), cardChoice, guardChoice);
+                        //add the played card to the array of played cards in the Player Class
+                        playerOrder[turnOrder].setPlayedCard(playerOrder[turnOrder].getCard2());
+
+                    }
+                }
+
+                mainButton.setChecked(false); //set toggle button back when a player has made their choice
+                endTurn();
             }
         }
     }//onActivityResult
